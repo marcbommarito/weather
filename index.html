@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17365d">
+  <title>MUSD Extreme Weather Decision Dashboard</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynh2w5h4q9CG0gW9AcZrGqGAPwIY=" crossorigin="">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Menifee Union School District</p>
+      <h1>Extreme Weather Decision Dashboard</h1>
+      <p class="subtitle">Official observations, warnings, forecasts and district-configured action levels</p>
+    </div>
+    <div class="header-actions">
+      <button id="refreshButton" class="button" type="button">Refresh display</button>
+      <a class="button button-secondary" href="#thresholds">View thresholds</a>
+    </div>
+  </header>
+
+  <div id="sampleBanner" class="banner banner-warning hidden" role="status"></div>
+  <div id="errorBanner" class="banner banner-error hidden" role="alert"></div>
+
+  <main id="main" class="dashboard-shell">
+    <section id="decisionHero" class="decision-hero level-unknown" aria-live="polite">
+      <div>
+        <p class="eyebrow">Current decision-support level</p>
+        <div class="decision-row">
+          <span id="levelNumber" class="level-number">—</span>
+          <div>
+            <h2 id="levelLabel">Loading weather data…</h2>
+            <p id="levelAction">The dashboard is checking data quality and current hazards.</p>
+          </div>
+        </div>
+      </div>
+      <div class="decision-meta">
+        <p><strong>Updated:</strong> <span id="generatedAt">—</span></p>
+        <p><strong>Data status:</strong> <span id="dataStatus">Checking</span></p>
+        <p><strong>Next scheduled update:</strong> <span id="nextUpdate">—</span></p>
+      </div>
+    </section>
+
+    <section aria-labelledby="driversHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Decision drivers</p>
+          <h2 id="driversHeading">Conditions affecting today’s level</h2>
+        </div>
+      </div>
+      <div id="metricsGrid" class="metrics-grid" aria-live="polite"></div>
+      <div class="two-column">
+        <article class="panel">
+          <h3>Recommended actions</h3>
+          <ul id="recommendedActions" class="action-list"></ul>
+        </article>
+        <article class="panel">
+          <h3>Why this level was selected</h3>
+          <ul id="decisionReasons" class="reason-list"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="alertsHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Official notices</p>
+          <h2 id="alertsHeading">Active National Weather Service alerts</h2>
+        </div>
+      </div>
+      <div id="alertsList" class="alerts-list"></div>
+    </section>
+
+    <section aria-labelledby="stationsHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Local monitoring network</p>
+          <h2 id="stationsHeading">Station observations and coverage</h2>
+        </div>
+      </div>
+      <div class="map-grid">
+        <div class="panel map-panel">
+          <div id="stationMap" aria-label="Map of Menifee-area weather stations"></div>
+        </div>
+        <div class="panel">
+          <h3>Source availability</h3>
+          <div id="coverageList" class="coverage-list"></div>
+          <p class="fine-print">Personal weather stations are mapped for geographic reference only. They are not included in the official decision calculation unless a licensed, quality-controlled data feed is added.</p>
+        </div>
+      </div>
+      <div class="table-wrap panel">
+        <table>
+          <caption>Latest official station observations</caption>
+          <thead>
+            <tr>
+              <th scope="col">Station</th>
+              <th scope="col">Observed</th>
+              <th scope="col">Temp.</th>
+              <th scope="col">Heat index</th>
+              <th scope="col">Humidity</th>
+              <th scope="col">Wind</th>
+              <th scope="col">Gust</th>
+              <th scope="col">Condition</th>
+              <th scope="col">Freshness</th>
+            </tr>
+          </thead>
+          <tbody id="stationRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="forecastHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Planning horizon</p>
+          <h2 id="forecastHeading">Next 12 hours</h2>
+        </div>
+      </div>
+      <div id="forecastStrip" class="forecast-strip"></div>
+    </section>
+
+    <section id="thresholds" aria-labelledby="thresholdsHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">District configuration</p>
+          <h2 id="thresholdsHeading">Decision thresholds</h2>
+        </div>
+      </div>
+      <div class="two-column">
+        <article class="panel">
+          <h3>Configured numeric thresholds</h3>
+          <div id="thresholdTable"></div>
+          <p class="fine-print">Wind, heat-index and precipitation thresholds are local operational settings and should be reviewed and formally adopted by the district. NWS HeatRisk and AQI categories retain their source-system meanings.</p>
+        </article>
+        <article class="panel">
+          <h3>Important limitations</h3>
+          <ul class="action-list">
+            <li>No free public feed in this package provides reliable real-time lightning-strike distance. Add a licensed lightning provider before using the dashboard for a “clear after last strike” countdown.</li>
+            <li>Airport and agricultural stations may not represent conditions at every school site. Staff should verify unusual local conditions.</li>
+            <li>A missing or stale feed is displayed as unavailable; it is never treated as a safe condition.</li>
+            <li>This dashboard supports, but does not replace, the district’s adopted SB 1248 protocol, emergency plans, or authorized judgment.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p id="footerDisclaimer"></p>
+    <p>Sources: <a href="https://www.weather.gov/" target="_blank" rel="noreferrer">National Weather Service</a>, <a href="https://www.airnow.gov/" target="_blank" rel="noreferrer">EPA AirNow</a>, <a href="https://cimis.water.ca.gov/" target="_blank" rel="noreferrer">California DWR CIMIS</a>, and district-configured thresholds.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

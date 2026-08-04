@@ -1,0 +1,60 @@
+{
+  "district": {
+    "name": "Menifee Union School District",
+    "shortName": "MUSD",
+    "dashboardTitle": "Extreme Weather Decision Dashboard",
+    "timezone": "America/Los_Angeles",
+    "center": {"lat": 33.68788, "lon": -117.17577},
+    "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
+  },
+  "refreshMinutes": 15,
+  "nwsUserAgent": "MUSD-Weather-Dashboard/1.0 (replace-with-district-contact@menifeeusd.org)",
+  "stations": {
+    "nws": [
+      {"id": "KF70", "name": "French Valley Airport", "lat": 33.5742, "lon": -117.1285, "type": "Government / aviation", "priority": 1},
+      {"id": "KHMT", "name": "Hemet-Ryan Airport", "lat": 33.7340, "lon": -117.0223, "type": "Government / aviation", "priority": 2},
+      {"id": "KRIV", "name": "March Air Reserve Base", "lat": 33.8819, "lon": -117.2590, "type": "Government / aviation", "priority": 3}
+    ],
+    "cimis": [
+      {"id": "240", "name": "Perris-Menifee", "lat": 33.7595, "lon": -117.1810, "type": "California DWR CIMIS", "priority": 1},
+      {"id": "179", "name": "Winchester", "lat": 33.7000, "lon": -117.0860, "type": "California DWR CIMIS", "priority": 2},
+      {"id": "239", "name": "Hemet", "lat": 33.6760, "lon": -117.0470, "type": "California DWR CIMIS", "priority": 3},
+      {"id": "62", "name": "Temecula", "lat": 33.5000, "lon": -117.1450, "type": "California DWR CIMIS", "priority": 4},
+      {"id": "237", "name": "Temecula East III", "lat": 33.5250, "lon": -117.0350, "type": "California DWR CIMIS", "priority": 5}
+    ],
+    "referencePersonal": [
+      {"id": "KCAMENIF111", "name": "Menifee", "lat": 33.69, "lon": -117.18, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF16", "name": "Audie Murphy Ranch", "lat": 33.68, "lon": -117.22, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF129", "name": "Sun City", "lat": 33.71, "lon": -117.22, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF29", "name": "Menifee East", "lat": 33.68, "lon": -117.15, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF37", "name": "Menifee South", "lat": 33.64, "lon": -117.20, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF72", "name": "Menifee West", "lat": 33.69, "lon": -117.21, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF102", "name": "Menifee Southwest", "lat": 33.66, "lon": -117.20, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF74", "name": "Sun City East", "lat": 33.70, "lon": -117.21, "type": "Personal station — reference only"},
+      {"id": "KCAMENIF100", "name": "Romoland / North Menifee", "lat": 33.73, "lon": -117.16, "type": "Personal station — reference only"}
+    ]
+  },
+  "thresholds": {
+    "stationStaleMinutes": 120,
+    "heatIndexF": [90, 100, 105, 115],
+    "aqi": [51, 101, 151, 201],
+    "windGustMph": [25, 35, 45, 58],
+    "precipProbabilityPct": [40, 70, 90, 100],
+    "alertSeverity": {"Unknown": 0, "Minor": 1, "Moderate": 2, "Severe": 3, "Extreme": 4}
+  },
+  "levels": [
+    {"level": 0, "name": "Normal", "label": "Normal outdoor operations", "action": "Continue normal operations while monitoring routine conditions."},
+    {"level": 1, "name": "Caution", "label": "Monitor and add precautions", "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils."},
+    {"level": 2, "name": "Modify", "label": "Modify outdoor activities", "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff."},
+    {"level": 3, "name": "Inclement", "label": "Inclement weather procedures", "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications."},
+    {"level": 4, "name": "Severe", "label": "Severe inclement weather", "action": "Suspend outdoor activities. Evaluate broader site or district operations under emergency authority and local agency guidance."}
+  ],
+  "sourceLinks": {
+    "nws": "https://www.weather.gov/documentation/services-web-api",
+    "alerts": "https://www.weather.gov/documentation/services-web-alerts",
+    "heatRisk": "https://www.wpc.ncep.noaa.gov/heatrisk/",
+    "airNow": "https://www.airnow.gov/",
+    "cimis": "https://cimis.water.ca.gov/",
+    "cde": "https://www.cde.ca.gov/ls/he/hn/extremeweather.asp"
+  }
+}
