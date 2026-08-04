@@ -61,8 +61,8 @@ def json_get(
     timeout: int = 30,
     accept: str = "application/geo+json, application/json",
 ) -> Any:
-    if params:
-        url = f"{url}?{urllib.parse.urlencode(params)}"
+   if params:
+    url = f"{url}?{urllib.parse.urlencode(params, safe=',')}"
     request = urllib.request.Request(
         url,
         headers={"User-Agent": USER_AGENT, "Accept": accept},
