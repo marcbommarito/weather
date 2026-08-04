@@ -49,22 +49,49 @@ def parse_dt(value: str | None) -> datetime | None:
         return None
 
 
-def json_get(url: str, params: dict[str, Any] | None = None, timeout: int = 30) -> Any:
+def _clean_response_snippet(value: str, limit: int = 180) -> str:
+    """Return a short, single-line response excerpt safe for dashboard diagnostics."""
+    cleaned = re.sub(r"\s+", " ", value).strip()
+    return cleaned[:limit] + ("..." if len(cleaned) > limit else "")
+
+
+def json_get(
+    url: str,
+    params: dict[str, Any] | None = None,
+    timeout: int = 30,
+    accept: str = "application/geo+json, application/json",
+) -> Any:
     if params:
         url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": USER_AGENT, "Accept": "application/geo+json, application/json"},
+        headers={"User-Agent": USER_AGENT, "Accept": accept},
     )
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+        body = response.read().decode("utf-8", errors="replace")
+        try:
+            return json.loads(body)
+        except json.JSONDecodeError as exc:
+            content_type = response.headers.get("Content-Type", "unknown content type")
+            snippet = _clean_response_snippet(body)
+            raise ValueError(f"non-JSON response ({content_type}): {snippet}") from exc
 
 
-def safe_get(name: str, url: str, params: dict[str, Any] | None = None) -> Any | None:
+def safe_get(
+    name: str,
+    url: str,
+    params: dict[str, Any] | None = None,
+    accept: str = "application/geo+json, application/json",
+) -> Any | None:
     try:
-        return json_get(url, params=params)
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError, ValueError) as exc:
-        ERRORS.append(f"{name}: {type(exc).__name__}")
+        return json_get(url, params=params, accept=accept)
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        detail = _clean_response_snippet(body)
+        ERRORS.append(f"{name}: HTTP {exc.code}" + (f" — {detail}" if detail else ""))
+        return None
+    except (urllib.error.URLError, TimeoutError, ValueError) as exc:
+        ERRORS.append(f"{name}: {exc}")
         return None
 
 
@@ -218,7 +245,9 @@ def fetch_cimis() -> list[dict[str, Any]]:
     if not key:
         return []
     station_defs = CONFIG["stations"]["cimis"]
-    local_now = datetime.now(TZ)
+    # CIMIS reports in Pacific Standard Time year-round, not daylight time.
+    cimis_tz = timezone(timedelta(hours=-8))
+    local_now = datetime.now(cimis_tz)
     params = {
         "appKey": key,
         "targets": ",".join(s["id"] for s in station_defs),
@@ -226,9 +255,16 @@ def fetch_cimis() -> list[dict[str, Any]]:
         "endDate": local_now.date().isoformat(),
         "dataItems": "hly-air-tmp,hly-rel-hum,hly-wind-spd,hly-wind-dir,hly-precip",
         "unitOfMeasure": "E",
-        "format": "json",
+        "prioritizeSCS": "N",
     }
-    payload = safe_get("CIMIS", "https://et.water.ca.gov/api/data", params)
+    # CIMIS selects JSON through the HTTP Accept header. The undocumented
+    # format=json query parameter can result in an HTML response on some requests.
+    payload = safe_get(
+        "CIMIS",
+        "https://et.water.ca.gov/api/data",
+        params,
+        accept="application/json",
+    )
     if not payload:
         return []
     records = flatten_records(payload)
@@ -247,8 +283,14 @@ def fetch_cimis() -> list[dict[str, Any]]:
         observed_at = None
         if date_text:
             try:
-                hour = int(re.sub(r"\D", "", hour_text or "0")[:2] or 0)
-                local_dt = datetime.fromisoformat(date_text[:10]).replace(hour=min(hour, 23), tzinfo=TZ)
+                hour_value = int(re.sub(r"\D", "", hour_text or "0") or 0)
+                record_date = datetime.fromisoformat(date_text[:10]).date()
+                if hour_value == 2400:
+                    local_dt = datetime.combine(record_date + timedelta(days=1), datetime.min.time(), tzinfo=cimis_tz)
+                else:
+                    hour = min(hour_value // 100, 23)
+                    minute = min(hour_value % 100, 59)
+                    local_dt = datetime.combine(record_date, datetime.min.time(), tzinfo=cimis_tz).replace(hour=hour, minute=minute)
                 observed_at = iso(local_dt.astimezone(timezone.utc))
             except ValueError:
                 pass
