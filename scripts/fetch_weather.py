@@ -61,8 +61,8 @@ def json_get(
     timeout: int = 30,
     accept: str = "application/geo+json, application/json",
 ) -> Any:
-   if params:
-    url = f"{url}?{urllib.parse.urlencode(params, safe=',')}"
+    if params:
+        url = f"{url}?{urllib.parse.urlencode(params, safe=',;:=')}"
     request = urllib.request.Request(
         url,
         headers={"User-Agent": USER_AGENT, "Accept": accept},
@@ -228,9 +228,46 @@ def find_nested_text(obj: Any, aliases: Iterable[str]) -> str | None:
 
 
 def flatten_records(obj: Any) -> list[dict[str, Any]]:
+    """Recursively find CIMIS-like observation records in an unknown JSON envelope."""
     out: list[dict[str, Any]] = []
     if isinstance(obj, dict):
-        if any(k.lower() in {"date", "hour", "station", "stationnr", "stationid"} for k in obj):
+        normalized_keys = {
+            re.sub(r"[^a-z0-9]", "", str(key).lower())
+            for key in obj.keys()
+        }
+        has_date = bool(
+            normalized_keys
+            & {"date", "datevalue", "recorddate", "observationdate"}
+        )
+        has_station = bool(
+            normalized_keys
+            & {
+                "station",
+                "stationnr",
+                "stationnbr",
+                "stationnumber",
+                "stationid",
+            }
+        )
+        has_hour = bool(
+            normalized_keys
+            & {"hour", "hourvalue", "recordhour", "observationhour"}
+        )
+        has_weather_value = any(
+            key.startswith("hly")
+            or key in {
+                "airtmp",
+                "airtemperature",
+                "relativehumidity",
+                "relhum",
+                "windspeed",
+                "windspd",
+                "precipitation",
+                "precip",
+            }
+            for key in normalized_keys
+        )
+        if has_date and has_station and (has_hour or has_weather_value):
             out.append(obj)
         for value in obj.values():
             out.extend(flatten_records(value))
@@ -240,87 +277,293 @@ def flatten_records(obj: Any) -> list[dict[str, Any]]:
     return out
 
 
+def parse_cimis_date(value: str | None) -> datetime.date | None:
+    if not value:
+        return None
+    cleaned = value.strip()
+    candidates = [cleaned[:10], cleaned]
+    formats = (
+        "%Y-%m-%d",
+        "%m/%d/%Y",
+        "%m/%d/%y",
+        "%Y/%m/%d",
+    )
+    for candidate in candidates:
+        try:
+            return datetime.fromisoformat(candidate.replace("Z", "+00:00")).date()
+        except ValueError:
+            pass
+        for fmt in formats:
+            try:
+                return datetime.strptime(candidate, fmt).date()
+            except ValueError:
+                continue
+    return None
+
+
+def parse_cimis_hour(value: str | None) -> tuple[int, int, bool]:
+    """Return hour, minute and whether CIMIS used its special 2400 value."""
+    if value in (None, ""):
+        return 0, 0, False
+    cleaned = str(value).strip().upper()
+
+    # Handle clock strings such as 1:00 PM.
+    for fmt in ("%I:%M %p", "%I %p", "%H:%M", "%H:%M:%S"):
+        try:
+            parsed = datetime.strptime(cleaned, fmt)
+            return parsed.hour, parsed.minute, False
+        except ValueError:
+            continue
+
+    digits = re.sub(r"\D", "", cleaned)
+    if not digits:
+        return 0, 0, False
+    number = int(digits)
+    if number == 2400:
+        return 0, 0, True
+    if number <= 23:
+        return number, 0, False
+    hour = min(number // 100, 23)
+    minute = min(number % 100, 59)
+    return hour, minute, False
+
+
+def heat_index_fahrenheit(
+    temperature_f: float | None,
+    relative_humidity_pct: float | None,
+) -> float | None:
+    """Calculate NOAA/NWS heat index when temperature and humidity support it."""
+    if temperature_f is None or relative_humidity_pct is None:
+        return None
+    t = float(temperature_f)
+    rh = float(relative_humidity_pct)
+    if t < 80 or rh < 40:
+        return None
+
+    simple = 0.5 * (
+        t
+        + 61.0
+        + ((t - 68.0) * 1.2)
+        + (rh * 0.094)
+    )
+    if (simple + t) / 2 < 80:
+        return simple
+
+    hi = (
+        -42.379
+        + 2.04901523 * t
+        + 10.14333127 * rh
+        - 0.22475541 * t * rh
+        - 0.00683783 * t * t
+        - 0.05481717 * rh * rh
+        + 0.00122874 * t * t * rh
+        + 0.00085282 * t * rh * rh
+        - 0.00000199 * t * t * rh * rh
+    )
+    if rh < 13 and 80 <= t <= 112:
+        hi -= ((13 - rh) / 4) * math.sqrt((17 - abs(t - 95)) / 17)
+    elif rh > 85 and 80 <= t <= 87:
+        hi += ((rh - 85) / 10) * ((87 - t) / 5)
+    return hi
+
+
+def cimis_record_datetime_utc(rec: dict[str, Any]) -> str | None:
+    date_text = find_nested_text(
+        rec,
+        ["Date", "DateValue", "RecordDate", "ObservationDate"],
+    )
+    record_date = parse_cimis_date(date_text)
+    if record_date is None:
+        return None
+
+    hour_text = find_nested_text(
+        rec,
+        ["Hour", "HourValue", "RecordHour", "ObservationHour"],
+    )
+    hour, minute, is_2400 = parse_cimis_hour(hour_text)
+    if is_2400:
+        record_date += timedelta(days=1)
+
+    # CIMIS station data is reported in Pacific Standard Time year-round.
+    cimis_tz = timezone(timedelta(hours=-8))
+    local_dt = datetime.combine(
+        record_date,
+        datetime.min.time(),
+        tzinfo=cimis_tz,
+    ).replace(hour=hour, minute=minute)
+    return iso(local_dt.astimezone(timezone.utc))
+
+
 def fetch_cimis() -> list[dict[str, Any]]:
-    key = os.getenv("CIMIS_APP_KEY", "").strip()
-    if not key:
-        return []
+    """Fetch hourly station data from the current CIMIS StationWeb REST API.
+
+    The latest CIMIS documentation uses StationWeb/GetDataByStationNumber with
+    stationNbrs, isHourly, unitOfMeasure and dataItems query parameters. The
+    documented request examples do not place the legacy AppKey in the URL.
+    """
     station_defs = CONFIG["stations"]["cimis"]
-    # CIMIS reports in Pacific Standard Time year-round, not daylight time.
+    if not station_defs:
+        return []
+
+    # CIMIS uses PST throughout the year. Request yesterday and today so the
+    # last completed hour remains available around midnight and during delays.
     cimis_tz = timezone(timedelta(hours=-8))
     local_now = datetime.now(cimis_tz)
+    endpoint = (
+        "https://et.water.ca.gov/"
+        "StationWeb/GetDataByStationNumber"
+    )
     params = {
-        "appKey": key,
-        "targets": ",".join(s["id"] for s in station_defs),
+        "stationNbrs": ",".join(str(s["id"]) for s in station_defs),
         "startDate": (local_now.date() - timedelta(days=1)).isoformat(),
         "endDate": local_now.date().isoformat(),
-        "dataItems": "hly-air-tmp,hly-rel-hum,hly-wind-spd,hly-wind-dir,hly-precip",
+        "isHourly": "true",
         "unitOfMeasure": "E",
-        "prioritizeSCS": "N",
+        "dataItems": (
+            "hly-air-tmp,"
+            "hly-dew-pnt,"
+            "hly-precip,"
+            "hly-rel-hum,"
+            "hly-wind-dir,"
+            "hly-wind-spd"
+        ),
     }
-    # CIMIS selects JSON through the HTTP Accept header. The undocumented
-    # format=json query parameter can result in an HTML response on some requests.
+
     payload = safe_get(
         "CIMIS",
-        "https://et.water.ca.gov/api/data",
+        endpoint,
         params,
         accept="application/json",
     )
-    if not payload:
+    if payload is None:
         return []
+
     records = flatten_records(payload)
     result: list[dict[str, Any]] = []
+
     for station in station_defs:
-        matching = []
+        station_id = re.sub(r"\D", "", str(station["id"]))
+        matching: list[dict[str, Any]] = []
+
         for rec in records:
-            sid = find_nested_text(rec, ["Station", "StationNr", "StationId", "StationNumber"])
-            if sid and sid.strip() == station["id"]:
+            sid = find_nested_text(
+                rec,
+                [
+                    "StationNbr",
+                    "StationNr",
+                    "StationNumber",
+                    "StationId",
+                    "Station",
+                ],
+            )
+            if sid is None:
+                continue
+            sid_digits = re.sub(r"\D", "", sid)
+            if sid_digits == station_id:
                 matching.append(rec)
+
         if not matching:
             continue
+
+        matching.sort(
+            key=lambda rec: parse_dt(cimis_record_datetime_utc(rec))
+            or datetime.min.replace(tzinfo=timezone.utc)
+        )
         rec = matching[-1]
-        date_text = find_nested_text(rec, ["Date", "DateValue"])
-        hour_text = find_nested_text(rec, ["Hour", "HourValue"])
-        observed_at = None
-        if date_text:
-            try:
-                hour_value = int(re.sub(r"\D", "", hour_text or "0") or 0)
-                record_date = datetime.fromisoformat(date_text[:10]).date()
-                if hour_value == 2400:
-                    local_dt = datetime.combine(record_date + timedelta(days=1), datetime.min.time(), tzinfo=cimis_tz)
-                else:
-                    hour = min(hour_value // 100, 23)
-                    minute = min(hour_value % 100, 59)
-                    local_dt = datetime.combine(record_date, datetime.min.time(), tzinfo=cimis_tz).replace(hour=hour, minute=minute)
-                observed_at = iso(local_dt.astimezone(timezone.utc))
-            except ValueError:
-                pass
+        observed_at = cimis_record_datetime_utc(rec)
         age = age_minutes(observed_at)
+
+        temperature = find_nested_numeric(
+            rec,
+            [
+                "HlyAirTmp",
+                "hly-air-tmp",
+                "AirTmp",
+                "AirTemperature",
+                "HourlyAirTemperature",
+            ],
+        )
+        humidity = find_nested_numeric(
+            rec,
+            [
+                "HlyRelHum",
+                "hly-rel-hum",
+                "RelHum",
+                "RelativeHumidity",
+                "HourlyRelativeHumidity",
+            ],
+        )
+        dewpoint = find_nested_numeric(
+            rec,
+            [
+                "HlyDewPnt",
+                "hly-dew-pnt",
+                "DewPoint",
+                "HourlyDewPoint",
+            ],
+        )
+
         result.append({
-            "id": station["id"],
+            "id": str(station["id"]),
             "name": station["name"],
             "network": "California DWR CIMIS",
             "lat": station["lat"],
             "lon": station["lon"],
             "observed_at": observed_at,
             "age_minutes": age,
-            "stale": age is None or age > CONFIG["thresholds"]["stationStaleMinutes"],
-            "condition": "Hourly agricultural station observation",
-            "temperature_f": find_nested_numeric(rec, ["HlyAirTmp", "AirTmp", "AirTemperature"]),
-            "dewpoint_f": None,
-            "relative_humidity_pct": find_nested_numeric(rec, ["HlyRelHum", "RelHum", "RelativeHumidity"]),
-            "heat_index_f": None,
+            "stale": (
+                age is None
+                or age > CONFIG["thresholds"]["stationStaleMinutes"]
+            ),
+            "condition": "Hourly CIMIS station observation",
+            "temperature_f": temperature,
+            "dewpoint_f": dewpoint,
+            "relative_humidity_pct": humidity,
+            "heat_index_f": heat_index_fahrenheit(temperature, humidity),
             "wind_chill_f": None,
-            "wind_direction_deg": find_nested_numeric(rec, ["HlyWindDir", "WindDir", "WindDirection"]),
-            "wind_speed_mph": find_nested_numeric(rec, ["HlyWindSpd", "WindSpd", "WindSpeed"]),
+            "wind_direction_deg": find_nested_numeric(
+                rec,
+                [
+                    "HlyWindDir",
+                    "hly-wind-dir",
+                    "WindDir",
+                    "WindDirection",
+                    "HourlyWindDirection",
+                ],
+            ),
+            "wind_speed_mph": find_nested_numeric(
+                rec,
+                [
+                    "HlyWindSpd",
+                    "hly-wind-spd",
+                    "WindSpd",
+                    "WindSpeed",
+                    "HourlyWindSpeed",
+                ],
+            ),
             "wind_gust_mph": None,
             "visibility_miles": None,
             "pressure_inhg": None,
-            "precip_last_hour_in": find_nested_numeric(rec, ["HlyPrecip", "Precip", "Precipitation"]),
+            "precip_last_hour_in": find_nested_numeric(
+                rec,
+                [
+                    "HlyPrecip",
+                    "hly-precip",
+                    "Precip",
+                    "Precipitation",
+                    "HourlyPrecipitation",
+                ],
+            ),
             "raw_message": None,
-            "source_url": "https://cimis.water.ca.gov/",
+            "source_url": endpoint,
         })
-    return result
 
+    if not result and records:
+        ERRORS.append(
+            "CIMIS: the API returned JSON, but no configured station records "
+            "could be identified in the response."
+        )
+    return result
 
 def fetch_point_forecast() -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
     center = CONFIG["district"]["center"]
@@ -557,7 +800,7 @@ def main() -> int:
         {"name": "NWS point alerts and hourly forecast", "status": "available" if hourly else "unavailable", "detail": f"{len(alerts)} active alert(s); {len(hourly)} forecast hour(s) loaded."},
         {"name": "NWS HeatRisk", "status": "available" if heat_risk else "partial", "detail": "Automated current-day value loaded." if heat_risk else "Automated lookup unavailable; use the linked NWS HeatRisk viewer for manual confirmation."},
         {"name": "EPA AirNow AQI", "status": "available" if airnow else "partial", "detail": "Current regional AQI loaded." if airnow else "Add the AIRNOW_API_KEY repository secret to enable AQI."},
-        {"name": "California DWR CIMIS", "status": "available" if cimis else "partial", "detail": f"{len(cimis)} station feed(s) loaded." if cimis else "Add the CIMIS_APP_KEY repository secret to enable hourly CIMIS observations."},
+        {"name": "California DWR CIMIS", "status": "available" if cimis else "partial", "detail": f"{len(cimis)} station feed(s) loaded." if cimis else "The current CIMIS StationWeb API did not return usable hourly observations."},
         {"name": "Dedicated lightning proximity", "status": "unavailable", "detail": "Not included. A licensed provider is needed for strike-distance alerts and all-clear countdowns."},
         {"name": "Personal weather stations", "status": "partial", "detail": "Mapped as reference locations only; not used in the official decision calculation."},
     ]
