@@ -1,6 +1,8 @@
 'use strict';
 
 (() => {
+  const TILE_SIZE = 256;
+
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));
@@ -25,10 +27,24 @@
     ].filter((s) => Number.isFinite(Number(s.lat)) && Number.isFinite(Number(s.lon)));
   }
 
-  function mercatorY(lat) {
-    const limited = Math.max(-85, Math.min(85, Number(lat)));
-    const radians = limited * Math.PI / 180;
-    return Math.log(Math.tan(Math.PI / 4 + radians / 2));
+  function worldPixel(lat, lon, zoom) {
+    const scale = TILE_SIZE * (2 ** zoom);
+    const limitedLat = Math.max(-85.05112878, Math.min(85.05112878, Number(lat)));
+    const latRadians = limitedLat * Math.PI / 180;
+    return {
+      x: ((Number(lon) + 180) / 360) * scale,
+      y: (1 - Math.asinh(Math.tan(latRadians)) / Math.PI) / 2 * scale
+    };
+  }
+
+  function chooseZoom(points) {
+    for (let zoom = 13; zoom >= 8; zoom -= 1) {
+      const pixels = points.map((point) => worldPixel(point.lat, point.lon, zoom));
+      const width = Math.max(...pixels.map((p) => p.x)) - Math.min(...pixels.map((p) => p.x)) + 180;
+      const height = Math.max(...pixels.map((p) => p.y)) - Math.min(...pixels.map((p) => p.y)) + 180;
+      if (width <= 1050 && height <= 650) return zoom;
+    }
+    return 8;
   }
 
   function renderStreetMap(config, data) {
@@ -36,58 +52,67 @@
     if (!container || !config?.district?.center) return;
 
     const center = config.district.center;
-    const observations = new Map((data?.stations || []).map((s) => [String(s.id), s]));
+    const observations = new Map((data?.stations || []).map((station) => [String(station.id), station]));
     const points = [
-      {id: 'MUSD', name: 'District Office', lat: center.lat, lon: center.lon, color: '#7b1f7a', official: true, district: true},
+      {id: 'MUSD', name: 'District Office', lat: center.lat, lon: center.lon, color: '#7b1f7a', official: true, district: true, group: 'District'},
       ...stationDefinitions(config)
     ];
 
-    const lats = points.map((p) => Number(p.lat));
-    const lons = points.map((p) => Number(p.lon));
-    const minLat = Math.min(...lats) - 0.035;
-    const maxLat = Math.max(...lats) + 0.035;
-    const minLon = Math.min(...lons) - 0.035;
-    const maxLon = Math.max(...lons) + 0.035;
+    const zoom = chooseZoom(points);
+    const pointPixels = points.map((point) => ({...point, ...worldPixel(point.lat, point.lon, zoom)}));
+    const padding = 72;
+    const minPointX = Math.min(...pointPixels.map((point) => point.x)) - padding;
+    const maxPointX = Math.max(...pointPixels.map((point) => point.x)) + padding;
+    const minPointY = Math.min(...pointPixels.map((point) => point.y)) - padding;
+    const maxPointY = Math.max(...pointPixels.map((point) => point.y)) + padding;
 
-    const embedParams = new URLSearchParams({
-      bbox: `${minLon},${minLat},${maxLon},${maxLat}`,
-      layer: 'mapnik',
-      marker: `${center.lat},${center.lon}`
-    });
-    const embedUrl = `https://www.openstreetmap.org/export/embed.html?${embedParams.toString()}`;
-    const fullMapUrl = `https://www.openstreetmap.org/?mlat=${center.lat}&mlon=${center.lon}#map=10/${center.lat}/${center.lon}`;
+    const tileCount = 2 ** zoom;
+    const startTileX = Math.max(0, Math.floor(minPointX / TILE_SIZE));
+    const endTileX = Math.min(tileCount - 1, Math.floor(maxPointX / TILE_SIZE));
+    const startTileY = Math.max(0, Math.floor(minPointY / TILE_SIZE));
+    const endTileY = Math.min(tileCount - 1, Math.floor(maxPointY / TILE_SIZE));
+    const originX = startTileX * TILE_SIZE;
+    const originY = startTileY * TILE_SIZE;
+    const mapWidth = (endTileX - startTileX + 1) * TILE_SIZE;
+    const mapHeight = (endTileY - startTileY + 1) * TILE_SIZE;
 
-    const width = 1000;
-    const height = 600;
-    const minMerc = mercatorY(minLat);
-    const maxMerc = mercatorY(maxLat);
-    const x = (lon) => ((Number(lon) - minLon) / Math.max(maxLon - minLon, 0.001)) * width;
-    const y = (lat) => ((maxMerc - mercatorY(lat)) / Math.max(maxMerc - minMerc, 0.001)) * height;
+    const tiles = [];
+    for (let tileY = startTileY; tileY <= endTileY; tileY += 1) {
+      for (let tileX = startTileX; tileX <= endTileX; tileX += 1) {
+        const left = ((tileX * TILE_SIZE - originX) / mapWidth) * 100;
+        const top = ((tileY * TILE_SIZE - originY) / mapHeight) * 100;
+        const width = TILE_SIZE / mapWidth * 100;
+        const height = TILE_SIZE / mapHeight * 100;
+        tiles.push(`<img class="map-tile" src="https://tile.openstreetmap.org/${zoom}/${tileX}/${tileY}.png" alt="" loading="eager" referrerpolicy="no-referrer" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">`);
+      }
+    }
 
-    const markers = points.map((p) => {
-      const obs = observations.get(String(p.id));
-      const status = obs
-        ? `${obs.temperature_f != null ? Math.round(obs.temperature_f) + '°F' : 'temperature unavailable'}; ${obs.stale ? 'stale' : 'current'}`
-        : (p.official ? 'no current observation' : 'reference only');
-      const label = `${p.id} — ${p.name}: ${status}`;
-      const radius = p.district ? 11 : p.official ? 8 : 6;
-      const px = x(p.lon);
-      const py = y(p.lat);
-      return `<g role="img" aria-label="${escapeHtml(label)}">
-        <circle cx="${px}" cy="${py}" r="${radius + 3}" fill="rgba(255,255,255,.88)"/>
-        <circle cx="${px}" cy="${py}" r="${radius}" fill="${p.color}" stroke="#fff" stroke-width="2"><title>${escapeHtml(label)}</title></circle>
-        ${p.district ? `<text x="${px + 15}" y="${py - 10}" class="map-point-label">MUSD</text>` : ''}
-      </g>`;
+    const markers = pointPixels.map((point) => {
+      const observation = observations.get(String(point.id));
+      const status = observation
+        ? `${observation.temperature_f != null ? Math.round(observation.temperature_f) + ' degrees F' : 'temperature unavailable'}, ${observation.stale ? 'stale' : 'current'}`
+        : (point.official ? 'no current observation' : 'reference only');
+      const label = `${point.id} - ${point.name}: ${status}`;
+      const left = ((point.x - originX) / mapWidth) * 100;
+      const top = ((point.y - originY) / mapHeight) * 100;
+      const visibleLabel = point.district || point.official ? escapeHtml(point.id) : '';
+      return `<button class="station-marker ${point.district ? 'district-marker' : point.official ? 'official-marker' : 'reference-marker'}" type="button" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}" style="left:${left}%;top:${top}%;--marker-color:${point.color}">
+        <span class="marker-dot" aria-hidden="true"></span>${visibleLabel ? `<span class="marker-label">${visibleLabel}</span>` : ''}
+      </button>`;
     }).join('');
+
+    const fullMapUrl = `https://www.openstreetmap.org/?mlat=${center.lat}&mlon=${center.lon}#map=${zoom}/${center.lat}/${center.lon}`;
 
     container.innerHTML = `<div class="station-map-shell">
       <div class="station-map-title">
-        <div><strong>Menifee-area station coverage</strong><span>Street map with official and reference station locations.</span></div>
+        <div><strong>Menifee-area station coverage</strong><span>Markers are positioned directly on OpenStreetMap tiles.</span></div>
         <a href="${fullMapUrl}" target="_blank" rel="noreferrer">Open full map</a>
       </div>
-      <div class="station-map-frame-wrap">
-        <iframe class="station-map-frame" src="${embedUrl}" title="OpenStreetMap of Menifee-area weather stations" loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <svg class="station-map-overlay" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-label="Weather station locations">${markers}</svg>
+      <div class="station-map-viewport" style="aspect-ratio:${mapWidth}/${mapHeight}">
+        ${tiles.join('')}
+        <div class="map-tile-message" hidden>Street-map tiles could not be loaded. Use the Open full map link.</div>
+        ${markers}
+        <div class="map-attribution"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a></div>
       </div>
       <div class="map-legend">
         <span><b style="color:#7b1f7a">●</b> District office</span>
@@ -96,6 +121,17 @@
         <span><b style="color:#e8791a">●</b> Personal reference</span>
       </div>
     </div>`;
+
+    let failedTiles = 0;
+    const tileElements = [...container.querySelectorAll('.map-tile')];
+    const tileMessage = container.querySelector('.map-tile-message');
+    tileElements.forEach((tile) => {
+      tile.addEventListener('error', () => {
+        failedTiles += 1;
+        tile.classList.add('map-tile-failed');
+        if (failedTiles === tileElements.length && tileMessage) tileMessage.hidden = false;
+      });
+    });
   }
 
   async function repair() {
@@ -103,13 +139,13 @@
     try {
       const stamp = Date.now();
       const [config, data] = await Promise.all([
-        fetch(`config.json?v=${stamp}`).then((r) => {
-          if (!r.ok) throw new Error('Could not load config.json');
-          return r.json();
+        fetch(`config.json?v=${stamp}`).then((response) => {
+          if (!response.ok) throw new Error('Could not load config.json');
+          return response.json();
         }),
-        fetch(`data/latest.json?v=${stamp}`).then((r) => {
-          if (!r.ok) throw new Error('Could not load data/latest.json');
-          return r.json();
+        fetch(`data/latest.json?v=${stamp}`).then((response) => {
+          if (!response.ok) throw new Error('Could not load data/latest.json');
+          return response.json();
         })
       ]);
       renderStreetMap(config, data);
@@ -119,8 +155,5 @@
     }
   }
 
-  window.addEventListener('load', () => {
-    window.setTimeout(repair, 300);
-    window.setTimeout(repair, 9000);
-  });
+  window.addEventListener('load', () => window.setTimeout(repair, 300));
 })();
