@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17365d">
+  <title>MUSD Weather Station Map</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/repair.css">
+  <style>
+    body.station-map-page { background: #eef3f7; }
+    .map-page-header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1rem clamp(1rem, 4vw, 3rem); background: #17365d; color: #fff; }
+    .map-page-header h1 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); }
+    .map-page-header a { color: #fff; font-weight: 700; }
+    .map-page-main { width: min(1600px, 100%); margin: 0 auto; padding: 1rem; }
+    .map-page-main #stationMap { min-height: 70vh; }
+    .map-page-note { margin: 0 0 1rem; color: #485766; }
+  </style>
+</head>
+<body class="station-map-page">
+  <header class="map-page-header">
+    <h1>MUSD Weather Station Map</h1>
+    <a href="index.html">Back to dashboard</a>
+  </header>
+  <main class="map-page-main">
+    <p class="map-page-note">This page shows every configured district, NWS, CIMIS, and reference station marker.</p>
+    <div id="stationMap" aria-label="Full map of Menifee-area weather stations"></div>
+  </main>
+  <script src="assets/repair.js" defer></script>
+</body>
+</html>
