@@ -64,7 +64,7 @@ function renderMetrics() {
   const s = DATA.summary || {};
   const metrics = [
     metricCard('NWS HeatRisk', s.heat_risk?.display ?? 'Unavailable', s.heat_risk?.note ?? 'Current-day HeatRisk feed', s.heat_risk?.level),
-    metricCard('Air Quality Index', s.aqi?.value ?? 'Not configured', s.aqi?.note ?? 'EPA AirNow API key required', s.aqi?.level),
+    metricCard('Air Quality Index', s.aqi?.value ?? (s.aqi?.configured ? 'Unavailable' : 'Not configured'), s.aqi?.note ?? 'EPA AirNow current observation unavailable', s.aqi?.level),
     metricCard('Highest heat index', s.max_heat_index_f != null ? `${Math.round(s.max_heat_index_f)}°F` : 'Unavailable', s.max_heat_index_station || 'Across reporting official stations', s.heat_index_level),
     metricCard('Highest wind gust', s.max_wind_gust_mph != null ? `${Math.round(s.max_wind_gust_mph)} mph` : 'Unavailable', s.max_wind_gust_station || 'Across reporting official stations', s.wind_level),
     metricCard('Next 6-hour rain chance', s.max_precip_probability_pct != null ? `${Math.round(s.max_precip_probability_pct)}%` : 'Unavailable', s.thunderstorm_possible ? 'Thunderstorms possible' : 'NWS hourly forecast', s.precip_level),
