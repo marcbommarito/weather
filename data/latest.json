@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-05T12:20:00.095891Z",
+  "generated_at": "2026-08-05T13:49:43.296519Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -39,11 +39,11 @@
       "level": null,
       "note": "Add AIRNOW_API_KEY as a GitHub Actions secret"
     },
-    "max_heat_index_f": 67.1,
+    "max_heat_index_f": 65.48,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 4.69756476,
-    "max_wind_gust_station": "French Valley Airport",
+    "max_wind_gust_mph": 3.3554034,
+    "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
     "precip_level": 0,
@@ -77,22 +77,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-05T11:55:00+00:00",
-      "age_minutes": 24.97456525,
+      "observed_at": "2026-08-05T12:55:00+00:00",
+      "age_minutes": 54.130432883333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 66.2,
-      "dewpoint_f": 59.0,
-      "relative_humidity_pct": 77.615480305123,
+      "temperature_f": 64.4,
+      "dewpoint_f": 60.8,
+      "relative_humidity_pct": 88.10014352739,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 170.0,
-      "wind_speed_mph": 4.69756476,
+      "wind_direction_deg": 0.0,
+      "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9109197807,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 051155Z AUTO 17004KT 10SM CLR 19/15 A2991 RMK AO2",
+      "raw_message": "KF70 051255Z AUTO 00000KT 10SM CLR 18/16 A2992 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -101,22 +101,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-05T10:55:00+00:00",
-      "age_minutes": 84.97820258333333,
+      "observed_at": "2026-08-05T12:55:00+00:00",
+      "age_minutes": 54.13513606666667,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 67.1,
-      "dewpoint_f": 60.26,
-      "relative_humidity_pct": 78.69232065487,
+      "temperature_f": 65.48,
+      "dewpoint_f": 58.459999999999994,
+      "relative_humidity_pct": 78.056758689002,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 0.0,
-      "wind_speed_mph": 0.0,
+      "wind_direction_deg": 180.0,
+      "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.870000083256897,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.8902487926,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 051255Z AUTO 18003KT 10SM CLR 19/15 A2989 RMK AO2 SLP106 T01860147",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -126,7 +126,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 2644.9764912,
+      "age_minutes": 2734.1329766333333,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -155,17 +155,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-05T05:00:00-07:00",
-        "end_time": "2026-08-05T06:00:00-07:00",
-        "temperature_f": 65,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 86.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-05T06:00:00-07:00",
         "end_time": "2026-08-05T07:00:00-07:00",
@@ -418,6 +407,17 @@
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-06T05:00:00-07:00",
+        "end_time": "2026-08-06T06:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 86.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -459,6 +459,6 @@
     }
   ],
   "errors": [
-    "CIMIS: HTTP 401 \u2014 { \"statusCode\": 401, \"message\": \"Access denied due to missing subscription key. Make sure to include subscription key when making requests to an API.\" }"
+    "CIMIS: <urlopen error timed out>"
   ]
 }
