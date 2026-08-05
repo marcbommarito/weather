@@ -60,13 +60,14 @@ def json_get(
     params: dict[str, Any] | None = None,
     timeout: int = 30,
     accept: str = "application/geo+json, application/json",
+    extra_headers: dict[str, str] | None = None,
 ) -> Any:
     if params:
         url = f"{url}?{urllib.parse.urlencode(params, safe=',;:=')}"
-    request = urllib.request.Request(
-        url,
-        headers={"User-Agent": USER_AGENT, "Accept": accept},
-    )
+    headers = {"User-Agent": USER_AGENT, "Accept": accept}
+    if extra_headers:
+        headers.update(extra_headers)
+    request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=timeout) as response:
         body = response.read().decode("utf-8", errors="replace")
         try:
@@ -82,9 +83,15 @@ def safe_get(
     url: str,
     params: dict[str, Any] | None = None,
     accept: str = "application/geo+json, application/json",
+    extra_headers: dict[str, str] | None = None,
 ) -> Any | None:
     try:
-        return json_get(url, params=params, accept=accept)
+        return json_get(
+            url,
+            params=params,
+            accept=accept,
+            extra_headers=extra_headers,
+        )
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
         detail = _clean_response_snippet(body)
@@ -429,11 +436,21 @@ def fetch_cimis() -> list[dict[str, Any]]:
         ),
     }
 
+    subscription_key = os.environ.get("CIMIS_APP_KEY", "").strip()
+    if not subscription_key:
+        ERRORS.append(
+            "CIMIS: CIMIS_APP_KEY is not configured in the GitHub Actions environment."
+        )
+        return []
+
     payload = safe_get(
         "CIMIS",
         endpoint,
         params,
         accept="application/json",
+        extra_headers={
+            "Ocp-Apim-Subscription-Key": subscription_key,
+        },
     )
     if payload is None:
         return []
