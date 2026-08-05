@@ -163,36 +163,269 @@ function renderThresholds() {
   </div>`;
 }
 
-function initMap() {
-  if (!window.L || !$('stationMap')) {
-    $('stationMap').innerHTML = '<div class="no-data">Interactive map library did not load.</div>';
+let leafletLoadPromise = null;
+
+function addStylesheetOnce(href, id) {
+  if (document.getElementById(id)) return;
+  const link = document.createElement('link');
+  link.id = id;
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
+}
+
+function loadScriptWithTimeout(src, timeoutMs = 8000) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    const timer = window.setTimeout(() => {
+      script.remove();
+      reject(new Error(`Timed out loading ${src}`));
+    }, timeoutMs);
+
+    script.src = src;
+    script.async = true;
+    script.onload = () => {
+      window.clearTimeout(timer);
+      resolve();
+    };
+    script.onerror = () => {
+      window.clearTimeout(timer);
+      script.remove();
+      reject(new Error(`Could not load ${src}`));
+    };
+    document.head.appendChild(script);
+  });
+}
+
+async function ensureLeaflet() {
+  if (window.L) return true;
+  if (leafletLoadPromise) return leafletLoadPromise;
+
+  leafletLoadPromise = (async () => {
+    const sources = [
+      {
+        css: 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css',
+        js: 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js'
+      },
+      {
+        css: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css',
+        js: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js'
+      }
+    ];
+
+    for (let i = 0; i < sources.length; i += 1) {
+      try {
+        addStylesheetOnce(sources[i].css, `leaflet-fallback-css-${i}`);
+        await loadScriptWithTimeout(sources[i].js);
+        if (window.L) return true;
+      } catch (error) {
+        console.warn(error.message);
+      }
+    }
+    return false;
+  })();
+
+  return leafletLoadPromise;
+}
+
+function allConfiguredStations() {
+  return [
+    ...(CONFIG?.stations?.nws || []).map(s => ({...s, group: 'NWS / aviation', color: '#1f5f9b', official: true})),
+    ...(CONFIG?.stations?.cimis || []).map(s => ({...s, group: 'CIMIS', color: '#2f7d32', official: true})),
+    ...(CONFIG?.stations?.referencePersonal || []).map(s => ({...s, group: 'Personal reference', color: '#e8791a', official: false}))
+  ].filter(s => Number.isFinite(Number(s.lat)) && Number.isFinite(Number(s.lon)));
+}
+
+function renderStaticStationMap(message = 'Interactive street-map tiles could not be loaded.') {
+  const container = $('stationMap');
+  if (!container) return;
+
+  const center = CONFIG.district.center;
+  const stations = allConfiguredStations();
+  const points = [
+    {name: CONFIG.district.shortName, id: 'District office', lat: center.lat, lon: center.lon, color: '#7b1f7a', official: true},
+    ...stations
+  ];
+
+  const lats = points.map(p => Number(p.lat));
+  const lons = points.map(p => Number(p.lon));
+  const minLat = Math.min(...lats) - 0.025;
+  const maxLat = Math.max(...lats) + 0.025;
+  const minLon = Math.min(...lons) - 0.025;
+  const maxLon = Math.max(...lons) + 0.025;
+  const width = 900;
+  const height = 500;
+  const pad = 46;
+
+  const x = lon => pad + ((Number(lon) - minLon) / Math.max(maxLon - minLon, 0.001)) * (width - pad * 2);
+  const y = lat => height - pad - ((Number(lat) - minLat) / Math.max(maxLat - minLat, 0.001)) * (height - pad * 2);
+
+  const grid = Array.from({length: 7}, (_, i) => {
+    const gx = pad + i * (width - pad * 2) / 6;
+    const gy = pad + i * (height - pad * 2) / 6;
+    return `<line x1="${gx}" y1="${pad}" x2="${gx}" y2="${height - pad}" stroke="#cbd5df" stroke-width="1"/>` +
+      `<line x1="${pad}" y1="${gy}" x2="${width - pad}" y2="${gy}" stroke="#cbd5df" stroke-width="1"/>`;
+  }).join('');
+
+  const stationSvg = points.map((p, index) => {
+    const px = x(p.lon);
+    const py = y(p.lat);
+    const radius = index === 0 ? 9 : (p.official ? 7 : 5);
+    const label = `${escapeHtml(p.id || '')}${p.name ? ` — ${escapeHtml(p.name)}` : ''}`;
+    return `<g tabindex="0" role="img" aria-label="${label}">
+      <circle cx="${px}" cy="${py}" r="${radius}" fill="${p.color}" stroke="white" stroke-width="2">
+        <title>${label}</title>
+      </circle>
+      ${index === 0 ? `<text x="${px + 12}" y="${py - 8}" font-size="13" font-weight="700" fill="#17212b">MUSD</text>` : ''}
+    </g>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div style="padding:.75rem;background:#fff;border-bottom:1px solid #d5dde5;font-size:.86rem;color:#485766">
+      ${escapeHtml(message)} A geographic station plot is shown instead.
+    </div>
+    <svg viewBox="0 0 ${width} ${height}" width="100%" height="100%" role="img" aria-label="Geographic plot of Menifee-area weather stations" style="display:block;background:#eef3f7;min-height:430px">
+      <rect x="${pad}" y="${pad}" width="${width - pad * 2}" height="${height - pad * 2}" fill="#f7fafc" stroke="#9aa9b6"/>
+      ${grid}
+      <text x="${pad}" y="28" font-size="16" font-weight="700" fill="#17365d">Menifee-area station coverage</text>
+      <text x="${width - pad}" y="${height - 14}" text-anchor="end" font-size="11" fill="#52616f">West ← longitude → East</text>
+      <text x="16" y="${pad}" font-size="11" fill="#52616f" transform="rotate(-90 16 ${pad})">South ← latitude → North</text>
+      ${stationSvg}
+    </svg>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;padding:.65rem .8rem;background:#fff;border-top:1px solid #d5dde5;font-size:.8rem">
+      <span><b style="color:#7b1f7a">●</b> District office</span>
+      <span><b style="color:#1f5f9b">●</b> NWS / aviation</span>
+      <span><b style="color:#2f7d32">●</b> CIMIS</span>
+      <span><b style="color:#e8791a">●</b> Personal reference</span>
+    </div>`;
+}
+
+async function initMap() {
+  const container = $('stationMap');
+  if (!container) return;
+
+  container.innerHTML = '<div class="no-data">Loading station map…</div>';
+  const leafletReady = await ensureLeaflet();
+  if (!leafletReady || !window.L) {
+    renderStaticStationMap('The Leaflet map library was blocked or unavailable.');
     return;
   }
-  const center = CONFIG.district.center;
-  stationMap = L.map('stationMap', {scrollWheelZoom: false}).setView([center.lat, center.lon], 10);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(stationMap);
 
-  L.marker([center.lat, center.lon], {title: CONFIG.district.shortName}).addTo(stationMap)
-    .bindPopup(`<strong>${escapeHtml(CONFIG.district.name)}</strong><br>District reference point`);
+  try {
+    if (stationMap) {
+      stationMap.remove();
+      stationMap = null;
+    }
+    container.innerHTML = '';
 
-  [5, 10, 15].forEach(miles => L.circle([center.lat, center.lon], {
-    radius: miles * 1609.344, fill: false, weight: 1, dashArray: '6 6', color: '#17365d'
-  }).addTo(stationMap).bindTooltip(`${miles}-mile radius`));
+    const center = CONFIG.district.center;
+    const stations = allConfiguredStations();
+    stationMap = L.map(container, {
+      scrollWheelZoom: false,
+      zoomControl: true,
+      preferCanvas: true
+    });
 
-  const byId = new Map((DATA.stations || []).map(s => [String(s.id), s]));
-  const addMarker = (s, color, official) => {
-    const obs = byId.get(String(s.id));
-    const text = obs
-      ? `<strong>${escapeHtml(s.name)} (${escapeHtml(s.id)})</strong><br>${obs.temperature_f != null ? `${Math.round(obs.temperature_f)}°F` : 'Temp unavailable'} · ${obs.wind_gust_mph != null ? `Gust ${Math.round(obs.wind_gust_mph)} mph` : 'Gust unavailable'}<br>${escapeHtml(formatDateTime(obs.observed_at))}`
-      : `<strong>${escapeHtml(s.name)} (${escapeHtml(s.id)})</strong><br>${official ? 'Configured source — no current observation' : 'Reference location only; not used in calculation'}`;
-    L.circleMarker([s.lat, s.lon], {radius: official ? 8 : 5, color, fillColor: color, fillOpacity: official ? .85 : .45, weight: 2}).addTo(stationMap).bindPopup(text);
-  };
-  CONFIG.stations.nws.forEach(s => addMarker(s, '#1f5f9b', true));
-  CONFIG.stations.cimis.forEach(s => addMarker(s, '#2f7d32', true));
-  CONFIG.stations.referencePersonal.forEach(s => addMarker(s, '#e8791a', false));
+    const primaryTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors',
+      crossOrigin: true
+    });
+
+    const backupTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      crossOrigin: true
+    });
+
+    let tileErrors = 0;
+    let switchedToBackup = false;
+    primaryTiles.on('tileerror', () => {
+      tileErrors += 1;
+      if (tileErrors >= 4 && !switchedToBackup) {
+        switchedToBackup = true;
+        stationMap.removeLayer(primaryTiles);
+        backupTiles.addTo(stationMap);
+      }
+    });
+    backupTiles.on('tileerror', () => {
+      tileErrors += 1;
+      if (tileErrors >= 12) {
+        try { stationMap.remove(); } catch (_) { /* no-op */ }
+        stationMap = null;
+        renderStaticStationMap('Both public street-map tile services were blocked or unavailable.');
+      }
+    });
+    primaryTiles.addTo(stationMap);
+
+    const bounds = L.latLngBounds();
+    const byId = new Map((DATA.stations || []).map(s => [String(s.id), s]));
+
+    const districtMarker = L.circleMarker([center.lat, center.lon], {
+      radius: 10,
+      color: '#ffffff',
+      weight: 3,
+      fillColor: '#7b1f7a',
+      fillOpacity: 1
+    }).addTo(stationMap)
+      .bindPopup(`<strong>${escapeHtml(CONFIG.district.name)}</strong><br>District reference point`);
+    districtMarker.bindTooltip('MUSD District Office');
+    bounds.extend([center.lat, center.lon]);
+
+    [5, 10, 15].forEach(miles => L.circle([center.lat, center.lon], {
+      radius: miles * 1609.344,
+      fill: false,
+      weight: 1,
+      dashArray: '6 6',
+      color: '#17365d',
+      opacity: 0.7
+    }).addTo(stationMap).bindTooltip(`${miles}-mile radius`));
+
+    stations.forEach(s => {
+      const obs = byId.get(String(s.id));
+      const status = obs
+        ? `${obs.temperature_f != null ? `${Math.round(obs.temperature_f)}°F` : 'Temperature unavailable'} · ${obs.wind_gust_mph != null ? `Gust ${Math.round(obs.wind_gust_mph)} mph` : 'Gust unavailable'}<br>${escapeHtml(formatDateTime(obs.observed_at))}`
+        : (s.official ? 'Configured official source — no current observation' : 'Reference location only; not used in calculation');
+      const text = `<strong>${escapeHtml(s.name)} (${escapeHtml(s.id)})</strong><br>${escapeHtml(s.group)}<br>${status}`;
+
+      L.circleMarker([s.lat, s.lon], {
+        radius: s.official ? 8 : 5,
+        color: '#ffffff',
+        fillColor: s.color,
+        fillOpacity: s.official ? 0.9 : 0.65,
+        weight: 2
+      }).addTo(stationMap)
+        .bindPopup(text)
+        .bindTooltip(`${s.id} — ${s.name}`);
+      bounds.extend([s.lat, s.lon]);
+    });
+
+    const legend = L.control({position: 'bottomright'});
+    legend.onAdd = () => {
+      const div = L.DomUtil.create('div');
+      div.style.cssText = 'background:white;padding:8px 10px;border:1px solid #9aa9b6;border-radius:5px;box-shadow:0 1px 4px rgba(0,0,0,.25);font-size:12px;line-height:1.45';
+      div.innerHTML = '<b>Stations</b><br><span style="color:#7b1f7a">●</span> District office<br><span style="color:#1f5f9b">●</span> NWS / aviation<br><span style="color:#2f7d32">●</span> CIMIS<br><span style="color:#e8791a">●</span> Personal reference';
+      return div;
+    };
+    legend.addTo(stationMap);
+
+    if (bounds.isValid()) {
+      stationMap.fitBounds(bounds.pad(0.08), {padding: [24, 24], maxZoom: 11});
+    } else {
+      stationMap.setView([center.lat, center.lon], 10);
+    }
+
+    window.setTimeout(() => {
+      if (stationMap) stationMap.invalidateSize(true);
+    }, 150);
+    window.addEventListener('resize', () => {
+      if (stationMap) stationMap.invalidateSize(false);
+    }, {passive: true});
+  } catch (error) {
+    console.error('Map initialization failed:', error);
+    renderStaticStationMap(`Interactive map error: ${error.message}`);
+  }
 }
 
 async function loadDashboard() {
@@ -213,7 +446,7 @@ async function loadDashboard() {
     renderStations();
     renderForecast();
     renderThresholds();
-    initMap();
+    await initMap();
   } catch (error) {
     $('errorBanner').classList.remove('hidden');
     $('errorBanner').textContent = `Dashboard could not load: ${error.message}`;
