@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-05T13:49:43.296519Z",
+  "generated_at": "2026-08-05T14:50:50.988228Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,16 +31,17 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
       "value": null,
       "level": null,
-      "note": "Add AIRNOW_API_KEY as a GitHub Actions secret"
+      "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
+      "configured": true
     },
-    "max_heat_index_f": 65.48,
+    "max_heat_index_f": 68.72,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
     "max_wind_gust_mph": 3.3554034,
@@ -72,13 +74,133 @@
   ],
   "stations": [
     {
+      "id": "239",
+      "name": "Hemet",
+      "network": "California DWR CIMIS",
+      "lat": 33.676,
+      "lon": -117.047,
+      "observed_at": "2026-08-06T08:00:00Z",
+      "age_minutes": 0.0,
+      "stale": false,
+      "condition": "Hourly CIMIS station observation",
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
+      "wind_gust_mph": null,
+      "visibility_miles": null,
+      "pressure_inhg": null,
+      "precip_last_hour_in": null,
+      "raw_message": null,
+      "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
+    },
+    {
+      "id": "240",
+      "name": "Perris-Menifee",
+      "network": "California DWR CIMIS",
+      "lat": 33.7595,
+      "lon": -117.181,
+      "observed_at": "2026-08-06T08:00:00Z",
+      "age_minutes": 0.0,
+      "stale": false,
+      "condition": "Hourly CIMIS station observation",
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
+      "wind_gust_mph": null,
+      "visibility_miles": null,
+      "pressure_inhg": null,
+      "precip_last_hour_in": null,
+      "raw_message": null,
+      "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
+    },
+    {
+      "id": "62",
+      "name": "Temecula",
+      "network": "California DWR CIMIS",
+      "lat": 33.5,
+      "lon": -117.145,
+      "observed_at": "2026-08-06T08:00:00Z",
+      "age_minutes": 0.0,
+      "stale": false,
+      "condition": "Hourly CIMIS station observation",
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
+      "wind_gust_mph": null,
+      "visibility_miles": null,
+      "pressure_inhg": null,
+      "precip_last_hour_in": null,
+      "raw_message": null,
+      "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
+    },
+    {
+      "id": "237",
+      "name": "Temecula East III",
+      "network": "California DWR CIMIS",
+      "lat": 33.525,
+      "lon": -117.035,
+      "observed_at": "2026-08-06T08:00:00Z",
+      "age_minutes": 0.0,
+      "stale": false,
+      "condition": "Hourly CIMIS station observation",
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
+      "wind_gust_mph": null,
+      "visibility_miles": null,
+      "pressure_inhg": null,
+      "precip_last_hour_in": null,
+      "raw_message": null,
+      "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
+    },
+    {
+      "id": "179",
+      "name": "Winchester",
+      "network": "California DWR CIMIS",
+      "lat": 33.7,
+      "lon": -117.086,
+      "observed_at": "2026-08-06T08:00:00Z",
+      "age_minutes": 0.0,
+      "stale": false,
+      "condition": "Hourly CIMIS station observation",
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
+      "wind_gust_mph": null,
+      "visibility_miles": null,
+      "pressure_inhg": null,
+      "precip_last_hour_in": null,
+      "raw_message": null,
+      "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
+    },
+    {
       "id": "KF70",
       "name": "French Valley Airport",
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-05T12:55:00+00:00",
-      "age_minutes": 54.130432883333334,
+      "observed_at": "2026-08-05T14:15:00+00:00",
+      "age_minutes": 35.78614388333334,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 64.4,
@@ -90,9 +212,9 @@
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9197787756,
+      "pressure_inhg": 29.9404497637,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 051255Z AUTO 00000KT 10SM CLR 18/16 A2992 RMK AO2",
+      "raw_message": "KF70 051415Z AUTO 00000KT 10SM CLR 18/16 A2994 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -101,22 +223,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-05T12:55:00+00:00",
-      "age_minutes": 54.13513606666667,
+      "observed_at": "2026-08-05T13:55:00+00:00",
+      "age_minutes": 55.791201683333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 65.48,
-      "dewpoint_f": 58.459999999999994,
-      "relative_humidity_pct": 78.056758689002,
+      "temperature_f": 68.72,
+      "dewpoint_f": 60.440000000000005,
+      "relative_humidity_pct": 74.903525071781,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 180.0,
+      "wind_direction_deg": 130.0,
       "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.8902487926,
+      "pressure_inhg": 29.9109197807,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 051255Z AUTO 18003KT 10SM CLR 19/15 A2989 RMK AO2 SLP106 T01860147",
+      "raw_message": "KRIV 051355Z AUTO 13003KT 10SM CLR 20/16 A2991 RMK AO2 SLP114 T02040158",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -126,7 +248,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 2734.1329766333333,
+      "age_minutes": 2795.78896295,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -155,17 +277,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-05T06:00:00-07:00",
-        "end_time": "2026-08-05T07:00:00-07:00",
-        "temperature_f": 65,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 86.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-05T07:00:00-07:00",
         "end_time": "2026-08-05T08:00:00-07:00",
@@ -418,6 +529,17 @@
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-06T06:00:00-07:00",
+        "end_time": "2026-08-06T07:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 84.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -440,12 +562,12 @@
     {
       "name": "EPA AirNow AQI",
       "status": "partial",
-      "detail": "Add the AIRNOW_API_KEY repository secret to enable AQI."
+      "detail": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius."
     },
     {
       "name": "California DWR CIMIS",
-      "status": "partial",
-      "detail": "The current CIMIS StationWeb API did not return usable hourly observations."
+      "status": "available",
+      "detail": "5 station feed(s) loaded."
     },
     {
       "name": "Dedicated lightning proximity",
@@ -458,7 +580,5 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": [
-    "CIMIS: <urlopen error timed out>"
-  ]
+  "errors": []
 }
