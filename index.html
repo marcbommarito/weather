@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17365d">
   <title>MUSD Extreme Weather Decision Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="assets/repair.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to dashboard</a>
@@ -83,7 +83,8 @@
       </div>
       <div class="map-grid">
         <div class="panel map-panel">
-          <div id="stationMap" aria-label="Map of Menifee-area weather stations"></div>
+          <div id="stationMap" aria-label="Interactive map of Menifee-area weather stations"></div>
+          <p class="fine-print" style="padding:.55rem .8rem .75rem;margin:0;background:#fff"><a href="map.html" target="_blank" rel="noreferrer">Open full station map</a></p>
         </div>
         <div class="panel">
           <h3>Source availability</h3>
@@ -153,7 +154,7 @@
     <p>Sources: <a href="https://www.weather.gov/" target="_blank" rel="noreferrer">National Weather Service</a>, <a href="https://www.airnow.gov/" target="_blank" rel="noreferrer">EPA AirNow</a>, <a href="https://cimis.water.ca.gov/" target="_blank" rel="noreferrer">California DWR CIMIS</a>, and district-configured thresholds.</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
   <script src="assets/app.js" defer></script>
-  <script src="assets/repair.js" defer></script>
 </body>
 </html>
