@@ -1,25 +1,24 @@
 /* Dependency-free map and responsive reliability fixes. */
 #stationMap { min-height: 0; background: #eef3f7; }
 .station-map-shell { background: #fff; overflow: hidden; }
-.station-map-title { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .8rem 1rem; border-bottom: 1px solid var(--line); color: var(--navy); }
-.station-map-title span { color: var(--muted); font-size: .82rem; text-align: right; }
-.station-map-svg { display: block; width: 100%; height: auto; min-height: 390px; max-height: 570px; }
-.map-background { fill: #dfeaf2; }
-.map-plot { fill: #f7fafc; stroke: #91a4b5; stroke-width: 1.5; }
-.map-grid-line { stroke: #cbd7e1; stroke-width: 1; }
-.map-city-label { fill: #44586a; font-size: 16px; font-weight: 700; opacity: .68; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
-.map-point-label { fill: #17212b; font-size: 13px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
-.map-axis-label { fill: #52616f; font-size: 12px; }
-.map-legend { display: flex; flex-wrap: wrap; gap: .45rem 1rem; padding: .7rem 1rem; border-top: 1px solid var(--line); font-size: .82rem; }
+.station-map-title { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .8rem 1rem; border-bottom: 1px solid var(--line); color: var(--navy); }
+.station-map-title > div { min-width: 0; }
+.station-map-title span { display: block; color: var(--muted); font-size: .82rem; margin-top: .15rem; }
+.station-map-title a { flex: 0 0 auto; font-size: .84rem; font-weight: 700; }
+.station-map-frame-wrap { position: relative; width: 100%; height: 520px; background: #dfeaf2; overflow: hidden; }
+.station-map-frame { display: block; width: 100%; height: 100%; border: 0; }
+.station-map-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.map-point-label { fill: #17212b; font-size: 14px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 5px; }
+.map-legend { display: flex; flex-wrap: wrap; gap: .45rem 1rem; padding: .7rem 1rem; border-top: 1px solid var(--line); font-size: .82rem; background: #fff; }
 @media (max-width: 800px) {
-  .station-map-title { display: block; }
-  .station-map-title span { display: block; margin-top: .2rem; text-align: left; }
-  .station-map-svg { min-height: 320px; }
+  .station-map-title { align-items: flex-start; }
+  .station-map-frame-wrap { height: 420px; }
 }
 @media (max-width: 520px) {
-  .station-map-svg { min-height: 260px; }
-  .map-city-label { font-size: 14px; }
-  .map-point-label { font-size: 11px; }
+  .station-map-title { display: block; }
+  .station-map-title a { display: inline-block; margin-top: .35rem; }
+  .station-map-frame-wrap { height: 340px; }
+  .map-point-label { font-size: 12px; }
   .threshold-grid { min-width: 620px; }
   #thresholdTable { overflow-x: auto; }
 }
