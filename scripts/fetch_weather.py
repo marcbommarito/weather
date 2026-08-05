@@ -31,6 +31,10 @@ with CONFIG_PATH.open("r", encoding="utf-8") as fh:
 TZ = ZoneInfo(CONFIG["district"]["timezone"])
 USER_AGENT = CONFIG.get("nwsUserAgent", "MUSD-Weather-Dashboard/1.0")
 ERRORS: list[str] = []
+AIRNOW_STATUS: dict[str, Any] = {
+    "configured": False,
+    "note": "AirNow has not been checked yet.",
+}
 
 
 def now_utc() -> datetime:
@@ -720,31 +724,125 @@ def fetch_heat_risk() -> dict[str, Any] | None:
 
 
 def fetch_airnow() -> dict[str, Any] | None:
+    """Fetch current AirNow AQI with robust parsing and a Menifee ZIP fallback."""
+    global AIRNOW_STATUS
+
     key = os.getenv("AIRNOW_API_KEY", "").strip()
     if not key:
+        AIRNOW_STATUS = {
+            "configured": False,
+            "note": "AIRNOW_API_KEY is not available to the workflow.",
+        }
         return None
+
+    AIRNOW_STATUS = {
+        "configured": True,
+        "note": "AirNow key is configured; requesting current observations.",
+    }
+
     center = CONFIG["district"]["center"]
-    payload = safe_get("EPA AirNow", "https://www.airnowapi.org/aq/observation/latLong/current/", {
-        "format": "application/json",
-        "latitude": center["lat"], "longitude": center["lon"], "distance": 50,
-        "API_KEY": key,
-    })
-    if not isinstance(payload, list) or not payload:
-        return None
-    valid = [item for item in payload if isinstance(item.get("AQI"), (int, float))]
+    endpoint_latlon = "https://www.airnowapi.org/aq/observation/latLong/current/"
+    endpoint_zip = "https://www.airnowapi.org/aq/observation/zipCode/current/"
+
+    def normalize_payload(payload: Any) -> list[dict[str, Any]]:
+        if isinstance(payload, list):
+            return [item for item in payload if isinstance(item, dict)]
+        if isinstance(payload, dict):
+            for key_name in ("data", "Data", "observations", "Observations", "results", "Results"):
+                candidate = payload.get(key_name)
+                if isinstance(candidate, list):
+                    return [item for item in candidate if isinstance(item, dict)]
+        return []
+
+    def aqi_value(item: dict[str, Any]) -> float | None:
+        value = item.get("AQI", item.get("aqi"))
+        try:
+            return float(value) if value not in (None, "") else None
+        except (TypeError, ValueError):
+            return None
+
+    payload = safe_get(
+        "EPA AirNow",
+        endpoint_latlon,
+        {
+            "format": "application/json",
+            "latitude": center["lat"],
+            "longitude": center["lon"],
+            "distance": 100,
+            "API_KEY": key,
+        },
+        accept="application/json",
+        timeout=30,
+        attempts=2,
+    )
+    observations = normalize_payload(payload)
+
+    # Some reporting areas resolve more reliably by ZIP code than by point.
+    if not observations:
+        payload = safe_get(
+            "EPA AirNow ZIP fallback",
+            endpoint_zip,
+            {
+                "format": "application/json",
+                "zipCode": "92586",
+                "distance": 100,
+                "API_KEY": key,
+            },
+            accept="application/json",
+            timeout=30,
+            attempts=2,
+        )
+        observations = normalize_payload(payload)
+
+    valid: list[tuple[dict[str, Any], float]] = []
+    for item in observations:
+        value = aqi_value(item)
+        if value is not None and value >= 0:
+            valid.append((item, value))
+
     if not valid:
+        AIRNOW_STATUS = {
+            "configured": True,
+            "note": (
+                "AirNow key is configured, but no current AQI observation was returned "
+                "for the Menifee reporting area within 100 miles."
+            ),
+        }
         return None
-    worst = max(valid, key=lambda item: item["AQI"])
-    value = int(worst["AQI"])
+
+    worst, worst_value = max(valid, key=lambda pair: pair[1])
+    value = int(round(worst_value))
+
+    category_obj = worst.get("Category", worst.get("category"))
+    if isinstance(category_obj, dict):
+        category = category_obj.get("Name", category_obj.get("name"))
+    else:
+        category = str(category_obj) if category_obj else None
+
+    parameter = worst.get("ParameterName", worst.get("parameterName", worst.get("parameter")))
+    reporting_area = worst.get("ReportingArea", worst.get("reportingArea"))
+    date_observed = worst.get("DateObserved", worst.get("dateObserved"))
+    hour_observed = worst.get("HourObserved", worst.get("hourObserved"))
+    local_timezone = worst.get("LocalTimeZone", worst.get("localTimeZone"))
+
+    AIRNOW_STATUS = {
+        "configured": True,
+        "note": f"Current regional AQI loaded from {reporting_area or 'AirNow'}.",
+    }
+
     return {
         "value": value,
-        "category": (worst.get("Category") or {}).get("Name"),
-        "parameter": worst.get("ParameterName"),
-        "reporting_area": worst.get("ReportingArea"),
-        "observed_at": f"{worst.get('DateObserved')} {worst.get('HourObserved')}:00 {worst.get('LocalTimeZone')}",
+        "category": category,
+        "parameter": parameter,
+        "reporting_area": reporting_area,
+        "observed_at": (
+            f"{date_observed} {hour_observed}:00 {local_timezone}"
+            if date_observed is not None and hour_observed is not None
+            else None
+        ),
         "level": threshold_level(value, CONFIG["thresholds"]["aqi"]),
-        "note": f"{worst.get('ParameterName', 'AQI')} · {worst.get('ReportingArea', 'nearest reporting area')}",
-        "all_observations": valid,
+        "note": f"{parameter or 'AQI'} · {reporting_area or 'nearest reporting area'}",
+        "all_observations": [item for item, _ in valid],
     }
 
 
@@ -816,7 +914,7 @@ def build_evaluation(stations: list[dict[str, Any]], hourly: list[dict[str, Any]
 
     summary = {
         "heat_risk": heat_risk or {"level": None, "display": "Unavailable", "note": "Open the NWS HeatRisk viewer for manual confirmation"},
-        "aqi": airnow or {"value": None, "level": None, "note": "Add AIRNOW_API_KEY as a GitHub Actions secret"},
+        "aqi": airnow or {"value": None, "level": None, "note": AIRNOW_STATUS["note"], "configured": AIRNOW_STATUS["configured"]},
         "max_heat_index_f": max_heat,
         "max_heat_index_station": max_heat_station,
         "heat_index_level": heat_index_level,
@@ -854,7 +952,7 @@ def main() -> int:
         {"name": "National Weather Service stations", "status": "available" if any(s["network"] == "NWS / aviation" for s in stations) else "unavailable", "detail": f"{sum(s['network'] == 'NWS / aviation' for s in stations)} of {len(CONFIG['stations']['nws'])} configured station feeds returned data."},
         {"name": "NWS point alerts and hourly forecast", "status": "available" if hourly else "unavailable", "detail": f"{len(alerts)} active alert(s); {len(hourly)} forecast hour(s) loaded."},
         {"name": "NWS HeatRisk", "status": "available" if heat_risk else "partial", "detail": "Automated current-day value loaded." if heat_risk else "Automated lookup unavailable; use the linked NWS HeatRisk viewer for manual confirmation."},
-        {"name": "EPA AirNow AQI", "status": "available" if airnow else "partial", "detail": "Current regional AQI loaded." if airnow else "Add the AIRNOW_API_KEY repository secret to enable AQI."},
+        {"name": "EPA AirNow AQI", "status": "available" if airnow else "partial", "detail": "Current regional AQI loaded." if airnow else AIRNOW_STATUS["note"]},
         {"name": "California DWR CIMIS", "status": "available" if cimis else "partial", "detail": f"{len(cimis)} station feed(s) loaded." if cimis else "The current CIMIS StationWeb API did not return usable hourly observations."},
         {"name": "Dedicated lightning proximity", "status": "unavailable", "detail": "Not included. A licensed provider is needed for strike-distance alerts and all-clear countdowns."},
         {"name": "Personal weather stations", "status": "partial", "detail": "Mapped as reference locations only; not used in the official decision calculation."},
