@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Fetch current weather data
-        run: python scripts/fetch_weather_v2.py
+        run: python scripts/fetch_weather_v3.py
 
       - name: Verify dashboard data
         run: |
@@ -64,10 +64,20 @@ jobs:
 
           data = json.loads(path.read_text(encoding="utf-8"))
           print("Generated:", data.get("generated_at"))
-          print("Stations:", len(data.get("stations", [])))
           print("Alerts:", len(data.get("alerts", [])))
           print("AQI:", data.get("summary", {}).get("aqi"))
           print("Feed messages:", data.get("errors", []))
+          print("Station status:")
+          for station in data.get("stations", []):
+              print(
+                  " -",
+                  station.get("id"),
+                  station.get("network"),
+                  "stale=" + str(station.get("stale")),
+                  "observed=" + str(station.get("observed_at")),
+                  "temp=" + str(station.get("temperature_f")),
+                  "humidity=" + str(station.get("relative_humidity_pct")),
+              )
           PY
 
       - name: Configure GitHub Pages
