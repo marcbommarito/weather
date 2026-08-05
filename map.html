@@ -5,27 +5,148 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17365d">
   <title>MUSD Weather Station Map</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="assets/repair.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <style>
-    body.station-map-page { background: #eef3f7; }
-    .map-page-header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1rem clamp(1rem, 4vw, 3rem); background: #17365d; color: #fff; }
-    .map-page-header h1 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); }
-    .map-page-header a { color: #fff; font-weight: 700; }
-    .map-page-main { width: min(1600px, 100%); margin: 0 auto; padding: 1rem; }
-    .map-page-main #stationMap { min-height: 70vh; }
-    .map-page-note { margin: 0 0 1rem; color: #485766; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #eef3f7; color: #17212b; }
+    body { display: grid; grid-template-rows: auto auto 1fr; }
+    header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .9rem clamp(1rem, 4vw, 3rem); background: #17365d; color: #fff; }
+    h1 { margin: 0; font-size: clamp(1.25rem, 3vw, 1.9rem); }
+    header a { color: #fff; font-weight: 700; }
+    .map-note { margin: 0; padding: .65rem clamp(1rem, 4vw, 3rem); background: #fff; border-bottom: 1px solid #d8e0e8; color: #52616f; font-size: .9rem; }
+    #stationMap { width: 100%; height: 100%; min-height: 520px; background: #dce6ef; }
+    .map-error { display: grid; place-items: center; height: 100%; min-height: 520px; padding: 2rem; text-align: center; color: #842029; background: #f8d7da; font-weight: 700; }
+    .legend { background: #fff; padding: 8px 10px; border: 1px solid #9aa9b6; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,.25); font-size: 12px; line-height: 1.5; }
   </style>
 </head>
-<body class="station-map-page">
-  <header class="map-page-header">
+<body>
+  <header>
     <h1>MUSD Weather Station Map</h1>
     <a href="index.html">Back to dashboard</a>
   </header>
-  <main class="map-page-main">
-    <p class="map-page-note">This page shows every configured district, NWS, CIMIS, and reference station marker.</p>
-    <div id="stationMap" aria-label="Full map of Menifee-area weather stations"></div>
-  </main>
-  <script src="assets/repair.js" defer></script>
+  <p class="map-note">All configured district, NWS, CIMIS, and reference locations are displayed on the same interactive map.</p>
+  <div id="stationMap" aria-label="Full interactive map of Menifee-area weather stations"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+    'use strict';
+
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[char]));
+
+    function formatDateTime(value, timezone) {
+      if (!value) return 'Unavailable';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return 'Unavailable';
+      return new Intl.DateTimeFormat('en-US', {
+        timeZone: timezone || 'America/Los_Angeles',
+        month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+      }).format(date);
+    }
+
+    async function loadMap() {
+      const container = document.getElementById('stationMap');
+      try {
+        if (!window.L) throw new Error('The Leaflet map library did not load.');
+
+        const stamp = Date.now();
+        const [config, data] = await Promise.all([
+          fetch(`config.json?v=${stamp}`).then((response) => {
+            if (!response.ok) throw new Error('Could not load config.json');
+            return response.json();
+          }),
+          fetch(`data/latest.json?v=${stamp}`).then((response) => {
+            if (!response.ok) throw new Error('Could not load data/latest.json');
+            return response.json();
+          })
+        ]);
+
+        const center = config.district.center;
+        const map = L.map(container, { scrollWheelZoom: true, preferCanvas: true });
+        const primaryTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap contributors'
+        });
+        const backupTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          subdomains: 'abcd',
+          maxZoom: 20,
+          attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        });
+
+        let primaryErrors = 0;
+        let backupErrors = 0;
+        primaryTiles.on('tileerror', () => {
+          primaryErrors += 1;
+          if (primaryErrors === 4 && map.hasLayer(primaryTiles)) {
+            map.removeLayer(primaryTiles);
+            backupTiles.addTo(map);
+          }
+        });
+        backupTiles.on('tileerror', () => {
+          backupErrors += 1;
+          if (backupErrors === 8) {
+            console.warn('Both map tile providers returned errors.');
+          }
+        });
+        primaryTiles.addTo(map);
+
+        const observations = new Map((data.stations || []).map((station) => [String(station.id), station]));
+        const locations = [
+          { id: 'MUSD', name: config.district.name, lat: center.lat, lon: center.lon, color: '#7b1f7a', group: 'District office', official: true, district: true },
+          ...(config.stations?.nws || []).map((station) => ({ ...station, color: '#1f5f9b', group: 'NWS / aviation', official: true })),
+          ...(config.stations?.cimis || []).map((station) => ({ ...station, color: '#2f7d32', group: 'California DWR CIMIS', official: true })),
+          ...(config.stations?.referencePersonal || []).map((station) => ({ ...station, color: '#e8791a', group: 'Personal reference', official: false }))
+        ].filter((station) => Number.isFinite(Number(station.lat)) && Number.isFinite(Number(station.lon)));
+
+        const bounds = L.latLngBounds();
+        locations.forEach((station) => {
+          const observation = observations.get(String(station.id));
+          const detail = observation
+            ? `${observation.temperature_f != null ? Math.round(observation.temperature_f) + '°F' : 'Temperature unavailable'}<br>${observation.stale ? 'Stale observation' : 'Current observation'}<br>${escapeHtml(formatDateTime(observation.observed_at, config.district.timezone))}`
+            : (station.official ? 'Configured source — no current observation' : 'Reference location only; not used in the official calculation');
+
+          L.circleMarker([station.lat, station.lon], {
+            radius: station.district ? 10 : station.official ? 8 : 5,
+            color: '#fff',
+            weight: station.district ? 3 : 2,
+            fillColor: station.color,
+            fillOpacity: station.official ? 1 : .7
+          }).addTo(map)
+            .bindTooltip(`${station.id} — ${station.name}`)
+            .bindPopup(`<strong>${escapeHtml(station.name)} (${escapeHtml(station.id)})</strong><br>${escapeHtml(station.group)}<br>${detail}`);
+          bounds.extend([station.lat, station.lon]);
+        });
+
+        [5, 10, 15].forEach((miles) => {
+          L.circle([center.lat, center.lon], {
+            radius: miles * 1609.344,
+            fill: false,
+            weight: 1,
+            dashArray: '6 6',
+            color: '#17365d',
+            opacity: .55
+          }).addTo(map).bindTooltip(`${miles}-mile radius`);
+        });
+
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = () => {
+          const div = L.DomUtil.create('div', 'legend');
+          div.innerHTML = '<strong>Locations</strong><br><span style="color:#7b1f7a">●</span> District office<br><span style="color:#1f5f9b">●</span> NWS / aviation<br><span style="color:#2f7d32">●</span> CIMIS<br><span style="color:#e8791a">●</span> Personal reference';
+          return div;
+        };
+        legend.addTo(map);
+
+        if (bounds.isValid()) map.fitBounds(bounds.pad(.08), { padding: [30, 30], maxZoom: 11 });
+        else map.setView([center.lat, center.lon], 10);
+
+        setTimeout(() => map.invalidateSize(true), 150);
+      } catch (error) {
+        container.innerHTML = `<div class="map-error">Map could not load: ${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    loadMap();
+  </script>
 </body>
 </html>
