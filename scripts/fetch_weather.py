@@ -11,6 +11,7 @@ import math
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -84,22 +85,56 @@ def safe_get(
     params: dict[str, Any] | None = None,
     accept: str = "application/geo+json, application/json",
     extra_headers: dict[str, str] | None = None,
+    timeout: int = 30,
+    attempts: int = 1,
+    retry_delay_seconds: int = 2,
 ) -> Any | None:
-    try:
-        return json_get(
-            url,
-            params=params,
-            accept=accept,
-            extra_headers=extra_headers,
-        )
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        detail = _clean_response_snippet(body)
-        ERRORS.append(f"{name}: HTTP {exc.code}" + (f" — {detail}" if detail else ""))
-        return None
-    except (urllib.error.URLError, TimeoutError, ValueError) as exc:
-        ERRORS.append(f"{name}: {exc}")
-        return None
+    attempts = max(1, attempts)
+
+    for attempt in range(1, attempts + 1):
+        try:
+            return json_get(
+                url,
+                params=params,
+                timeout=timeout,
+                accept=accept,
+                extra_headers=extra_headers,
+            )
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            detail = _clean_response_snippet(body)
+
+            # Retry only server-side or throttling errors. Authentication and
+            # request-format errors should be reported immediately.
+            if exc.code in {429, 500, 502, 503, 504} and attempt < attempts:
+                time.sleep(retry_delay_seconds * attempt)
+                continue
+
+            ERRORS.append(
+                f"{name}: HTTP {exc.code}"
+                + (f" — {detail}" if detail else "")
+            )
+            return None
+        except (urllib.error.URLError, TimeoutError) as exc:
+            if attempt < attempts:
+                time.sleep(retry_delay_seconds * attempt)
+                continue
+
+            reason = getattr(exc, "reason", exc)
+            reason_text = str(reason).lower()
+            if "timed out" in reason_text or "timeout" in reason_text:
+                ERRORS.append(
+                    f"{name}: temporarily unavailable; request timed out "
+                    f"after {attempts} attempts."
+                )
+            else:
+                ERRORS.append(f"{name}: temporarily unavailable — {reason}")
+            return None
+        except ValueError as exc:
+            ERRORS.append(f"{name}: {exc}")
+            return None
+
+    return None
 
 
 def qvalue(obj: Any) -> float | None:
@@ -451,6 +486,9 @@ def fetch_cimis() -> list[dict[str, Any]]:
         extra_headers={
             "Ocp-Apim-Subscription-Key": subscription_key,
         },
+        timeout=45,
+        attempts=3,
+        retry_delay_seconds=3,
     )
     if payload is None:
         return []
