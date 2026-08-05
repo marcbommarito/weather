@@ -1,24 +1,32 @@
 /* Dependency-free map and responsive reliability fixes. */
-#stationMap { min-height: 0; background: #eef3f7; }
+#stationMap { min-height: 0; background: #dce6ef; }
 .station-map-shell { background: #fff; overflow: hidden; }
-.station-map-title { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .8rem 1rem; border-bottom: 1px solid var(--line); color: var(--navy); }
+.station-map-title { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .8rem 1rem; border-bottom: 1px solid var(--line); color: var(--navy); }
 .station-map-title > div { min-width: 0; }
-.station-map-title span { display: block; color: var(--muted); font-size: .82rem; margin-top: .15rem; }
-.station-map-title a { flex: 0 0 auto; font-size: .84rem; font-weight: 700; }
-.station-map-frame-wrap { position: relative; width: 100%; height: 520px; background: #dfeaf2; overflow: hidden; }
-.station-map-frame { display: block; width: 100%; height: 100%; border: 0; }
-.station-map-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
-.map-point-label { fill: #17212b; font-size: 14px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 5px; }
-.map-legend { display: flex; flex-wrap: wrap; gap: .45rem 1rem; padding: .7rem 1rem; border-top: 1px solid var(--line); font-size: .82rem; background: #fff; }
+.station-map-title span { display: block; color: var(--muted); font-size: .82rem; }
+.station-map-title a { flex: 0 0 auto; font-size: .86rem; font-weight: 700; }
+.station-map-viewport { position: relative; width: 100%; overflow: hidden; background: #d9e4ec; isolation: isolate; }
+.map-tile { position: absolute; display: block; max-width: none !important; max-height: none !important; margin: 0; padding: 0; border: 0; object-fit: fill; z-index: 1; }
+.map-tile-failed { visibility: hidden; }
+.map-tile-message { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: 2rem; background: #eef3f7; color: var(--muted); text-align: center; font-weight: 700; }
+.station-marker { position: absolute; z-index: 4; transform: translate(-50%, -50%); display: flex; align-items: center; gap: .25rem; padding: 0; border: 0; background: transparent; color: #17212b; font: inherit; cursor: help; filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)); }
+.marker-dot { display: block; width: 14px; height: 14px; flex: 0 0 auto; border: 2px solid #fff; border-radius: 50%; background: var(--marker-color); }
+.district-marker .marker-dot { width: 20px; height: 20px; border-width: 3px; }
+.official-marker .marker-dot { width: 16px; height: 16px; }
+.reference-marker .marker-dot { width: 11px; height: 11px; opacity: .82; }
+.marker-label { padding: .08rem .28rem; border-radius: .25rem; background: rgba(255,255,255,.9); color: #17212b; font-size: .68rem; font-weight: 900; line-height: 1.2; white-space: nowrap; }
+.station-marker:focus-visible { outline: 3px solid #111; outline-offset: 3px; border-radius: 50%; }
+.map-attribution { position: absolute; right: 0; bottom: 0; z-index: 5; padding: 1px 5px; background: rgba(255,255,255,.82); font-size: 10px; line-height: 1.4; }
+.map-legend { display: flex; flex-wrap: wrap; gap: .45rem 1rem; padding: .7rem 1rem; border-top: 1px solid var(--line); font-size: .82rem; }
 @media (max-width: 800px) {
-  .station-map-title { align-items: flex-start; }
-  .station-map-frame-wrap { height: 420px; }
-}
-@media (max-width: 520px) {
   .station-map-title { display: block; }
   .station-map-title a { display: inline-block; margin-top: .35rem; }
-  .station-map-frame-wrap { height: 340px; }
-  .map-point-label { font-size: 12px; }
+  .marker-label { font-size: .6rem; }
+}
+@media (max-width: 520px) {
+  .reference-marker { display: none; }
+  .marker-label { display: none; }
+  .district-marker .marker-label { display: block; }
   .threshold-grid { min-width: 620px; }
   #thresholdTable { overflow-x: auto; }
 }
