@@ -768,7 +768,7 @@ def fetch_airnow() -> dict[str, Any] | None:
             "format": "application/json",
             "latitude": center["lat"],
             "longitude": center["lon"],
-            "distance": 100,
+            "distance": 25,
             "API_KEY": key,
         },
         accept="application/json",
@@ -785,7 +785,7 @@ def fetch_airnow() -> dict[str, Any] | None:
             {
                 "format": "application/json",
                 "zipCode": "92586",
-                "distance": 100,
+                "distance": 25,
                 "API_KEY": key,
             },
             accept="application/json",
@@ -805,7 +805,7 @@ def fetch_airnow() -> dict[str, Any] | None:
             "configured": True,
             "note": (
                 "AirNow key is configured, but no current AQI observation was returned "
-                "for the Menifee reporting area within 100 miles."
+                "for the Menifee reporting area within the documented 25-mile search radius."
             ),
         }
         return None
@@ -827,7 +827,7 @@ def fetch_airnow() -> dict[str, Any] | None:
 
     AIRNOW_STATUS = {
         "configured": True,
-        "note": f"Current regional AQI loaded from {reporting_area or 'AirNow'}.",
+        "note": f"Current regional AQI loaded from {reporting_area or 'AirNow'}; AirNow observations are preliminary.",
     }
 
     return {
