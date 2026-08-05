@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Fetch current weather data
-        run: python scripts/fetch_weather.py
+        run: python scripts/fetch_weather_v2.py
 
       - name: Verify dashboard data
         run: |
@@ -59,15 +59,14 @@ jobs:
           from pathlib import Path
 
           path = Path("data/latest.json")
-
           if not path.exists():
               raise SystemExit("data/latest.json was not created")
 
           data = json.loads(path.read_text(encoding="utf-8"))
-
           print("Generated:", data.get("generated_at"))
           print("Stations:", len(data.get("stations", [])))
           print("Alerts:", len(data.get("alerts", [])))
+          print("AQI:", data.get("summary", {}).get("aqi"))
           print("Feed messages:", data.get("errors", []))
           PY
 
