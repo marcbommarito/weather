@@ -40,8 +40,8 @@
   function chooseZoom(points) {
     for (let zoom = 13; zoom >= 8; zoom -= 1) {
       const pixels = points.map((point) => worldPixel(point.lat, point.lon, zoom));
-      const width = Math.max(...pixels.map((p) => p.x)) - Math.min(...pixels.map((p) => p.x)) + 180;
-      const height = Math.max(...pixels.map((p) => p.y)) - Math.min(...pixels.map((p) => p.y)) + 180;
+      const width = Math.max(...pixels.map((point) => point.x)) - Math.min(...pixels.map((point) => point.x)) + 180;
+      const height = Math.max(...pixels.map((point) => point.y)) - Math.min(...pixels.map((point) => point.y)) + 180;
       if (width <= 1050 && height <= 650) return zoom;
     }
     return 8;
@@ -83,7 +83,7 @@
         const top = ((tileY * TILE_SIZE - originY) / mapHeight) * 100;
         const width = TILE_SIZE / mapWidth * 100;
         const height = TILE_SIZE / mapHeight * 100;
-        tiles.push(`<img class="map-tile" src="https://tile.openstreetmap.org/${zoom}/${tileX}/${tileY}.png" alt="" loading="eager" referrerpolicy="no-referrer" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">`);
+        tiles.push(`<img class="map-tile" src="https://tile.openstreetmap.org/${zoom}/${tileX}/${tileY}.png" alt="" loading="eager" decoding="async" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">`);
       }
     }
 
@@ -101,16 +101,20 @@
       </button>`;
     }).join('');
 
-    const fullMapUrl = `https://www.openstreetmap.org/?mlat=${center.lat}&mlon=${center.lon}#map=${zoom}/${center.lat}/${center.lon}`;
+    const isFullPage = document.body.classList.contains('station-map-page');
+    const mapLink = isFullPage
+      ? `https://www.openstreetmap.org/#map=${zoom}/${center.lat}/${center.lon}`
+      : 'map.html';
+    const mapLinkText = isFullPage ? 'Open in OpenStreetMap' : 'Open full map with all stations';
 
     container.innerHTML = `<div class="station-map-shell">
       <div class="station-map-title">
         <div><strong>Menifee-area station coverage</strong><span>Markers are positioned directly on OpenStreetMap tiles.</span></div>
-        <a href="${fullMapUrl}" target="_blank" rel="noreferrer">Open full map</a>
+        <a href="${mapLink}" ${isFullPage ? 'target="_blank" rel="noreferrer"' : ''}>${mapLinkText}</a>
       </div>
       <div class="station-map-viewport" style="aspect-ratio:${mapWidth}/${mapHeight}">
         ${tiles.join('')}
-        <div class="map-tile-message" hidden>Street-map tiles could not be loaded. Use the Open full map link.</div>
+        <div class="map-tile-message" hidden>Street-map tiles could not be loaded. Use the map link above.</div>
         ${markers}
         <div class="map-attribution"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a></div>
       </div>
