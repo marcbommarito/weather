@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-06T03:44:09.426677Z",
+  "generated_at": "2026-08-06T06:18:25.713676Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,8 +31,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -40,11 +41,11 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 84.136353954125,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 69.8,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 8.05296816,
-    "max_wind_gust_station": "March Air Reserve Base",
+    "max_wind_gust_mph": 5.81603256,
+    "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
     "precip_level": 0,
@@ -53,17 +54,17 @@
   },
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.20aca7b09c38502bfab57b50751d4b3ea8c2b01c.003.1",
+      "id": "urn:oid:2.49.0.1.840.0.529fa6437be5b9a0ffd86f52ba32e3f54e2c2326.003.1",
       "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 5 at 12:50PM PDT until August 8 at 8:00PM PDT by NWS San Diego CA",
+      "headline": "Heat Advisory issued August 5 at 9:41PM PDT until August 8 at 8:00PM PDT by NWS San Diego CA",
       "description": "* WHAT...High temperatures in the mid 90s to 105 expected.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire.\n\n* WHEN...Until 8 PM PDT Saturday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
       "severity": "Moderate",
       "certainty": "Likely",
       "urgency": "Expected",
-      "effective": "2026-08-05T12:50:00-07:00",
-      "onset": "2026-08-05T12:50:00-07:00",
-      "expires": "2026-08-05T22:15:00-07:00",
+      "effective": "2026-08-05T21:41:00-07:00",
+      "onset": "2026-08-05T21:41:00-07:00",
+      "expires": "2026-08-06T06:15:00-07:00",
       "ends": "2026-08-08T20:00:00-07:00",
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
       "sender_name": "NWS San Diego CA",
@@ -198,47 +199,23 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-06T03:15:00+00:00",
-      "age_minutes": 29.11224195,
+      "observed_at": "2026-08-06T05:55:00+00:00",
+      "age_minutes": 23.377440983333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 75.2,
+      "temperature_f": 69.8,
       "dewpoint_f": 62.6,
-      "relative_humidity_pct": 64.933548215648,
-      "heat_index_f": 75.471876766135,
+      "relative_humidity_pct": 77.915158291749,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 220.0,
-      "wind_speed_mph": 4.69756476,
+      "wind_direction_deg": 170.0,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9109197807,
+      "pressure_inhg": 29.9611207518,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 060315Z AUTO 22004KT 10SM CLR 24/17 A2991 RMK AO2",
+      "raw_message": "KF70 060555Z AUTO 17005KT 10SM CLR 21/17 A2996 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
-    },
-    {
-      "id": "KRIV",
-      "name": "March Air Reserve Base",
-      "network": "NWS / aviation",
-      "lat": 33.8819,
-      "lon": -117.259,
-      "observed_at": "2026-08-06T02:55:00+00:00",
-      "age_minutes": 49.11704585,
-      "stale": false,
-      "condition": "Mostly Cloudy",
-      "temperature_f": 85.64,
-      "dewpoint_f": 54.86,
-      "relative_humidity_pct": 35.001643907072,
-      "heat_index_f": 84.136353954125,
-      "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 8.05296816,
-      "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.8695778045,
-      "precip_last_hour_in": null,
-      "raw_message": "KRIV 060255Z AUTO 30007KT 10SM BKN180 30/13 A2987 RMK AO2 SLP100 T02980127 53001",
-      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
       "id": "KHMT",
@@ -247,7 +224,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 3569.1146937166664,
+      "age_minutes": 3723.3795469166666,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -263,6 +240,30 @@
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
+    },
+    {
+      "id": "KRIV",
+      "name": "March Air Reserve Base",
+      "network": "NWS / aviation",
+      "lat": 33.8819,
+      "lon": -117.259,
+      "observed_at": "2026-08-06T03:55:00+00:00",
+      "age_minutes": 143.38174076666667,
+      "stale": true,
+      "condition": "Clear",
+      "temperature_f": 82.4,
+      "dewpoint_f": 56.3,
+      "relative_humidity_pct": 40.931202306996,
+      "heat_index_f": 81.910884391323,
+      "wind_chill_f": null,
+      "wind_direction_deg": 260.0,
+      "wind_speed_mph": 3.4448808239999997,
+      "wind_gust_mph": null,
+      "visibility_miles": 10.0,
+      "pressure_inhg": 29.8900007407428,
+      "precip_last_hour_in": null,
+      "raw_message": "",
+      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
   "forecast": {
@@ -276,39 +277,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-05T20:00:00-07:00",
-        "end_time": "2026-08-05T21:00:00-07:00",
-        "temperature_f": 79,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 62.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-05T21:00:00-07:00",
-        "end_time": "2026-08-05T22:00:00-07:00",
-        "temperature_f": 76,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 69.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SE",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-05T22:00:00-07:00",
-        "end_time": "2026-08-05T23:00:00-07:00",
-        "temperature_f": 74,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 73.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SE",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-05T23:00:00-07:00",
         "end_time": "2026-08-06T00:00:00-07:00",
@@ -537,6 +505,39 @@
         "relative_humidity_pct": 47.0,
         "wind_speed": "10 mph",
         "wind_direction": "S",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-06T20:00:00-07:00",
+        "end_time": "2026-08-06T21:00:00-07:00",
+        "temperature_f": 80,
+        "precip_probability_pct": 3.0,
+        "relative_humidity_pct": 54.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-06T21:00:00-07:00",
+        "end_time": "2026-08-06T22:00:00-07:00",
+        "temperature_f": 77,
+        "precip_probability_pct": 3.0,
+        "relative_humidity_pct": 60.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SE",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-06T22:00:00-07:00",
+        "end_time": "2026-08-06T23:00:00-07:00",
+        "temperature_f": 75,
+        "precip_probability_pct": 3.0,
+        "relative_humidity_pct": 63.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SE",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
       }
