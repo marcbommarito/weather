@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-08T11:48:21.623926Z",
+  "generated_at": "2026-08-08T13:04:40.219103Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,8 +31,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -40,7 +41,7 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 69.8,
+    "max_heat_index_f": 66.2,
     "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
@@ -53,17 +54,17 @@
   },
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.92740b6a272009cf13c9910e8589060893bef8c3.003.1",
+      "id": "urn:oid:2.49.0.1.840.0.7c9c597ecfba4f9f5bfa0c5ad4463365707b3598.003.1",
       "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 7 at 9:49PM PDT until August 9 at 8:00PM PDT by NWS San Diego CA",
+      "headline": "Heat Advisory issued August 8 at 4:56AM PDT until August 9 at 8:00PM PDT by NWS San Diego CA",
       "description": "* WHAT...High temperatures in the mid 90s to 103 expected.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire.\n\n* WHEN...Until 8 PM PDT Sunday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
       "severity": "Moderate",
       "certainty": "Likely",
       "urgency": "Expected",
-      "effective": "2026-08-07T21:49:00-07:00",
-      "onset": "2026-08-07T21:49:00-07:00",
-      "expires": "2026-08-08T06:15:00-07:00",
+      "effective": "2026-08-08T04:56:00-07:00",
+      "onset": "2026-08-08T04:56:00-07:00",
+      "expires": "2026-08-08T14:15:00-07:00",
       "ends": "2026-08-09T20:00:00-07:00",
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
       "sender_name": "NWS San Diego CA",
@@ -198,22 +199,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-08T11:15:00+00:00",
-      "age_minutes": 33.30951365,
+      "observed_at": "2026-08-08T12:35:00+00:00",
+      "age_minutes": 29.624966933333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 69.8,
-      "dewpoint_f": 51.8,
-      "relative_humidity_pct": 52.802638324228,
+      "temperature_f": 66.2,
+      "dewpoint_f": 50.0,
+      "relative_humidity_pct": 55.910188768411,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9906507348,
+      "pressure_inhg": 29.999509729699998,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 081115Z AUTO 00000KT 10SM CLR 21/11 A2999 RMK AO2",
+      "raw_message": "KF70 081235Z AUTO 00000KT 10SM CLR 19/10 A3000 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -223,7 +224,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 6933.3116607833335,
+      "age_minutes": 7009.627733316666,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -247,7 +248,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-08T07:55:00+00:00",
-      "age_minutes": 233.31445739999998,
+      "age_minutes": 309.6298849833333,
       "stale": true,
       "condition": "Clear",
       "temperature_f": 75.2,
@@ -276,28 +277,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-08T04:00:00-07:00",
-        "end_time": "2026-08-08T05:00:00-07:00",
-        "temperature_f": 68,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 71.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-08T05:00:00-07:00",
-        "end_time": "2026-08-08T06:00:00-07:00",
-        "temperature_f": 68,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 71.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-08T06:00:00-07:00",
         "end_time": "2026-08-08T07:00:00-07:00",
@@ -538,6 +517,28 @@
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T04:00:00-07:00",
+        "end_time": "2026-08-09T05:00:00-07:00",
+        "temperature_f": 70,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 72.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T05:00:00-07:00",
+        "end_time": "2026-08-09T06:00:00-07:00",
+        "temperature_f": 69,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 74.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
       }
     ]
