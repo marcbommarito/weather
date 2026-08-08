@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-08T16:43:49.289042Z",
+  "generated_at": "2026-08-08T17:16:16.108760Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,7 +20,6 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -31,8 +30,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -41,10 +40,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 82.47926614353,
+    "max_heat_index_f": 84.878533715701,
     "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 3.3554034,
+    "max_wind_gust_mph": 4.69756476,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
@@ -199,22 +198,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-08T16:15:00+00:00",
-      "age_minutes": 28.779426933333333,
+      "observed_at": "2026-08-08T16:55:00+00:00",
+      "age_minutes": 21.225078766666666,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 84.2,
-      "dewpoint_f": 51.8,
-      "relative_humidity_pct": 32.76882733105,
-      "heat_index_f": 82.47926614353,
+      "temperature_f": 87.8,
+      "dewpoint_f": 48.2,
+      "relative_humidity_pct": 25.553040002327,
+      "heat_index_f": 84.878533715701,
       "wind_chill_f": null,
-      "wind_direction_deg": 20.0,
-      "wind_speed_mph": 3.3554034,
+      "wind_direction_deg": 290.0,
+      "wind_speed_mph": 4.69756476,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.0113217229,
+      "pressure_inhg": 29.999509729699998,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 081615Z AUTO 02003KT 10SM CLR 29/11 A3001 RMK AO2",
+      "raw_message": "KF70 081655Z AUTO 29004KT 10SM CLR 31/09 A3000 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -224,7 +223,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-08T15:55:00+00:00",
-      "age_minutes": 48.78377268333334,
+      "age_minutes": 81.23052561666667,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 83.3,
@@ -235,10 +234,10 @@
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.9799992699319,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9788387416,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 081555Z AUTO 00000KT 10SM CLR 29/09 A2998 RMK AO2 SLP135 T02850092",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -248,7 +247,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 7228.781672183333,
+      "age_minutes": 7261.22720075,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -277,17 +276,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-08T09:00:00-07:00",
-        "end_time": "2026-08-08T10:00:00-07:00",
-        "temperature_f": 81,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 48.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-08T10:00:00-07:00",
         "end_time": "2026-08-08T11:00:00-07:00",
@@ -538,6 +526,17 @@
         "relative_humidity_pct": 61.0,
         "wind_speed": "5 mph",
         "wind_direction": "NW",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T09:00:00-07:00",
+        "end_time": "2026-08-09T10:00:00-07:00",
+        "temperature_f": 82,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 51.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
         "short_forecast": "Mostly Sunny",
         "detailed_forecast": ""
       }
