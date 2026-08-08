@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-08T08:01:36.148788Z",
+  "generated_at": "2026-08-08T09:03:05.941082Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,8 +31,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -40,7 +41,7 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 76.17479485904,
+    "max_heat_index_f": 74.529785533287,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
@@ -198,22 +199,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-08T07:35:00+00:00",
-      "age_minutes": 26.541776316666667,
+      "observed_at": "2026-08-08T08:15:00+00:00",
+      "age_minutes": 48.06250201666667,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 73.4,
-      "dewpoint_f": 53.6,
-      "relative_humidity_pct": 49.934634256059,
-      "heat_index_f": 72.786927810035,
+      "temperature_f": 71.6,
+      "dewpoint_f": 51.8,
+      "relative_humidity_pct": 49.667494492032,
+      "heat_index_f": 70.794372241126,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.0290397127,
+      "pressure_inhg": 30.0201807178,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 080735Z AUTO 00000KT 10SM CLR 23/12 A3003 RMK AO2",
+      "raw_message": "KF70 080815Z AUTO 00000KT 10SM CLR 22/11 A3002 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -222,22 +223,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-08T06:55:00+00:00",
-      "age_minutes": 66.54675573333333,
+      "observed_at": "2026-08-08T07:55:00+00:00",
+      "age_minutes": 68.06313983333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 76.82,
-      "dewpoint_f": 51.98,
-      "relative_humidity_pct": 41.974358702971,
-      "heat_index_f": 76.17479485904,
+      "temperature_f": 75.2,
+      "dewpoint_f": 52.34,
+      "relative_humidity_pct": 44.889053899717,
+      "heat_index_f": 74.529785533287,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.999509729699998,
+      "visibility_miles": 10.0,
+      "pressure_inhg": 29.990001075174,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 080655Z AUTO 00000KT 10SM CLR 25/11 A3000 RMK AO2 SLP142 T02490111",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -247,7 +248,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 6706.54491235,
+      "age_minutes": 6768.0627844499995,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -276,28 +277,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-08T00:00:00-07:00",
-        "end_time": "2026-08-08T01:00:00-07:00",
-        "temperature_f": 74,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 62.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-08T01:00:00-07:00",
-        "end_time": "2026-08-08T02:00:00-07:00",
-        "temperature_f": 72,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 65.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-08T02:00:00-07:00",
         "end_time": "2026-08-08T03:00:00-07:00",
@@ -535,6 +514,28 @@
         "temperature_f": 76,
         "precip_probability_pct": 1.0,
         "relative_humidity_pct": 61.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T00:00:00-07:00",
+        "end_time": "2026-08-09T01:00:00-07:00",
+        "temperature_f": 74,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 64.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T01:00:00-07:00",
+        "end_time": "2026-08-09T02:00:00-07:00",
+        "temperature_f": 73,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 67.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
