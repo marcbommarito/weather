@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-08T13:59:11.722289Z",
+  "generated_at": "2026-08-08T14:43:55.086928Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -41,9 +41,9 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 68.0,
-    "max_heat_index_station": "French Valley Airport",
-    "heat_index_level": 0,
+    "max_heat_index_f": null,
+    "max_heat_index_station": null,
+    "heat_index_level": null,
     "max_wind_gust_mph": 0.0,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
@@ -199,22 +199,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-08T13:35:00+00:00",
-      "age_minutes": 24.14851021666667,
+      "observed_at": "2026-08-08T14:15:00+00:00",
+      "age_minutes": 28.879387599999998,
       "stale": false,
-      "condition": "Clear",
-      "temperature_f": 68.0,
+      "condition": "",
+      "temperature_f": null,
       "dewpoint_f": 46.4,
-      "relative_humidity_pct": 45.912311290937,
+      "relative_humidity_pct": null,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.0113217229,
+      "pressure_inhg": 30.0201807178,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 081335Z AUTO 00000KT 10SM CLR 20/08 A3001 RMK AO2",
+      "raw_message": "KF70 081415Z AUTO 00000KT 10SM CLR 22/08 A3002 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -224,7 +224,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 7064.150450800001,
+      "age_minutes": 7108.879768216666,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -248,7 +248,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-08T07:55:00+00:00",
-      "age_minutes": 364.1526523,
+      "age_minutes": 408.88029828333333,
       "stale": true,
       "condition": "Clear",
       "temperature_f": 75.2,
@@ -277,17 +277,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-08T06:00:00-07:00",
-        "end_time": "2026-08-08T07:00:00-07:00",
-        "temperature_f": 67,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 72.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-08T07:00:00-07:00",
         "end_time": "2026-08-08T08:00:00-07:00",
@@ -539,6 +528,17 @@
         "wind_speed": "5 mph",
         "wind_direction": "NW",
         "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-09T06:00:00-07:00",
+        "end_time": "2026-08-09T07:00:00-07:00",
+        "temperature_f": 68,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 75.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
         "detailed_forecast": ""
       }
     ]
