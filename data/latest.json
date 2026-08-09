@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-09T19:51:55.334338Z",
+  "generated_at": "2026-08-09T20:42:28.757043Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,7 +20,6 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -31,8 +30,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -41,10 +40,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 98.06,
+    "max_heat_index_f": 98.78,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 10.357011828,
+    "max_wind_gust_mph": 9.216174672000001,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 3.0,
@@ -54,17 +53,17 @@
   },
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.e5a0237ce8a333a0bde212509f4094e1fbcdd6cf.003.1",
+      "id": "urn:oid:2.49.0.1.840.0.abee6d785921918ee11e5e3345003ea6c64507ef.003.1",
       "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 9 at 3:03AM PDT until August 9 at 8:00PM PDT by NWS San Diego CA",
-      "description": "* WHAT...High temperatures in the mid 90s to low 100s expected.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
+      "headline": "Heat Advisory issued August 9 at 12:53PM PDT until August 9 at 8:00PM PDT by NWS San Diego CA",
+      "description": "* WHAT...Temperatures up to 103.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
       "severity": "Moderate",
       "certainty": "Likely",
       "urgency": "Expected",
-      "effective": "2026-08-09T03:03:00-07:00",
-      "onset": "2026-08-09T03:03:00-07:00",
-      "expires": "2026-08-09T14:15:00-07:00",
+      "effective": "2026-08-09T12:53:00-07:00",
+      "onset": "2026-08-09T12:53:00-07:00",
+      "expires": "2026-08-09T20:00:00-07:00",
       "ends": "2026-08-09T20:00:00-07:00",
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
       "sender_name": "NWS San Diego CA",
@@ -199,8 +198,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T19:15:00+00:00",
-      "age_minutes": 36.86188546666666,
+      "observed_at": "2026-08-09T20:15:00+00:00",
+      "age_minutes": 27.437879133333336,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -214,7 +213,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 091900Z AUTO 34005KT 9999 NCD 25/23",
+      "raw_message": "RJOK 092000Z AUTO 36005KT 9999 N",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -223,20 +222,20 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-09T18:55:00+00:00",
-      "age_minutes": 56.869253316666665,
+      "observed_at": "2026-08-09T19:55:00+00:00",
+      "age_minutes": 47.439145616666664,
       "stale": false,
-      "condition": "Clear",
-      "temperature_f": 98.06,
+      "condition": "Partly Cloudy",
+      "temperature_f": 98.78,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 10.357011828,
+      "wind_direction_deg": 310.0,
+      "wind_speed_mph": 9.216174672000001,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.8900007407428,
+      "pressure_inhg": 29.879998935500698,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -248,7 +247,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 8856.8671867,
+      "age_minutes": 8907.438690133333,
       "stale": true,
       "condition": "",
       "temperature_f": null,
