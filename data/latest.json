@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-09T22:00:14.164669Z",
+  "generated_at": "2026-08-09T22:45:14.234775Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,7 +20,6 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -31,8 +30,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -199,8 +198,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T21:35:00+00:00",
-      "age_minutes": 25.118961366666667,
+      "observed_at": "2026-08-09T22:15:00+00:00",
+      "age_minutes": 30.15411885,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -214,7 +213,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 092100Z AUTO 35006KT 9999 NCD 25/22",
+      "raw_message": "RJOK 092200Z 33005KT 9999 FEW025 BKN///",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -224,7 +223,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-09T20:55:00+00:00",
-      "age_minutes": 65.14883493333333,
+      "age_minutes": 110.155035,
       "stale": false,
       "condition": "",
       "temperature_f": 99.68,
@@ -248,7 +247,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 8985.125953283334,
+      "age_minutes": 9030.15453465,
       "stale": true,
       "condition": "",
       "temperature_f": null,
