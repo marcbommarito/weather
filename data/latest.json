@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-09T22:45:14.234775Z",
+  "generated_at": "2026-08-09T23:38:48.743318Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,8 +31,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -40,10 +41,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 96.68322440360001,
+    "max_heat_index_f": 97.288241353666,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 10.357011828,
+    "max_wind_gust_mph": 12.661055496000001,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 3.0,
@@ -198,8 +199,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T22:15:00+00:00",
-      "age_minutes": 30.15411885,
+      "observed_at": "2026-08-09T23:15:00+00:00",
+      "age_minutes": 23.768373699999998,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -213,7 +214,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 092200Z 33005KT 9999 FEW025 BKN///",
+      "raw_message": "RJOK 092300Z 34004KT 310V010 999",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -222,20 +223,20 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-09T20:55:00+00:00",
-      "age_minutes": 110.155035,
+      "observed_at": "2026-08-09T21:55:00+00:00",
+      "age_minutes": 103.77252588333334,
       "stale": false,
-      "condition": "",
-      "temperature_f": 99.68,
-      "dewpoint_f": 50.0,
-      "relative_humidity_pct": 18.921751312523,
-      "heat_index_f": 96.68322440360001,
+      "condition": "Partly Cloudy",
+      "temperature_f": 99.86,
+      "dewpoint_f": 51.620000000000005,
+      "relative_humidity_pct": 19.982804766298,
+      "heat_index_f": 97.288241353666,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 10.357011828,
+      "wind_direction_deg": 330.0,
+      "wind_speed_mph": 12.661055496000001,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.870000083256897,
+      "pressure_inhg": 29.849999425771,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -247,7 +248,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 9030.15453465,
+      "age_minutes": 9083.770770283332,
       "stale": true,
       "condition": "",
       "temperature_f": null,
