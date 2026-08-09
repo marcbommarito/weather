@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-09T16:45:46.629750Z",
+  "generated_at": "2026-08-09T17:38:26.550289Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -198,8 +198,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T16:15:00+00:00",
-      "age_minutes": 30.73757671666667,
+      "observed_at": "2026-08-09T17:15:00+00:00",
+      "age_minutes": 23.391058816666668,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -213,7 +213,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 091600Z AUTO 35005KT 9999 NSC 26/24",
+      "raw_message": "RJOK 091700Z AUTO 01004KT 9999 N",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -223,7 +223,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-09T15:55:00+00:00",
-      "age_minutes": 50.741515533333335,
+      "age_minutes": 103.39632815,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 87.26,
@@ -247,7 +247,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 8670.739264683334,
+      "age_minutes": 8723.394012033334,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -276,28 +276,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-09T08:00:00-07:00",
-        "end_time": "2026-08-09T09:00:00-07:00",
-        "temperature_f": 76,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 56.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "W",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-09T09:00:00-07:00",
-        "end_time": "2026-08-09T10:00:00-07:00",
-        "temperature_f": 82,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 48.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "W",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-09T10:00:00-07:00",
         "end_time": "2026-08-09T11:00:00-07:00",
@@ -535,6 +513,28 @@
         "temperature_f": 69,
         "precip_probability_pct": 0.0,
         "relative_humidity_pct": 78.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-10T08:00:00-07:00",
+        "end_time": "2026-08-10T09:00:00-07:00",
+        "temperature_f": 74,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 67.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-10T09:00:00-07:00",
+        "end_time": "2026-08-10T10:00:00-07:00",
+        "temperature_f": 80,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 58.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Mostly Sunny",
