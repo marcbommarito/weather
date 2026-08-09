@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-09T10:54:28.474392Z",
+  "generated_at": "2026-08-09T11:37:16.558981Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,6 +20,7 @@
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
       "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
@@ -30,8 +31,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -198,8 +199,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T10:35:00+00:00",
-      "age_minutes": 19.390915933333336,
+      "observed_at": "2026-08-09T11:15:00+00:00",
+      "age_minutes": 22.240734966666665,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 71.6,
@@ -213,7 +214,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 091035Z AUTO 00000KT 10SM CLR 22/14 A2992 RMK AO2",
+      "raw_message": "KF70 091115Z AUTO 00000KT 10SM CLR 22/14 A2992 RMK AO2",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -223,7 +224,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-09T09:55:00+00:00",
-      "age_minutes": 59.40453195,
+      "age_minutes": 102.24408279999999,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 72.5,
@@ -247,7 +248,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 8319.393644333333,
+      "age_minutes": 8362.242506266666,
       "stale": true,
       "condition": "",
       "temperature_f": null,
