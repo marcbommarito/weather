@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-10T00:36:49.810100Z",
+  "generated_at": "2026-08-10T03:02:32.979093Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -14,18 +14,18 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 2,
-    "name": "Modify",
-    "label": "Modify outdoor activities",
-    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+    "level": 1,
+    "name": "Caution",
+    "label": "Monitor and add precautions",
+    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
     "data_status": "Operational",
     "reasons": [
-      "1 active NWS alert(s); highest alert level is 2."
+      "NWS HeatRisk is 1 \u2014 Yellow / Minor.",
+      "Highest current heat index/temperature is 91\u00b0F at March Air Reserve Base."
     ],
     "recommended_actions": [
-      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
-      "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications."
+      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+      "Confirm conditions at affected school sites and document the decision source and time."
     ]
   },
   "summary": {
@@ -40,37 +40,18 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 97.70385120369801,
+    "max_heat_index_f": 91.305640668029,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 12.75053292,
+    "max_wind_gust_mph": 9.17143596,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 3.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
-    "alert_level": 2
+    "alert_level": 0
   },
-  "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.abee6d785921918ee11e5e3345003ea6c64507ef.003.1",
-      "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 9 at 12:53PM PDT until August 9 at 8:00PM PDT by NWS San Diego CA",
-      "description": "* WHAT...Temperatures up to 103.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire.\n\n* WHEN...Until 8 PM PDT this evening.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "severity": "Moderate",
-      "certainty": "Likely",
-      "urgency": "Expected",
-      "effective": "2026-08-09T12:53:00-07:00",
-      "onset": "2026-08-09T12:53:00-07:00",
-      "expires": "2026-08-09T20:00:00-07:00",
-      "ends": "2026-08-09T20:00:00-07:00",
-      "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
-      "sender_name": "NWS San Diego CA",
-      "level": 2,
-      "web": "http://www.weather.gov"
-    }
-  ],
+  "alerts": [],
   "stations": [
     {
       "id": "239",
@@ -198,8 +179,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-09T23:55:00+00:00",
-      "age_minutes": 41.7890692,
+      "observed_at": "2026-08-10T02:35:00+00:00",
+      "age_minutes": 25.762948766666668,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -213,7 +194,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 092300Z 34004KT 310V010 9999 FEW025",
+      "raw_message": "RJOK 100200Z 19008KT 9999 FEW025 BKN///",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -222,22 +203,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-09T23:55:00+00:00",
-      "age_minutes": 41.78982078333333,
+      "observed_at": "2026-08-10T01:55:00+00:00",
+      "age_minutes": 65.76750916666667,
       "stale": false,
-      "condition": "Partly Cloudy",
-      "temperature_f": 99.32,
-      "dewpoint_f": 54.86,
-      "relative_humidity_pct": 22.872185584394,
-      "heat_index_f": 97.70385120369801,
+      "condition": "",
+      "temperature_f": 93.2,
+      "dewpoint_f": 55.22,
+      "relative_humidity_pct": 27.951422963713,
+      "heat_index_f": 91.305640668029,
       "wind_chill_f": null,
-      "wind_direction_deg": 290.0,
-      "wind_speed_mph": 12.75053292,
+      "wind_direction_deg": 320.0,
+      "wind_speed_mph": 9.17143596,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.8016588436,
+      "pressure_inhg": 29.8193768334,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 092355Z 29011KT 10SM FEW120 FEW200 SCT300 37/13 A2980 RMK AO2A SLP073 T03740127 10385 20353 57021",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -247,7 +228,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 9141.789400183334,
+      "age_minutes": 9285.76534225,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -276,39 +257,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-09T17:00:00-07:00",
-        "end_time": "2026-08-09T18:00:00-07:00",
-        "temperature_f": 97,
-        "precip_probability_pct": 3.0,
-        "relative_humidity_pct": 33.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Mostly Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-09T18:00:00-07:00",
-        "end_time": "2026-08-09T19:00:00-07:00",
-        "temperature_f": 93,
-        "precip_probability_pct": 3.0,
-        "relative_humidity_pct": 37.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-09T19:00:00-07:00",
-        "end_time": "2026-08-09T20:00:00-07:00",
-        "temperature_f": 88,
-        "precip_probability_pct": 3.0,
-        "relative_humidity_pct": 44.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-09T20:00:00-07:00",
         "end_time": "2026-08-09T21:00:00-07:00",
@@ -539,6 +487,39 @@
         "wind_direction": "S",
         "short_forecast": "Mostly Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-10T17:00:00-07:00",
+        "end_time": "2026-08-10T18:00:00-07:00",
+        "temperature_f": 93,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 40.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Partly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-10T18:00:00-07:00",
+        "end_time": "2026-08-10T19:00:00-07:00",
+        "temperature_f": 91,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 41.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Cloudy",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-10T19:00:00-07:00",
+        "end_time": "2026-08-10T20:00:00-07:00",
+        "temperature_f": 85,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 50.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Cloudy",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -551,7 +532,7 @@
     {
       "name": "NWS point alerts and hourly forecast",
       "status": "available",
-      "detail": "1 active alert(s); 24 forecast hour(s) loaded."
+      "detail": "0 active alert(s); 24 forecast hour(s) loaded."
     },
     {
       "name": "NWS HeatRisk",
@@ -579,5 +560,8 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": []
+  "errors": [
+    "EPA AirNow: temporarily unavailable; request timed out after 2 attempts.",
+    "EPA AirNow ZIP fallback: HTTP 504 \u2014 <html> <head><title>504 Gateway Time-out</title></head> <body> <center><h1>504 Gateway Time-out</h1></center> </body> </html>"
+  ]
 }
