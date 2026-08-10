@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-10T22:00:16.089928Z",
+  "generated_at": "2026-08-10T22:58:33.672850Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -14,24 +14,24 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 2,
-    "name": "Modify",
-    "label": "Modify outdoor activities",
-    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+    "level": 1,
+    "name": "Caution",
+    "label": "Monitor and add precautions",
+    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 2 \u2014 Orange / Moderate."
+      "NWS HeatRisk is 1 \u2014 Yellow / Minor.",
+      "Highest current heat index/temperature is 94\u00b0F at March Air Reserve Base."
     ],
     "recommended_actions": [
-      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
-      "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications."
+      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+      "Confirm conditions at affected school sites and document the decision source and time."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -40,10 +40,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 95.038217667438,
+    "max_heat_index_f": 94.169432091666,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 9.17143596,
+    "max_wind_gust_mph": 13.86900072,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 3.0,
@@ -174,14 +174,38 @@
       "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
     },
     {
+      "id": "KRIV",
+      "name": "March Air Reserve Base",
+      "network": "NWS / aviation",
+      "lat": 33.8819,
+      "lon": -117.259,
+      "observed_at": "2026-08-10T21:55:00+00:00",
+      "age_minutes": 63.522065766666664,
+      "stale": false,
+      "condition": "Clear",
+      "temperature_f": 96.61999999999999,
+      "dewpoint_f": 52.7,
+      "relative_humidity_pct": 22.944893502806,
+      "heat_index_f": 94.169432091666,
+      "wind_chill_f": null,
+      "wind_direction_deg": 310.0,
+      "wind_speed_mph": 13.86900072,
+      "wind_gust_mph": null,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.8991077875,
+      "precip_last_hour_in": null,
+      "raw_message": "KRIV 102155Z AUTO 31012KT 10SM CLR 36/12 A2990 RMK AO2 SLP107 T03590115",
+      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
+    },
+    {
       "id": "KF70",
       "name": "French Valley Airport",
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 105.12503153333334,
-      "stale": false,
+      "age_minutes": 163.51665768333334,
+      "stale": true,
       "condition": "",
       "temperature_f": null,
       "dewpoint_f": null,
@@ -194,32 +218,8 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
-      "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
-    },
-    {
-      "id": "KRIV",
-      "name": "March Air Reserve Base",
-      "network": "NWS / aviation",
-      "lat": 33.8819,
-      "lon": -117.259,
-      "observed_at": "2026-08-10T20:55:00+00:00",
-      "age_minutes": 65.16642378333333,
-      "stale": false,
-      "condition": "",
-      "temperature_f": 96.8,
-      "dewpoint_f": 55.04,
-      "relative_humidity_pct": 24.856114181999,
-      "heat_index_f": 95.038217667438,
-      "wind_chill_f": null,
-      "wind_direction_deg": 290.0,
-      "wind_speed_mph": 9.17143596,
-      "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9197787756,
-      "precip_last_hour_in": null,
       "raw_message": "",
-      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
+      "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
   "forecast": {
@@ -233,17 +233,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-10T14:00:00-07:00",
-        "end_time": "2026-08-10T15:00:00-07:00",
-        "temperature_f": 96,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 34.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "S",
-        "short_forecast": "Partly Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-10T15:00:00-07:00",
         "end_time": "2026-08-10T16:00:00-07:00",
@@ -496,6 +485,17 @@
         "wind_direction": "S",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-11T14:00:00-07:00",
+        "end_time": "2026-08-11T15:00:00-07:00",
+        "temperature_f": 94,
+        "precip_probability_pct": 3.0,
+        "relative_humidity_pct": 36.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -537,6 +537,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"1a53d90e\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"b35f2f96\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
