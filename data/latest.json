@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-10T08:15:10.701666Z",
+  "generated_at": "2026-08-10T09:52:34.096140Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -14,23 +14,24 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 1,
-    "name": "Caution",
-    "label": "Monitor and add precautions",
-    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+    "level": 2,
+    "name": "Modify",
+    "label": "Modify outdoor activities",
+    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 1 \u2014 Yellow / Minor."
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate."
     ],
     "recommended_actions": [
-      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
-      "Confirm conditions at affected school sites and document the decision source and time."
+      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+      "Confirm conditions at affected school sites and document the decision source and time.",
+      "Notify principals, PE staff, coaches and supervisors of required modifications."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -39,7 +40,7 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 76.234739145547,
+    "max_heat_index_f": 75.086147817484,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
     "max_wind_gust_mph": 3.3554034,
@@ -178,8 +179,8 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-10T07:35:00+00:00",
-      "age_minutes": 40.12145653333334,
+      "observed_at": "2026-08-10T09:15:00+00:00",
+      "age_minutes": 37.526945999999995,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -193,7 +194,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 100700Z 20006KT 150V230 9999 FEW025",
+      "raw_message": "RJOK 100900Z 22005KT 9999 FEW025 BKN///",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -202,22 +203,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-10T06:55:00+00:00",
-      "age_minutes": 80.12793091666667,
+      "observed_at": "2026-08-10T08:55:00+00:00",
+      "age_minutes": 57.52938948333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 77.0,
-      "dewpoint_f": 50.18,
-      "relative_humidity_pct": 39.037003096735,
-      "heat_index_f": 76.234739145547,
+      "temperature_f": 75.74000000000001,
+      "dewpoint_f": 52.34,
+      "relative_humidity_pct": 44.088251435837,
+      "heat_index_f": 75.086147817484,
       "wind_chill_f": null,
-      "wind_direction_deg": 290.0,
+      "wind_direction_deg": 260.0,
       "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9315907688,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 100655Z AUTO 29003KT 10SM CLR 25/10 A2993 RMK AO2 SLP116 T02500101",
+      "raw_message": "KRIV 100855Z AUTO 26003KT 10SM CLR 24/11 A2992 RMK AO2 SLP113 T02430113 58002",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -227,7 +228,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-03T16:15:00+00:00",
-      "age_minutes": 9600.125245866666,
+      "age_minutes": 9697.528867283334,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -256,17 +257,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-10T01:00:00-07:00",
-        "end_time": "2026-08-10T02:00:00-07:00",
-        "temperature_f": 74,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 67.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-10T02:00:00-07:00",
         "end_time": "2026-08-10T03:00:00-07:00",
@@ -517,6 +507,17 @@
         "relative_humidity_pct": 73.0,
         "wind_speed": "5 mph",
         "wind_direction": "SE",
+        "short_forecast": "Mostly Cloudy",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-11T01:00:00-07:00",
+        "end_time": "2026-08-11T02:00:00-07:00",
+        "temperature_f": 71,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 76.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
         "short_forecast": "Mostly Cloudy",
         "detailed_forecast": ""
       }
