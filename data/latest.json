@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-11T11:59:44.939235Z",
+  "generated_at": "2026-08-11T13:35:29.591816Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -39,13 +39,13 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": null,
-    "max_heat_index_station": null,
-    "heat_index_level": null,
-    "max_wind_gust_mph": null,
-    "max_wind_gust_station": null,
-    "wind_level": null,
-    "max_precip_probability_pct": 5.0,
+    "max_heat_index_f": 72.025716331209,
+    "max_heat_index_station": "March Air Reserve Base",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 3.4448808239999997,
+    "max_wind_gust_station": "March Air Reserve Base",
+    "wind_level": 0,
+    "max_precip_probability_pct": 7.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
     "alert_level": 0
@@ -173,13 +173,37 @@
       "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
     },
     {
+      "id": "KRIV",
+      "name": "March Air Reserve Base",
+      "network": "NWS / aviation",
+      "lat": 33.8819,
+      "lon": -117.259,
+      "observed_at": "2026-08-11T12:55:00+00:00",
+      "age_minutes": 40.433368200000004,
+      "stale": false,
+      "condition": "Clear",
+      "temperature_f": 72.32,
+      "dewpoint_f": 57.2,
+      "relative_humidity_pct": 59.01524108955,
+      "heat_index_f": 72.025716331209,
+      "wind_chill_f": null,
+      "wind_direction_deg": 280.0,
+      "wind_speed_mph": 3.4448808239999997,
+      "wind_gust_mph": null,
+      "visibility_miles": 10.0,
+      "pressure_inhg": 29.9699974646898,
+      "precip_last_hour_in": null,
+      "raw_message": "",
+      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
+    },
+    {
       "id": "KF70",
       "name": "French Valley Airport",
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 944.7023071,
+      "age_minutes": 1040.4288584333333,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -195,30 +219,6 @@
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
-    },
-    {
-      "id": "KRIV",
-      "name": "March Air Reserve Base",
-      "network": "NWS / aviation",
-      "lat": 33.8819,
-      "lon": -117.259,
-      "observed_at": "2026-08-11T09:55:00+00:00",
-      "age_minutes": 124.70482976666668,
-      "stale": true,
-      "condition": "",
-      "temperature_f": 72.86,
-      "dewpoint_f": 54.68,
-      "relative_humidity_pct": 52.895185386146,
-      "heat_index_f": 72.332073713149,
-      "wind_chill_f": null,
-      "wind_direction_deg": 0.0,
-      "wind_speed_mph": 0.0,
-      "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9611207518,
-      "precip_last_hour_in": null,
-      "raw_message": "",
-      "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
   "forecast": {
@@ -232,28 +232,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-11T04:00:00-07:00",
-        "end_time": "2026-08-11T05:00:00-07:00",
-        "temperature_f": 69,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 81.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-11T05:00:00-07:00",
-        "end_time": "2026-08-11T06:00:00-07:00",
-        "temperature_f": 68,
-        "precip_probability_pct": 5.0,
-        "relative_humidity_pct": 83.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-11T06:00:00-07:00",
         "end_time": "2026-08-11T07:00:00-07:00",
@@ -495,6 +473,28 @@
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-12T04:00:00-07:00",
+        "end_time": "2026-08-12T05:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 89.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-12T05:00:00-07:00",
+        "end_time": "2026-08-12T06:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 90.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -536,6 +536,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"c7e6338\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"5405acb\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
   ]
 }
