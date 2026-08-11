@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-11T22:20:31.562015Z",
+  "generated_at": "2026-08-11T23:20:27.740743Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -21,7 +21,7 @@
     "data_status": "Operational",
     "reasons": [
       "NWS HeatRisk is 1 \u2014 Yellow / Minor.",
-      "Highest current heat index/temperature is 92\u00b0F at March Air Reserve Base."
+      "Highest current heat index/temperature is 94\u00b0F at March Air Reserve Base."
     ],
     "recommended_actions": [
       "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
@@ -40,10 +40,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 91.837353948154,
+    "max_heat_index_f": 94.292962443302,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 10.357011828,
+    "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 14.0,
@@ -179,20 +179,20 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-11T20:55:00+00:00",
-      "age_minutes": 85.48445023333333,
+      "observed_at": "2026-08-11T21:55:00+00:00",
+      "age_minutes": 85.41163745,
       "stale": false,
-      "condition": "",
-      "temperature_f": 94.28,
-      "dewpoint_f": 53.06,
-      "relative_humidity_pct": 24.983424553693,
-      "heat_index_f": 91.837353948154,
+      "condition": "Mostly Clear",
+      "temperature_f": 95.72,
+      "dewpoint_f": 56.3,
+      "relative_humidity_pct": 26.893084347345,
+      "heat_index_f": 94.292962443302,
       "wind_chill_f": null,
-      "wind_direction_deg": 320.0,
-      "wind_speed_mph": 10.357011828,
+      "wind_direction_deg": 300.0,
+      "wind_speed_mph": 8.05296816,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.959998612446,
+      "pressure_inhg": 29.9400009079584,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -204,7 +204,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 1565.4794817,
+      "age_minutes": 1625.4074309,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -218,7 +218,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -233,17 +233,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-11T15:00:00-07:00",
-        "end_time": "2026-08-11T16:00:00-07:00",
-        "temperature_f": 96,
-        "precip_probability_pct": 14.0,
-        "relative_humidity_pct": 35.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-11T16:00:00-07:00",
         "end_time": "2026-08-11T17:00:00-07:00",
@@ -496,6 +485,17 @@
         "wind_direction": "S",
         "short_forecast": "Partly Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-12T15:00:00-07:00",
+        "end_time": "2026-08-12T16:00:00-07:00",
+        "temperature_f": 90,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 42.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "S",
+        "short_forecast": "Partly Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -537,6 +537,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"c10aa68\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"22648acf\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
