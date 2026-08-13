@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-13T18:40:05.205900Z",
+  "generated_at": "2026-08-13T19:45:59.209655Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -14,23 +14,24 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 1,
-    "name": "Caution",
-    "label": "Monitor and add precautions",
-    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+    "level": 2,
+    "name": "Modify",
+    "label": "Modify outdoor activities",
+    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 1 \u2014 Yellow / Minor."
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate."
     ],
     "recommended_actions": [
-      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
-      "Confirm conditions at affected school sites and document the decision source and time."
+      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+      "Confirm conditions at affected school sites and document the decision source and time.",
+      "Notify principals, PE staff, coaches and supervisors of required modifications."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -179,7 +180,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 4225.025710716666,
+      "age_minutes": 4290.94167245,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -203,7 +204,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-13T14:55:00+00:00",
-      "age_minutes": 225.0313274,
+      "age_minutes": 290.94427865,
       "stale": true,
       "condition": "Mostly Cloudy",
       "temperature_f": 68.9,
@@ -233,69 +234,58 @@
     },
     "hourly": [
       {
-        "start_time": "2026-08-13T11:00:00-07:00",
-        "end_time": "2026-08-13T12:00:00-07:00",
-        "temperature_f": 76,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 58.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
-        "detailed_forecast": ""
-      },
-      {
         "start_time": "2026-08-13T12:00:00-07:00",
         "end_time": "2026-08-13T13:00:00-07:00",
         "temperature_f": 80,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 49.0,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 50.0,
         "wind_speed": "10 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T13:00:00-07:00",
         "end_time": "2026-08-13T14:00:00-07:00",
         "temperature_f": 82,
-        "precip_probability_pct": 2.0,
+        "precip_probability_pct": 1.0,
         "relative_humidity_pct": 45.0,
         "wind_speed": "10 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T14:00:00-07:00",
         "end_time": "2026-08-13T15:00:00-07:00",
         "temperature_f": 84,
-        "precip_probability_pct": 2.0,
+        "precip_probability_pct": 1.0,
         "relative_humidity_pct": 45.0,
-        "wind_speed": "10 mph",
+        "wind_speed": "15 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T15:00:00-07:00",
         "end_time": "2026-08-13T16:00:00-07:00",
         "temperature_f": 85,
-        "precip_probability_pct": 2.0,
+        "precip_probability_pct": 1.0,
         "relative_humidity_pct": 46.0,
         "wind_speed": "15 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T16:00:00-07:00",
         "end_time": "2026-08-13T17:00:00-07:00",
         "temperature_f": 84,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 49.0,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 50.0,
         "wind_speed": "15 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
@@ -303,10 +293,10 @@
         "end_time": "2026-08-13T18:00:00-07:00",
         "temperature_f": 82,
         "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 54.0,
+        "relative_humidity_pct": 56.0,
         "wind_speed": "15 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
@@ -314,10 +304,10 @@
         "end_time": "2026-08-13T19:00:00-07:00",
         "temperature_f": 80,
         "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 57.0,
+        "relative_humidity_pct": 59.0,
         "wind_speed": "15 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
@@ -325,65 +315,65 @@
         "end_time": "2026-08-13T20:00:00-07:00",
         "temperature_f": 75,
         "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 70.0,
-        "wind_speed": "15 mph",
+        "relative_humidity_pct": 71.0,
+        "wind_speed": "10 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T20:00:00-07:00",
         "end_time": "2026-08-13T21:00:00-07:00",
-        "temperature_f": 72,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 77.0,
+        "temperature_f": 71,
+        "precip_probability_pct": 2.0,
+        "relative_humidity_pct": 80.0,
         "wind_speed": "10 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T21:00:00-07:00",
         "end_time": "2026-08-13T22:00:00-07:00",
         "temperature_f": 69,
-        "precip_probability_pct": 1.0,
+        "precip_probability_pct": 2.0,
         "relative_humidity_pct": 82.0,
         "wind_speed": "10 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T22:00:00-07:00",
         "end_time": "2026-08-13T23:00:00-07:00",
         "temperature_f": 68,
-        "precip_probability_pct": 1.0,
+        "precip_probability_pct": 2.0,
         "relative_humidity_pct": 83.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-13T23:00:00-07:00",
         "end_time": "2026-08-14T00:00:00-07:00",
-        "temperature_f": 67,
+        "temperature_f": 68,
         "precip_probability_pct": 1.0,
         "relative_humidity_pct": 83.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-14T00:00:00-07:00",
         "end_time": "2026-08-14T01:00:00-07:00",
-        "temperature_f": 66,
+        "temperature_f": 67,
         "precip_probability_pct": 1.0,
         "relative_humidity_pct": 85.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
@@ -391,10 +381,10 @@
         "end_time": "2026-08-14T02:00:00-07:00",
         "temperature_f": 66,
         "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 88.0,
+        "relative_humidity_pct": 87.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
+        "short_forecast": "Cloudy",
         "detailed_forecast": ""
       },
       {
@@ -402,16 +392,16 @@
         "end_time": "2026-08-14T03:00:00-07:00",
         "temperature_f": 64,
         "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 93.0,
+        "relative_humidity_pct": 92.0,
         "wind_speed": "5 mph",
-        "wind_direction": "SE",
+        "wind_direction": "S",
         "short_forecast": "Mostly Cloudy",
         "detailed_forecast": ""
       },
       {
         "start_time": "2026-08-14T03:00:00-07:00",
         "end_time": "2026-08-14T04:00:00-07:00",
-        "temperature_f": 63,
+        "temperature_f": 64,
         "precip_probability_pct": 1.0,
         "relative_humidity_pct": 95.0,
         "wind_speed": "5 mph",
@@ -424,7 +414,7 @@
         "end_time": "2026-08-14T05:00:00-07:00",
         "temperature_f": 63,
         "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 94.0,
+        "relative_humidity_pct": 96.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
         "short_forecast": "Mostly Cloudy",
@@ -434,10 +424,10 @@
         "start_time": "2026-08-14T05:00:00-07:00",
         "end_time": "2026-08-14T06:00:00-07:00",
         "temperature_f": 62,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 99.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 100.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
         "short_forecast": "Patchy Fog",
         "detailed_forecast": ""
       },
@@ -445,10 +435,10 @@
         "start_time": "2026-08-14T06:00:00-07:00",
         "end_time": "2026-08-14T07:00:00-07:00",
         "temperature_f": 62,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 98.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 99.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
         "short_forecast": "Patchy Fog",
         "detailed_forecast": ""
       },
@@ -456,8 +446,8 @@
         "start_time": "2026-08-14T07:00:00-07:00",
         "end_time": "2026-08-14T08:00:00-07:00",
         "temperature_f": 62,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 99.0,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 100.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Patchy Fog",
@@ -466,9 +456,9 @@
       {
         "start_time": "2026-08-14T08:00:00-07:00",
         "end_time": "2026-08-14T09:00:00-07:00",
-        "temperature_f": 63,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 100.0,
+        "temperature_f": 64,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 98.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Patchy Fog",
@@ -478,10 +468,10 @@
         "start_time": "2026-08-14T09:00:00-07:00",
         "end_time": "2026-08-14T10:00:00-07:00",
         "temperature_f": 68,
-        "precip_probability_pct": 0.0,
+        "precip_probability_pct": 1.0,
         "relative_humidity_pct": 87.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
+        "wind_speed": "0 mph",
+        "wind_direction": "",
         "short_forecast": "Patchy Fog",
         "detailed_forecast": ""
       },
@@ -489,11 +479,22 @@
         "start_time": "2026-08-14T10:00:00-07:00",
         "end_time": "2026-08-14T11:00:00-07:00",
         "temperature_f": 72,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 70.0,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 72.0,
         "wind_speed": "5 mph",
         "wind_direction": "S",
         "short_forecast": "Patchy Fog",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-14T11:00:00-07:00",
+        "end_time": "2026-08-14T12:00:00-07:00",
+        "temperature_f": 76,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 59.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
         "detailed_forecast": ""
       }
     ]
@@ -536,6 +537,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"f548286\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"9ff7907\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
   ]
 }
