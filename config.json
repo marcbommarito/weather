@@ -5,10 +5,35 @@
     "dashboardTitle": "Extreme Weather Decision Dashboard",
     "timezone": "America/Los_Angeles",
     "center": {"lat": 33.68788, "lon": -117.17577},
+    "office": {
+      "name": "Menifee Union School District Administrative Center",
+      "address": "29775 Haun Rd., Menifee, CA 92586",
+      "lat": 33.688581,
+      "lon": -117.175341
+    },
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "refreshMinutes": 15,
   "nwsUserAgent": "MUSD-Weather-Dashboard/1.0 (replace-with-district-contact@menifeeusd.org)",
+  "schools": [
+    {"name": "Menifee Preschool", "level": "Preschool", "address": "26350 La Piedra Rd., Menifee, CA 92584", "lat": 33.67798, "lon": -117.20020},
+    {"name": "Callie Kirkpatrick Elementary School", "level": "Elementary", "address": "28800 Reviere Dr., Menifee, CA 92584", "lat": 33.68230, "lon": -117.15510},
+    {"name": "Chester W. Morrison Elementary School", "level": "Elementary", "address": "30250 Bradley Rd., Menifee, CA 92584", "lat": 33.681626, "lon": -117.187081},
+    {"name": "Evans Ranch Elementary School", "level": "Elementary", "address": "30465 Evans Rd., Menifee, CA 92584", "lat": 33.678266, "lon": -117.198643},
+    {"name": "Freedom Crest Elementary School", "level": "Elementary", "address": "29282 Menifee Rd., Menifee, CA 92584", "lat": 33.69744, "lon": -117.153252},
+    {"name": "Harvest Hill STEAM Academy", "level": "K-8 Academy", "address": "31600 Pat Rd., Winchester, CA 92596", "lat": 33.6207984, "lon": -117.1073617},
+    {"name": "Herk Bouris Elementary School", "level": "Elementary", "address": "34257 Kalanchoe Rd., Lake Elsinore, CA 92532", "lat": 33.66710, "lon": -117.23430},
+    {"name": "Oak Meadows Elementary School", "level": "Elementary", "address": "28600 Poinsettia St., Murrieta, CA 92563", "lat": 33.6294203, "lon": -117.1609228},
+    {"name": "Quail Valley Elementary School", "level": "Elementary", "address": "23757 Canyon Heights Dr., Menifee, CA 92587", "lat": 33.69779, "lon": -117.24517},
+    {"name": "Ridgemoor Elementary School", "level": "Elementary", "address": "25455 Ridgemoor Rd., Menifee, CA 92586", "lat": 33.69910, "lon": -117.21530},
+    {"name": "Sally Buselt Elementary School", "level": "Elementary", "address": "29810 Wickerd Rd., Menifee, CA 92584", "lat": 33.64976, "lon": -117.13988},
+    {"name": "Southshore Elementary School", "level": "Elementary", "address": "30975 Southshore Dr., Menifee, CA 92584", "lat": 33.67130, "lon": -117.14610},
+    {"name": "Táawila Elementary School", "level": "Elementary", "address": "30344 Stage Coach Rd., Menifee, CA 92586", "lat": 33.68018, "lon": -117.21427},
+    {"name": "Bell Mountain Middle School", "level": "Middle School", "address": "28525 La Piedra Rd., Menifee, CA 92584", "lat": 33.67550, "lon": -117.16250},
+    {"name": "Hans Christensen Middle School / Academy", "level": "Middle School", "address": "27625 Sherman Rd., Menifee, CA 92585", "lat": 33.71950, "lon": -117.18203},
+    {"name": "Kathryn Newport Middle School", "level": "Middle School", "address": "29792 Audie Murphy Rd., Menifee, CA 92587", "lat": 33.68895, "lon": -117.22482},
+    {"name": "Menifee Valley Middle School", "level": "Middle School", "address": "26255 Garbani Rd., Menifee, CA 92584", "lat": 33.655388, "lon": -117.202917}
+  ],
   "stations": {
     "nws": [
       {"id": "KF70", "name": "French Valley Airport", "lat": 33.5742, "lon": -117.1285, "type": "Government / aviation", "priority": 1},
