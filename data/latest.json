@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-14T07:52:50.870731Z",
+  "generated_at": "2026-08-14T09:14:38.801404Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -39,10 +39,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 71.555887821832,
+    "max_heat_index_f": 70.760306931791,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 4.6080873360000005,
+    "max_wind_gust_mph": 3.4448808239999997,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
@@ -58,7 +58,7 @@
       "network": "California DWR CIMIS",
       "lat": 33.676,
       "lon": -117.047,
-      "observed_at": "2026-08-14T08:00:00Z",
+      "observed_at": "2026-08-15T08:00:00Z",
       "age_minutes": 0.0,
       "stale": false,
       "condition": "Hourly CIMIS station observation",
@@ -82,7 +82,7 @@
       "network": "California DWR CIMIS",
       "lat": 33.7595,
       "lon": -117.181,
-      "observed_at": "2026-08-14T08:00:00Z",
+      "observed_at": "2026-08-15T08:00:00Z",
       "age_minutes": 0.0,
       "stale": false,
       "condition": "Hourly CIMIS station observation",
@@ -106,7 +106,7 @@
       "network": "California DWR CIMIS",
       "lat": 33.5,
       "lon": -117.145,
-      "observed_at": "2026-08-14T08:00:00Z",
+      "observed_at": "2026-08-15T08:00:00Z",
       "age_minutes": 0.0,
       "stale": false,
       "condition": "Hourly CIMIS station observation",
@@ -130,7 +130,7 @@
       "network": "California DWR CIMIS",
       "lat": 33.525,
       "lon": -117.035,
-      "observed_at": "2026-08-14T08:00:00Z",
+      "observed_at": "2026-08-15T08:00:00Z",
       "age_minutes": 0.0,
       "stale": false,
       "condition": "Hourly CIMIS station observation",
@@ -154,7 +154,7 @@
       "network": "California DWR CIMIS",
       "lat": 33.7,
       "lon": -117.086,
-      "observed_at": "2026-08-14T08:00:00Z",
+      "observed_at": "2026-08-15T08:00:00Z",
       "age_minutes": 0.0,
       "stale": false,
       "condition": "Hourly CIMIS station observation",
@@ -178,17 +178,17 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-14T06:55:00+00:00",
-      "age_minutes": 57.80631051666667,
+      "observed_at": "2026-08-14T07:55:00+00:00",
+      "age_minutes": 79.60883361666667,
       "stale": false,
       "condition": "Mostly Cloudy",
-      "temperature_f": 71.42,
-      "dewpoint_f": 61.16,
-      "relative_humidity_pct": 70.082719613456,
-      "heat_index_f": 71.555887821832,
+      "temperature_f": 70.7,
+      "dewpoint_f": 60.440000000000005,
+      "relative_humidity_pct": 70.006530463646,
+      "heat_index_f": 70.760306931791,
       "wind_chill_f": null,
-      "wind_direction_deg": 290.0,
-      "wind_speed_mph": 4.6080873360000005,
+      "wind_direction_deg": 330.0,
+      "wind_speed_mph": 3.4448808239999997,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
       "pressure_inhg": 29.959998612446,
@@ -203,7 +203,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 5017.802412166667,
+      "age_minutes": 5099.604265516667,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -232,28 +232,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-14T00:00:00-07:00",
-        "end_time": "2026-08-14T01:00:00-07:00",
-        "temperature_f": 67,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 85.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-14T01:00:00-07:00",
-        "end_time": "2026-08-14T02:00:00-07:00",
-        "temperature_f": 66,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 86.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SE",
-        "short_forecast": "Mostly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-14T02:00:00-07:00",
         "end_time": "2026-08-14T03:00:00-07:00",
@@ -495,6 +473,28 @@
         "wind_direction": "SE",
         "short_forecast": "Partly Cloudy",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-15T00:00:00-07:00",
+        "end_time": "2026-08-15T01:00:00-07:00",
+        "temperature_f": 65,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 87.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SE",
+        "short_forecast": "Partly Cloudy",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-15T01:00:00-07:00",
+        "end_time": "2026-08-15T02:00:00-07:00",
+        "temperature_f": 64,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 90.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Partly Cloudy",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -536,6 +536,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"13bd1a14\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"53dbb51\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
   ]
 }
