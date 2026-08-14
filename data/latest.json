@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-14T21:32:58.546964Z",
+  "generated_at": "2026-08-14T22:01:12.819564Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -185,7 +185,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-14T20:55:00+00:00",
-      "age_minutes": 37.66888605,
+      "age_minutes": 65.90991601666666,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 89.06,
@@ -209,7 +209,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 5837.660123933334,
+      "age_minutes": 5865.829093716667,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -542,7 +542,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"13ab7611\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "EPA AirNow ZIP fallback: HTTP 502 \u2014 <html> <head><title>502 Bad Gateway</title></head> <body> <center><h1>502 Bad Gateway</h1></center> </body> </html>"
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"13e28546\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
