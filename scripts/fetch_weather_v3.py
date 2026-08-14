@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Final weather fetch wrapper with corrected CIMIS record selection."""
+"""Final weather fetch wrapper with corrected CIMIS and NWS availability handling."""
 from __future__ import annotations
 
 import json
@@ -170,16 +170,40 @@ def improve_coverage() -> None:
     nws = [s for s in stations if s.get("network") == "NWS / aviation"]
     nws_current = [s for s in nws if not s.get("stale")]
     nws_stale = [s for s in nws if s.get("stale")]
+    total_nws = len(base.CONFIG["stations"]["nws"])
+    nws_unavailable = max(0, total_nws - len(nws_current) - len(nws_stale))
+
     cimis = [s for s in stations if s.get("network") == "California DWR CIMIS"]
     cimis_current = [s for s in cimis if not s.get("stale")]
 
+    # KHMT remains listed by NWS on forecast.weather.gov, but its API latest-
+    # observation endpoint currently returns HTTP 404. Treat that as station
+    # availability information rather than a dashboard-wide feed failure.
+    data["errors"] = [
+        message for message in data.get("errors", [])
+        if not (
+            message.startswith("NWS station KHMT: HTTP 404")
+            or (
+                "NWS station KHMT" in message
+                and '"status": 404' in message
+            )
+        )
+    ]
+
     for item in data.get("coverage", []):
         if item.get("name") == "National Weather Service stations":
-            item["status"] = "available" if nws_current else "partial"
-            item["detail"] = (
-                f"{len(nws_current)} current and {len(nws_stale)} stale of "
-                f"{len(base.CONFIG['stations']['nws'])} configured station feeds."
+            item["status"] = (
+                "available"
+                if len(nws_current) == total_nws and not nws_stale
+                else "partial"
             )
+            detail = (
+                f"{len(nws_current)} current, {len(nws_stale)} stale, and "
+                f"{nws_unavailable} unavailable of {total_nws} configured station feeds."
+            )
+            if nws_unavailable:
+                detail += " Hemet-Ryan (KHMT) is currently unavailable from the NWS observations API."
+            item["detail"] = detail
         elif item.get("name") == "California DWR CIMIS":
             item["status"] = "available" if cimis_current else "partial"
             item["detail"] = (
