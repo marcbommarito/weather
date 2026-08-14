@@ -24,6 +24,7 @@ jobs:
     env:
       AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
       CIMIS_APP_KEY: ${{ secrets.CIMIS_APP_KEY }}
+      WEATHERCOM_API_KEY: ${{ secrets.WEATHERCOM_API_KEY }}
 
     steps:
       - name: Check out repository
@@ -49,8 +50,14 @@ jobs:
             echo "::warning::CIMIS_APP_KEY is not available."
           fi
 
+          if [ -n "$WEATHERCOM_API_KEY" ]; then
+            echo "WEATHERCOM_API_KEY is available for unofficial PWS observations."
+          else
+            echo "::notice::WEATHERCOM_API_KEY is not configured; unofficial PWS readings will be shown as unavailable."
+          fi
+
       - name: Fetch current weather data
-        run: python scripts/fetch_weather_v3.py
+        run: python scripts/fetch_weather_v4.py
 
       - name: Verify dashboard data
         run: |
@@ -66,6 +73,7 @@ jobs:
           print("Generated:", data.get("generated_at"))
           print("Alerts:", len(data.get("alerts", [])))
           print("AQI:", data.get("summary", {}).get("aqi"))
+          print("Unofficial PWS:", data.get("unofficial_status"))
           print("Feed messages:", data.get("errors", []))
           print("Station status:")
           for station in data.get("stations", []):
