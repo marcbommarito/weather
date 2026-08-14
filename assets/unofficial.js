@@ -29,7 +29,7 @@
 
     if (!rows.length) {
       const note = status.note || 'No live unofficial personal-station observations are connected.';
-      target.innerHTML = `<div class="no-data"><strong>No live unofficial readings available.</strong><br>${escapeHtmlLocal(note)}</div>`;
+      target.innerHTML = `<div class="panel"><div class="no-data"><strong>No live unofficial readings available.</strong><br>${escapeHtmlLocal(note)}</div></div>`;
       return;
     }
 
