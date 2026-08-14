@@ -123,6 +123,18 @@
       <div id="forecastStrip" class="forecast-strip"></div>
     </section>
 
+    <section aria-labelledby="unofficialHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Supplemental local observations</p>
+          <h2 id="unofficialHeading">Latest unofficial station observations</h2>
+        </div>
+      </div>
+      <div id="unofficialStationContent" aria-live="polite">
+        <div class="no-data">Loading unofficial station observations…</div>
+      </div>
+    </section>
+
     <section id="thresholds" aria-labelledby="thresholdsHeading">
       <div class="section-heading">
         <div>
@@ -157,5 +169,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
   <script src="assets/app.js" defer></script>
   <script src="assets/schools.js" defer></script>
+  <script src="assets/unofficial.js" defer></script>
 </body>
 </html>
