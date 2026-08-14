@@ -15,22 +15,32 @@
     const style = document.createElement('style');
     style.id = 'musd-school-map-styles';
     style.textContent = `
-      .musd-school-div-icon {
+      .musd-school-div-icon,
+      .musd-office-div-icon {
         background: transparent !important;
         border: 0 !important;
       }
-      .musd-school-icon {
+      .musd-school-icon,
+      .musd-office-icon {
         display: grid;
         place-items: center;
-        width: 28px;
-        height: 28px;
         border: 2px solid #fff;
         border-radius: 50%;
-        background: #17365d;
         box-shadow: 0 1px 5px rgba(0,0,0,.42);
-        font-size: 16px;
         line-height: 1;
+      }
+      .musd-school-icon {
+        width: 28px;
+        height: 28px;
+        background: #17365d;
+        font-size: 16px;
         transform: translate(-1px, -1px);
+      }
+      .musd-office-icon {
+        width: 32px;
+        height: 32px;
+        background: #7b1f7a;
+        font-size: 18px;
       }
       .musd-school-tooltip {
         font-weight: 800;
@@ -64,6 +74,30 @@
     if (!schools.length) return;
 
     installStyles();
+
+    const office = CONFIG.district?.office;
+    if (office && Number.isFinite(Number(office.lat)) && Number.isFinite(Number(office.lon))) {
+      const officeIcon = L.divIcon({
+        className: 'musd-office-div-icon',
+        html: '<span class="musd-office-icon" aria-hidden="true">🏛️</span>',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -18],
+        tooltipAnchor: [0, -17]
+      });
+      L.marker([office.lat, office.lon], {
+        icon: officeIcon,
+        keyboard: true,
+        riseOnHover: true,
+        zIndexOffset: 900
+      }).addTo(stationMap)
+        .bindTooltip(escapeHtml(office.name), {
+          direction: 'top',
+          opacity: 0.97,
+          className: 'musd-school-tooltip'
+        })
+        .bindPopup(`<strong>${escapeHtml(office.name)}</strong><br>${escapeHtml(office.address || '')}`);
+    }
 
     const schoolIcon = L.divIcon({
       className: 'musd-school-div-icon',
@@ -99,7 +133,7 @@
     const legend = L.control({position: 'bottomleft'});
     legend.onAdd = () => {
       const div = L.DomUtil.create('div', 'musd-school-legend');
-      div.innerHTML = '<strong>Campuses</strong><br>🏫 MUSD school';
+      div.innerHTML = '<strong>Campuses</strong><br>🏛️ District office<br>🏫 MUSD school';
       L.DomEvent.disableClickPropagation(div);
       return div;
     };
