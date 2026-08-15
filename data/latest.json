@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-14T23:41:01.156774Z",
+  "generated_at": "2026-08-15T00:01:48.979579Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -51,7 +51,7 @@
     "max_wind_gust_mph": 12.661055496000001,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
-    "max_precip_probability_pct": 3.0,
+    "max_precip_probability_pct": 0.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
     "alert_level": 0
@@ -185,9 +185,9 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-14T22:55:00+00:00",
-      "age_minutes": 45.98292731666666,
+      "age_minutes": 66.72122218333332,
       "stale": false,
-      "condition": "",
+      "condition": "Clear",
       "temperature_f": 89.06,
       "dewpoint_f": 60.8,
       "relative_humidity_pct": 38.869141067105,
@@ -209,7 +209,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 5965.9775063,
+      "age_minutes": 5986.680766433333,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -223,7 +223,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -238,17 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-14T16:00:00-07:00",
-        "end_time": "2026-08-14T17:00:00-07:00",
-        "temperature_f": 88,
-        "precip_probability_pct": 3.0,
-        "relative_humidity_pct": 43.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-14T17:00:00-07:00",
         "end_time": "2026-08-14T18:00:00-07:00",
@@ -501,6 +490,17 @@
         "wind_direction": "S",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-15T16:00:00-07:00",
+        "end_time": "2026-08-15T17:00:00-07:00",
+        "temperature_f": 91,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 38.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -542,6 +542,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"28fdbef5\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"4480a151\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
