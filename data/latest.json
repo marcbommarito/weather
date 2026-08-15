@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-15T20:33:53.643747Z",
+  "generated_at": "2026-08-15T21:01:33.615942Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,23 +20,24 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 1,
-    "name": "Caution",
-    "label": "Monitor and add precautions",
-    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+    "level": 2,
+    "name": "Modify",
+    "label": "Modify outdoor activities",
+    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 1 \u2014 Yellow / Minor."
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate."
     ],
     "recommended_actions": [
-      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
-      "Confirm conditions at affected school sites and document the decision source and time."
+      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+      "Confirm conditions at affected school sites and document the decision source and time.",
+      "Notify principals, PE staff, coaches and supervisors of required modifications."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -185,7 +186,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-15T19:55:00+00:00",
-      "age_minutes": 38.81869221666667,
+      "age_minutes": 66.48815473333333,
       "stale": false,
       "condition": "Mostly Clear",
       "temperature_f": 86.9,
@@ -209,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 7218.81363075,
+      "age_minutes": 7246.480287233334,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -238,17 +239,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-15T13:00:00-07:00",
-        "end_time": "2026-08-15T14:00:00-07:00",
-        "temperature_f": 90,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 35.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-15T14:00:00-07:00",
         "end_time": "2026-08-15T15:00:00-07:00",
@@ -501,6 +491,17 @@
         "wind_direction": "",
         "short_forecast": "Mostly Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T13:00:00-07:00",
+        "end_time": "2026-08-16T14:00:00-07:00",
+        "temperature_f": 92,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 29.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "W",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -542,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"3083a7d7\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"11e16f05\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
