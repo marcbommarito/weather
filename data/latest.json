@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-15T13:36:26.815574Z",
+  "generated_at": "2026-08-15T14:01:22.788295Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -185,7 +185,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-15T12:55:00+00:00",
-      "age_minutes": 41.398735699999996,
+      "age_minutes": 66.30540331666667,
       "stale": false,
       "condition": "Mostly Cloudy",
       "temperature_f": 63.68,
@@ -209,7 +209,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 6801.393782816666,
+      "age_minutes": 6826.2907277,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -223,7 +223,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -238,17 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-15T06:00:00-07:00",
-        "end_time": "2026-08-15T07:00:00-07:00",
-        "temperature_f": 65,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 89.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Patchy Fog",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-15T07:00:00-07:00",
         "end_time": "2026-08-15T08:00:00-07:00",
@@ -501,6 +490,17 @@
         "wind_direction": "",
         "short_forecast": "Patchy Fog",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T06:00:00-07:00",
+        "end_time": "2026-08-16T07:00:00-07:00",
+        "temperature_f": 64,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 91.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Patchy Fog",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -542,6 +542,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"268da6b9\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"1a1c1a63\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
