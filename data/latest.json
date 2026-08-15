@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-15T09:04:10.859276Z",
+  "generated_at": "2026-08-15T09:43:11.421899Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,7 +46,7 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 67.1,
+    "max_heat_index_f": 65.84,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
@@ -185,13 +185,13 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-15T07:55:00+00:00",
-      "age_minutes": 69.13560483333335,
+      "observed_at": "2026-08-15T08:55:00+00:00",
+      "age_minutes": 48.15105193333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 67.1,
-      "dewpoint_f": 59.9,
-      "relative_humidity_pct": 77.690938408121,
+      "temperature_f": 65.84,
+      "dewpoint_f": 59.540000000000006,
+      "relative_humidity_pct": 80.120409843773,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
@@ -200,7 +200,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 30.0408517059,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 150755Z AUTO 00000KT 10SM CLR 20/16 A3004 RMK AO2 SLP158 T01950155 403240180",
+      "raw_message": "KRIV 150855Z AUTO 00000KT 10SM CLR 19/15 A3004 RMK AO2 SLP158 T01880153 50001",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 6529.130528533334,
+      "age_minutes": 6568.149560983334,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -543,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"512ff5b2\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"ece17e5\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
   ]
 }
