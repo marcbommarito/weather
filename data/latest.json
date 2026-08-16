@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-16T03:07:59.449381Z",
+  "generated_at": "2026-08-16T04:01:56.814711Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,10 +46,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 82.414801575734,
+    "max_heat_index_f": 78.87290165353599,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 11.408371559999999,
+    "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
@@ -185,22 +185,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-16T01:55:00+00:00",
-      "age_minutes": 72.94010643333333,
+      "observed_at": "2026-08-16T02:55:00+00:00",
+      "age_minutes": 66.90123766666666,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 82.94,
-      "dewpoint_f": 56.84,
-      "relative_humidity_pct": 41.014371357096,
-      "heat_index_f": 82.414801575734,
+      "temperature_f": 78.98,
+      "dewpoint_f": 58.1,
+      "relative_humidity_pct": 48.827694756086,
+      "heat_index_f": 78.87290165353599,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 11.408371559999999,
+      "wind_direction_deg": 310.0,
+      "wind_speed_mph": 8.05296816,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.0113217229,
+      "pressure_inhg": 30.0290397127,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 160155Z AUTO 30010KT 10SM CLR 28/14 A3001 RMK AO2 SLP150 T02830138",
+      "raw_message": "KRIV 160255Z AUTO 31007KT 10SM CLR 26/15 A3003 RMK AO2 SLP157 T02610145 53005",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 7612.935710766667,
+      "age_minutes": 7666.8991231499995,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -239,17 +239,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-15T20:00:00-07:00",
-        "end_time": "2026-08-15T21:00:00-07:00",
-        "temperature_f": 76,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 65.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Mostly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-15T21:00:00-07:00",
         "end_time": "2026-08-15T22:00:00-07:00",
@@ -502,6 +491,17 @@
         "wind_direction": "S",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T20:00:00-07:00",
+        "end_time": "2026-08-16T21:00:00-07:00",
+        "temperature_f": 78,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 55.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -543,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"225fc688\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"13fc1f17\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
