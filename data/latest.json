@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-16T19:36:48.961225Z",
+  "generated_at": "2026-08-16T19:57:48.518210Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -185,7 +185,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-16T18:55:00+00:00",
-      "age_minutes": 41.7799961,
+      "age_minutes": 62.76339551666667,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 86.9,
@@ -209,7 +209,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 8601.777448666668,
+      "age_minutes": 8622.758331266667,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -223,7 +223,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -542,6 +542,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"2336563a\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"ff06bb80\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
