@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-16T11:36:46.824513Z",
+  "generated_at": "2026-08-16T11:59:14.101055Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,12 +46,12 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": null,
-    "max_heat_index_station": null,
-    "heat_index_level": null,
-    "max_wind_gust_mph": null,
-    "max_wind_gust_station": null,
-    "wind_level": null,
+    "max_heat_index_f": 65.84,
+    "max_heat_index_station": "March Air Reserve Base",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 4.6080873360000005,
+    "max_wind_gust_station": "March Air Reserve Base",
+    "wind_level": 0,
     "max_precip_probability_pct": 1.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
@@ -186,19 +186,19 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-16T10:55:00+00:00",
-      "age_minutes": 41.7464532,
+      "age_minutes": 64.19721238333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": null,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
+      "temperature_f": 65.84,
+      "dewpoint_f": 59.18,
+      "relative_humidity_pct": 79.097714094747,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 350.0,
+      "wind_speed_mph": 4.6080873360000005,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": null,
+      "pressure_inhg": 30.069997799120998,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 8121.742487866666,
+      "age_minutes": 8144.192691483333,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -224,7 +224,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -543,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"237e0952\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"35284c35\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
