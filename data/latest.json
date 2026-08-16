@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-16T20:33:27.183466Z",
+  "generated_at": "2026-08-16T21:00:49.941573Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -24,7 +24,7 @@
     "name": "Modify",
     "label": "Modify outdoor activities",
     "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
-    "data_status": "Partial \u2014 verify missing feeds",
+    "data_status": "Operational",
     "reasons": [
       "NWS HeatRisk is 2 \u2014 Orange / Moderate."
     ],
@@ -46,14 +46,14 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": null,
-    "max_heat_index_station": null,
-    "heat_index_level": null,
-    "max_wind_gust_mph": null,
-    "max_wind_gust_station": null,
-    "wind_level": null,
-    "max_precip_probability_pct": null,
-    "precip_level": null,
+    "max_heat_index_f": 87.446880675252,
+    "max_heat_index_station": "March Air Reserve Base",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 11.497848984,
+    "max_wind_gust_station": "March Air Reserve Base",
+    "wind_level": 0,
+    "max_precip_probability_pct": 1.0,
+    "precip_level": 0,
     "thunderstorm_possible": false,
     "alert_level": 0
   },
@@ -186,19 +186,19 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-16T19:55:00+00:00",
-      "age_minutes": 37.96366591666666,
+      "age_minutes": 65.56375491666667,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": null,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
-      "heat_index_f": null,
+      "temperature_f": 89.24,
+      "dewpoint_f": 55.4,
+      "relative_humidity_pct": 31.841564450637,
+      "heat_index_f": 87.446880675252,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 320.0,
+      "wind_speed_mph": 11.497848984,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": null,
+      "pressure_inhg": 30.040001242389597,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 8657.95998435,
+      "age_minutes": 8685.5272276,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -224,7 +224,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -238,7 +238,272 @@
       "time_zone": "America/Los_Angeles",
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
-    "hourly": []
+    "hourly": [
+      {
+        "start_time": "2026-08-16T14:00:00-07:00",
+        "end_time": "2026-08-16T15:00:00-07:00",
+        "temperature_f": 93,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 32.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T15:00:00-07:00",
+        "end_time": "2026-08-16T16:00:00-07:00",
+        "temperature_f": 95,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 33.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T16:00:00-07:00",
+        "end_time": "2026-08-16T17:00:00-07:00",
+        "temperature_f": 93,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 34.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T17:00:00-07:00",
+        "end_time": "2026-08-16T18:00:00-07:00",
+        "temperature_f": 92,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 36.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T18:00:00-07:00",
+        "end_time": "2026-08-16T19:00:00-07:00",
+        "temperature_f": 90,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 38.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T19:00:00-07:00",
+        "end_time": "2026-08-16T20:00:00-07:00",
+        "temperature_f": 84,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 46.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T20:00:00-07:00",
+        "end_time": "2026-08-16T21:00:00-07:00",
+        "temperature_f": 78,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 54.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T21:00:00-07:00",
+        "end_time": "2026-08-16T22:00:00-07:00",
+        "temperature_f": 75,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 60.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SE",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T22:00:00-07:00",
+        "end_time": "2026-08-16T23:00:00-07:00",
+        "temperature_f": 73,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 64.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SE",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-16T23:00:00-07:00",
+        "end_time": "2026-08-17T00:00:00-07:00",
+        "temperature_f": 72,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 67.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T00:00:00-07:00",
+        "end_time": "2026-08-17T01:00:00-07:00",
+        "temperature_f": 71,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 69.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T01:00:00-07:00",
+        "end_time": "2026-08-17T02:00:00-07:00",
+        "temperature_f": 69,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 72.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T02:00:00-07:00",
+        "end_time": "2026-08-17T03:00:00-07:00",
+        "temperature_f": 68,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 75.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T03:00:00-07:00",
+        "end_time": "2026-08-17T04:00:00-07:00",
+        "temperature_f": 67,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 78.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T04:00:00-07:00",
+        "end_time": "2026-08-17T05:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 79.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T05:00:00-07:00",
+        "end_time": "2026-08-17T06:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 80.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T06:00:00-07:00",
+        "end_time": "2026-08-17T07:00:00-07:00",
+        "temperature_f": 65,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 79.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T07:00:00-07:00",
+        "end_time": "2026-08-17T08:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 78.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T08:00:00-07:00",
+        "end_time": "2026-08-17T09:00:00-07:00",
+        "temperature_f": 70,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 70.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "N",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T09:00:00-07:00",
+        "end_time": "2026-08-17T10:00:00-07:00",
+        "temperature_f": 74,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 59.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T10:00:00-07:00",
+        "end_time": "2026-08-17T11:00:00-07:00",
+        "temperature_f": 81,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 45.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T11:00:00-07:00",
+        "end_time": "2026-08-17T12:00:00-07:00",
+        "temperature_f": 86,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 36.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T12:00:00-07:00",
+        "end_time": "2026-08-17T13:00:00-07:00",
+        "temperature_f": 91,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 28.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-17T13:00:00-07:00",
+        "end_time": "2026-08-17T14:00:00-07:00",
+        "temperature_f": 94,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 26.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      }
+    ]
   },
   "coverage": [
     {
@@ -248,8 +513,8 @@
     },
     {
       "name": "NWS point alerts and hourly forecast",
-      "status": "unavailable",
-      "detail": "0 active alert(s); 0 forecast hour(s) loaded."
+      "status": "available",
+      "detail": "0 active alert(s); 24 forecast hour(s) loaded."
     },
     {
       "name": "NWS HeatRisk",
@@ -278,7 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"1afc0f59\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS hourly forecast: HTTP 503 \u2014 { \"correlationId\": \"1afc10a0\", \"title\": \"Service Unavailable\", \"type\": \"https://api.weather.gov/problems/ServiceUnavailable\", \"status\": 503, \"detail\": \"An upstream data source is t..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"3e42dc4c\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
