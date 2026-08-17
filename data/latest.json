@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-17T10:44:27.138567Z",
+  "generated_at": "2026-08-17T11:11:37.441429Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -186,9 +186,9 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-17T09:55:00+00:00",
-      "age_minutes": 49.4103177,
+      "age_minutes": 76.58459901666667,
       "stale": false,
-      "condition": "Clear",
+      "condition": "",
       "temperature_f": 69.44,
       "dewpoint_f": 51.620000000000005,
       "relative_humidity_pct": 53.102225910113,
@@ -200,7 +200,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 30.0201807178,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 170955Z AUTO 31003KT 10SM CLR 21/11 A3002 RMK AO2 SLP149 T02080109",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 9509.408637866667,
+      "age_minutes": 9536.580392816666,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -224,7 +224,7 @@
       "visibility_miles": null,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "RJOK 102000Z AUTO 01008KT 9999 N",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     }
   ],
@@ -239,28 +239,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-17T02:00:00-07:00",
-        "end_time": "2026-08-17T03:00:00-07:00",
-        "temperature_f": 69,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 74.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-17T03:00:00-07:00",
-        "end_time": "2026-08-17T04:00:00-07:00",
-        "temperature_f": 67,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 77.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-17T04:00:00-07:00",
         "end_time": "2026-08-17T05:00:00-07:00",
@@ -502,6 +480,28 @@
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T02:00:00-07:00",
+        "end_time": "2026-08-18T03:00:00-07:00",
+        "temperature_f": 70,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 69.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T03:00:00-07:00",
+        "end_time": "2026-08-18T04:00:00-07:00",
+        "temperature_f": 69,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 71.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -543,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"7792864\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"38b6a340\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
