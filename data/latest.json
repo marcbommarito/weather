@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-17T23:05:42.580012Z",
+  "generated_at": "2026-08-17T23:39:53.370257Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,10 +46,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 93.94067477698101,
+    "max_heat_index_f": 98.78,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 12.661055496000001,
+    "max_wind_gust_mph": 12.75053292,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
@@ -185,22 +185,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-17T21:55:00+00:00",
-      "age_minutes": 70.66128438333334,
+      "observed_at": "2026-08-17T22:55:00+00:00",
+      "age_minutes": 44.85502268333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 98.24,
-      "dewpoint_f": 42.620000000000005,
-      "relative_humidity_pct": 14.956385343036,
-      "heat_index_f": 93.94067477698101,
+      "temperature_f": 98.78,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 320.0,
-      "wind_speed_mph": 12.661055496000001,
+      "wind_direction_deg": 330.0,
+      "wind_speed_mph": 12.75053292,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.9499997602022,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 172255Z AUTO 33011KT 10SM CLR 37/05 A2992 RMK AO2 SLP115 T03710051",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -215,17 +215,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-17T15:00:00-07:00",
-        "end_time": "2026-08-17T16:00:00-07:00",
-        "temperature_f": 98,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 25.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-17T16:00:00-07:00",
         "end_time": "2026-08-17T17:00:00-07:00",
@@ -478,6 +467,17 @@
         "wind_direction": "S",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T15:00:00-07:00",
+        "end_time": "2026-08-18T16:00:00-07:00",
+        "temperature_f": 99,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 25.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -519,7 +519,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"1ed318be\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"411fd6e4\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 500 \u2014 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title>...",
+    "NWS station KHMT: HTTP 500 \u2014 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title>..."
   ]
 }
