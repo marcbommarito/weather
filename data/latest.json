@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-17T22:43:54.131390Z",
+  "generated_at": "2026-08-17T23:05:42.580012Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,7 +46,7 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 98.24,
+    "max_heat_index_f": 93.94067477698101,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
     "max_wind_gust_mph": 12.661055496000001,
@@ -186,13 +186,13 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-17T21:55:00+00:00",
-      "age_minutes": 48.85491531666666,
+      "age_minutes": 70.66128438333334,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 98.24,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
-      "heat_index_f": null,
+      "dewpoint_f": 42.620000000000005,
+      "relative_humidity_pct": 14.956385343036,
+      "heat_index_f": 93.94067477698101,
       "wind_chill_f": null,
       "wind_direction_deg": 320.0,
       "wind_speed_mph": 12.661055496000001,
@@ -519,7 +519,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"40fdbc38\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"1ec584d8\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"1ed318be\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"411fd6e4\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
