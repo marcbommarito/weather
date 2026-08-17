@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-17T18:14:30.038001Z",
+  "generated_at": "2026-08-17T19:03:19.956219Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -52,7 +52,7 @@
     "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
-    "max_precip_probability_pct": 1.0,
+    "max_precip_probability_pct": 2.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
     "alert_level": 0
@@ -186,7 +186,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-17T17:55:00+00:00",
-      "age_minutes": 19.467040666666666,
+      "age_minutes": 68.24451008333332,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 89.41999999999999,
@@ -210,7 +210,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-10T20:15:00+00:00",
-      "age_minutes": 9959.462944666668,
+      "age_minutes": 10008.214042966667,
       "stale": true,
       "condition": "",
       "temperature_f": null,
@@ -239,17 +239,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-17T11:00:00-07:00",
-        "end_time": "2026-08-17T12:00:00-07:00",
-        "temperature_f": 87,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 34.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-17T12:00:00-07:00",
         "end_time": "2026-08-17T13:00:00-07:00",
@@ -502,6 +491,17 @@
         "wind_direction": "",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T11:00:00-07:00",
+        "end_time": "2026-08-18T12:00:00-07:00",
+        "temperature_f": 89,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 32.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -543,6 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"98459c0b\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"ab0065db\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
