@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T21:03:51.605108Z",
+  "generated_at": "2026-08-18T21:41:17.895020Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -47,10 +47,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 95.53999999999999,
+    "max_heat_index_f": 97.34,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 6.912131004000001,
+    "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
@@ -205,22 +205,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-18T19:55:00+00:00",
-      "age_minutes": 68.81281396666667,
+      "observed_at": "2026-08-18T20:55:00+00:00",
+      "age_minutes": 46.26175813333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 95.53999999999999,
+      "temperature_f": 97.34,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 300.0,
-      "wind_speed_mph": 6.912131004000001,
+      "wind_speed_mph": 8.05296816,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.9499997602022,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9404497637,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 182055Z AUTO 30007KT 10SM CLR 36/06 A2994 RMK AO2 SLP121 T03630055 57016",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -235,17 +235,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-18T13:00:00-07:00",
-        "end_time": "2026-08-18T14:00:00-07:00",
-        "temperature_f": 97,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 20.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Mostly Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-18T14:00:00-07:00",
         "end_time": "2026-08-18T15:00:00-07:00",
@@ -498,6 +487,17 @@
         "wind_direction": "SW",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-19T13:00:00-07:00",
+        "end_time": "2026-08-19T14:00:00-07:00",
+        "temperature_f": 100,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 19.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -539,7 +539,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"3d0a37ce\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"49ad0115\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"b2c12ed6\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"a3821c31\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
