@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T05:36:11.099098Z",
+  "generated_at": "2026-08-18T06:04:10.908777Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -186,7 +186,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-18T04:55:00+00:00",
-      "age_minutes": 41.14280566666666,
+      "age_minutes": 69.14355303333333,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 78.25999999999999,
@@ -215,17 +215,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-17T22:00:00-07:00",
-        "end_time": "2026-08-17T23:00:00-07:00",
-        "temperature_f": 75,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 54.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-17T23:00:00-07:00",
         "end_time": "2026-08-18T00:00:00-07:00",
@@ -478,6 +467,17 @@
         "wind_direction": "S",
         "short_forecast": "Partly Cloudy",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T22:00:00-07:00",
+        "end_time": "2026-08-18T23:00:00-07:00",
+        "temperature_f": 76,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 56.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Partly Cloudy",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -519,7 +519,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"4ae4cff5\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"9652a61f\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"354c6361\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"bb0be350\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
