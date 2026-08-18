@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T22:00:39.136001Z",
+  "generated_at": "2026-08-18T22:43:45.959014Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -47,10 +47,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 94.42548999530001,
+    "max_heat_index_f": 95.32697081296,
     "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 1,
-    "max_wind_gust_mph": 8.05296816,
+    "max_wind_gust_mph": 9.17143596,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
@@ -205,22 +205,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-18T21:35:00+00:00",
-      "age_minutes": 25.57953738333333,
+      "observed_at": "2026-08-18T21:55:00+00:00",
+      "age_minutes": 48.727609066666666,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 95.9,
-      "dewpoint_f": 56.120000000000005,
-      "relative_humidity_pct": 26.571380898938,
-      "heat_index_f": 94.42548999530001,
+      "temperature_f": 96.44,
+      "dewpoint_f": 57.02,
+      "relative_humidity_pct": 26.998861759017,
+      "heat_index_f": 95.32697081296,
       "wind_chill_f": null,
       "wind_direction_deg": 220.0,
-      "wind_speed_mph": 8.05296816,
+      "wind_speed_mph": 9.17143596,
       "wind_gust_mph": null,
-      "visibility_miles": 8.997454863596596,
-      "pressure_inhg": 29.969979746699998,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9611207518,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 182135Z AUTO 22007KT 9SM CLR 35/13 A2997 RMK AO2 T03550134 TSNO",
+      "raw_message": "KF70 182155Z AUTO 22008KT 190V250 10SM CLR 36/14 A2996 RMK AO2 T03580139 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -229,22 +229,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-18T20:55:00+00:00",
-      "age_minutes": 65.59936531666666,
+      "observed_at": "2026-08-18T21:55:00+00:00",
+      "age_minutes": 48.73278558333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 97.34,
+      "temperature_f": 98.41999999999999,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 8.05296816,
+      "wind_direction_deg": 340.0,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9404497637,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 182055Z AUTO 30007KT 10SM CLR 36/06 A2994 RMK AO2 SLP121 T03630055 57016",
+      "raw_message": "KRIV 182155Z AUTO 34005KT 10SM CLR 37/06 A2992 RMK AO2 SLP114 T03690060",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -563,6 +563,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"3d8a17ff\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"edc762d\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/..."
   ]
 }
