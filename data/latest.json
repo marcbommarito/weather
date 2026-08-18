@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T07:07:08.556085Z",
+  "generated_at": "2026-08-18T07:56:00.531272Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,10 +46,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 75.152472465127,
+    "max_heat_index_f": 73.568419017485,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 4.69756476,
+    "max_wind_gust_mph": 3.3554034,
     "max_wind_gust_station": "March Air Reserve Base",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
@@ -185,22 +185,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-18T05:55:00+00:00",
-      "age_minutes": 72.10341346666668,
+      "observed_at": "2026-08-18T06:55:00+00:00",
+      "age_minutes": 60.97602078333333,
       "stale": false,
-      "condition": "",
-      "temperature_f": 76.28,
-      "dewpoint_f": 44.96,
-      "relative_humidity_pct": 32.861116279291,
-      "heat_index_f": 75.152472465127,
+      "condition": "Clear",
+      "temperature_f": 74.84,
+      "dewpoint_f": 43.7,
+      "relative_humidity_pct": 32.859979095415,
+      "heat_index_f": 73.568419017485,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 4.69756476,
+      "wind_direction_deg": 280.0,
+      "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.969979746699998,
+      "pressure_inhg": 29.9788387416,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 180555Z AUTO 30004KT 10SM CLR 25/07 A2997 RMK AO2 SLP131 T02460072 10356 20236 51015",
+      "raw_message": "KRIV 180655Z AUTO 28003KT 10SM CLR 24/07 A2998 RMK AO2 SLP135 T02380065",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -519,7 +519,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"973db712\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"a4a98237\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"97b6c047\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"32619c\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/r..."
   ]
 }
