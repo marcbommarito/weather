@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T21:41:17.895020Z",
+  "generated_at": "2026-08-18T22:00:39.136001Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -47,11 +47,11 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 97.34,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 94.42548999530001,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 1,
     "max_wind_gust_mph": 8.05296816,
-    "max_wind_gust_station": "March Air Reserve Base",
+    "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
     "precip_level": 0,
@@ -200,13 +200,37 @@
       "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
     },
     {
+      "id": "KF70",
+      "name": "French Valley Airport",
+      "network": "NWS / aviation",
+      "lat": 33.5742,
+      "lon": -117.1285,
+      "observed_at": "2026-08-18T21:35:00+00:00",
+      "age_minutes": 25.57953738333333,
+      "stale": false,
+      "condition": "Clear",
+      "temperature_f": 95.9,
+      "dewpoint_f": 56.120000000000005,
+      "relative_humidity_pct": 26.571380898938,
+      "heat_index_f": 94.42548999530001,
+      "wind_chill_f": null,
+      "wind_direction_deg": 220.0,
+      "wind_speed_mph": 8.05296816,
+      "wind_gust_mph": null,
+      "visibility_miles": 8.997454863596596,
+      "pressure_inhg": 29.969979746699998,
+      "precip_last_hour_in": null,
+      "raw_message": "KF70 182135Z AUTO 22007KT 9SM CLR 35/13 A2997 RMK AO2 T03550134 TSNO",
+      "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
+    },
+    {
       "id": "KRIV",
       "name": "March Air Reserve Base",
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-18T20:55:00+00:00",
-      "age_minutes": 46.26175813333334,
+      "age_minutes": 65.59936531666666,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 97.34,
@@ -505,7 +529,7 @@
     {
       "name": "National Weather Service stations",
       "status": "available",
-      "detail": "1 of 3 configured station feeds returned data."
+      "detail": "2 of 3 configured station feeds returned data."
     },
     {
       "name": "NWS point alerts and hourly forecast",
@@ -539,7 +563,6 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"b2c12ed6\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"a3821c31\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"3d8a17ff\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
