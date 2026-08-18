@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-17T23:39:53.370257Z",
+  "generated_at": "2026-08-18T00:01:00.464957Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -186,9 +186,9 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-17T22:55:00+00:00",
-      "age_minutes": 44.85502268333333,
+      "age_minutes": 65.93802931666667,
       "stale": false,
-      "condition": "Clear",
+      "condition": "",
       "temperature_f": 98.78,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
@@ -200,7 +200,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 172255Z AUTO 33011KT 10SM CLR 37/05 A2992 RMK AO2 SLP115 T03710051",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -215,17 +215,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-17T16:00:00-07:00",
-        "end_time": "2026-08-17T17:00:00-07:00",
-        "temperature_f": 98,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 25.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-17T17:00:00-07:00",
         "end_time": "2026-08-17T18:00:00-07:00",
@@ -478,6 +467,17 @@
         "wind_direction": "SW",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-18T16:00:00-07:00",
+        "end_time": "2026-08-18T17:00:00-07:00",
+        "temperature_f": 99,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 26.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -519,7 +519,7 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 500 \u2014 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title>...",
-    "NWS station KHMT: HTTP 500 \u2014 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title>..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"417cfb49\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"32fdd14f\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
   ]
 }
