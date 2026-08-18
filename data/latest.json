@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-18T16:04:20.566609Z",
+  "generated_at": "2026-08-18T16:52:24.017960Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -46,12 +46,12 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": null,
-    "max_heat_index_station": null,
-    "heat_index_level": null,
-    "max_wind_gust_mph": null,
-    "max_wind_gust_station": null,
-    "wind_level": null,
+    "max_heat_index_f": 77.043143478994,
+    "max_heat_index_station": "March Air Reserve Base",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 0.0,
+    "max_wind_gust_station": "March Air Reserve Base",
+    "wind_level": 0,
     "max_precip_probability_pct": 0.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
@@ -185,20 +185,20 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-18T14:55:00+00:00",
-      "age_minutes": 69.29539759999999,
+      "observed_at": "2026-08-18T15:55:00+00:00",
+      "age_minutes": 55.779820683333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": null,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
-      "heat_index_f": null,
+      "temperature_f": 78.08,
+      "dewpoint_f": 44.96,
+      "relative_humidity_pct": 30.960499553061,
+      "heat_index_f": 77.043143478994,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 0.0,
+      "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": null,
+      "pressure_inhg": 29.990001075174,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
@@ -215,17 +215,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-18T08:00:00-07:00",
-        "end_time": "2026-08-18T09:00:00-07:00",
-        "temperature_f": 72,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 56.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Partly Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-18T09:00:00-07:00",
         "end_time": "2026-08-18T10:00:00-07:00",
@@ -478,6 +467,17 @@
         "wind_direction": "",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-19T08:00:00-07:00",
+        "end_time": "2026-08-19T09:00:00-07:00",
+        "temperature_f": 74,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 55.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -519,7 +519,9 @@
     }
   ],
   "errors": [
-    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"47529a9c\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
-    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"47529bf9\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov..."
+    "NWS station KF70: HTTP 404 \u2014 { \"correlationId\": \"3ae5b2c8\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov...",
+    "NWS station KHMT: HTTP 404 \u2014 { \"correlationId\": \"67b6aaa\", \"title\": \"Not Found\", \"type\": \"https://api.weather.gov/problems/NotFound\", \"status\": 404, \"detail\": \"Not Found\", \"instance\": \"https://api.weather.gov/...",
+    "EPA AirNow: temporarily unavailable; request timed out after 2 attempts.",
+    "EPA AirNow ZIP fallback: HTTP 502 \u2014 <html> <head><title>502 Bad Gateway</title></head> <body> <center><h1>502 Bad Gateway</h1></center> </body> </html>"
   ]
 }
