@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-19T01:54:39.616389Z",
+  "generated_at": "2026-08-19T03:06:20.512430Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -205,22 +205,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-19T01:35:00+00:00",
-      "age_minutes": 19.602167366666666,
+      "observed_at": "2026-08-19T02:35:00+00:00",
+      "age_minutes": 30.310335966666667,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 90.14,
-      "dewpoint_f": 59.18,
-      "relative_humidity_pct": 35.46588872898,
-      "heat_index_f": 89.471477105057,
+      "temperature_f": 84.74,
+      "dewpoint_f": 60.440000000000005,
+      "relative_humidity_pct": 44.027865814419,
+      "heat_index_f": 84.800986602085,
       "wind_chill_f": null,
-      "wind_direction_deg": 200.0,
-      "wind_speed_mph": 9.17143596,
+      "wind_direction_deg": null,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
-      "visibility_miles": 8.997454863596596,
-      "pressure_inhg": 29.9197787756,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9315907688,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 190135Z AUTO 20008KT 9SM CLR 32/15 A2992 RMK AO2 T03230151 TSNO",
+      "raw_message": "KF70 190235Z AUTO VRB05KT 10SM CLR 29/16 A2993 RMK AO2 T02930158 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -230,7 +230,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-19T01:35:00+00:00",
-      "age_minutes": 19.60561415,
+      "age_minutes": 90.31278505,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 94.64,
@@ -253,22 +253,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-19T00:55:00+00:00",
-      "age_minutes": 59.60922755,
+      "observed_at": "2026-08-19T01:55:00+00:00",
+      "age_minutes": 70.31505161666668,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 96.61999999999999,
-      "dewpoint_f": 46.04,
-      "relative_humidity_pct": 17.901142632248,
-      "heat_index_f": 92.827373326654,
+      "temperature_f": 91.94,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 310.0,
-      "wind_speed_mph": 10.357011828,
+      "wind_direction_deg": 300.0,
+      "wind_speed_mph": 10.28990376,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.879998935500698,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.8813897977,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 190155Z AUTO 30009KT 10SM CLR 33/11 A2988 RMK AO2 SLP102 T03330106",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -283,28 +283,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-18T18:00:00-07:00",
-        "end_time": "2026-08-18T19:00:00-07:00",
-        "temperature_f": 94,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 28.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-18T19:00:00-07:00",
-        "end_time": "2026-08-18T20:00:00-07:00",
-        "temperature_f": 88,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 34.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SE",
-        "short_forecast": "Partly Cloudy",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-18T20:00:00-07:00",
         "end_time": "2026-08-18T21:00:00-07:00",
@@ -546,6 +524,28 @@
         "wind_direction": "S",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-19T18:00:00-07:00",
+        "end_time": "2026-08-19T19:00:00-07:00",
+        "temperature_f": 95,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 31.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-19T19:00:00-07:00",
+        "end_time": "2026-08-19T20:00:00-07:00",
+        "temperature_f": 89,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 38.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SE",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -586,5 +586,7 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": []
+  "errors": [
+    "EPA AirNow ZIP fallback: HTTP 502 \u2014 <html> <head><title>502 Bad Gateway</title></head> <body> <center><h1>502 Bad Gateway</h1></center> </body> </html>"
+  ]
 }
