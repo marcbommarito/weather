@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-21T16:13:39.791971Z",
+  "generated_at": "2026-08-21T16:55:59.879008Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -187,7 +187,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-21T15:15:00+00:00",
-      "age_minutes": 58.624114866666666,
+      "age_minutes": 100.96307976666667,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 81.32,
@@ -211,7 +211,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-21T15:35:00+00:00",
-      "age_minutes": 38.6275459,
+      "age_minutes": 80.96452085,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 82.22,
@@ -235,8 +235,8 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-21T14:55:00+00:00",
-      "age_minutes": 78.63012245,
-      "stale": false,
+      "age_minutes": 120.96602188333333,
+      "stale": true,
       "condition": "Clear",
       "temperature_f": 80.42,
       "dewpoint_f": 60.62,
@@ -264,17 +264,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-21T08:00:00-07:00",
-        "end_time": "2026-08-21T09:00:00-07:00",
-        "temperature_f": 75,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 60.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-21T09:00:00-07:00",
         "end_time": "2026-08-21T10:00:00-07:00",
@@ -523,6 +512,17 @@
         "temperature_f": 71,
         "precip_probability_pct": 0.0,
         "relative_humidity_pct": 63.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-22T08:00:00-07:00",
+        "end_time": "2026-08-22T09:00:00-07:00",
+        "temperature_f": 75,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 55.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Sunny",
