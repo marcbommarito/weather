@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-22T10:42:41.447935Z",
+  "generated_at": "2026-08-22T11:02:13.948806Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,25 +20,25 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 3,
-    "name": "Inclement",
-    "label": "Inclement weather procedures",
-    "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
+    "level": 2,
+    "name": "Modify",
+    "label": "Modify outdoor activities",
+    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 3 \u2014 Red / Major."
+      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
+      "1 active NWS alert(s); highest alert level is 2."
     ],
     "recommended_actions": [
-      "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
+      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
       "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications.",
-      "Use established staff and family communication procedures for affected activities or operations."
+      "Notify principals, PE staff, coaches and supervisors of required modifications."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 3,
-      "display": "3 \u2014 Red / Major",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -205,14 +205,14 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-22T10:15:00+00:00",
-      "age_minutes": 27.6474352,
+      "observed_at": "2026-08-22T10:35:00+00:00",
+      "age_minutes": 27.17875805,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 72.68,
-      "dewpoint_f": 59.72,
-      "relative_humidity_pct": 63.810781359346,
-      "heat_index_f": 72.647106723889,
+      "temperature_f": 72.32,
+      "dewpoint_f": 59.9,
+      "relative_humidity_pct": 65.006228611379,
+      "heat_index_f": 72.307292744735,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -220,7 +220,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 30.0113217229,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 221015Z AUTO 00000KT 10SM CLR 23/15 A3001 RMK AO2 T02260154 TSNO",
+      "raw_message": "KF70 221035Z AUTO 00000KT 10SM CLR 22/16 A3001 RMK AO2 T02240155 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -229,14 +229,14 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-22T10:15:00+00:00",
-      "age_minutes": 27.64996903333333,
+      "observed_at": "2026-08-22T10:35:00+00:00",
+      "age_minutes": 27.179627983333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 71.24000000000001,
-      "dewpoint_f": 56.84,
-      "relative_humidity_pct": 60.423549792893,
-      "heat_index_f": 70.903906840266,
+      "temperature_f": 69.08,
+      "dewpoint_f": 56.120000000000005,
+      "relative_humidity_pct": 63.369572274921,
+      "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -254,7 +254,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-22T09:55:00+00:00",
-      "age_minutes": 47.652203766666666,
+      "age_minutes": 67.1888159,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 74.3,
@@ -283,17 +283,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-22T03:00:00-07:00",
-        "end_time": "2026-08-22T04:00:00-07:00",
-        "temperature_f": 72,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 62.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-22T04:00:00-07:00",
         "end_time": "2026-08-22T05:00:00-07:00",
@@ -542,6 +531,17 @@
         "temperature_f": 73,
         "precip_probability_pct": 0.0,
         "relative_humidity_pct": 60.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-23T03:00:00-07:00",
+        "end_time": "2026-08-23T04:00:00-07:00",
+        "temperature_f": 72,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 61.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
