@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-22T09:34:26.042076Z",
+  "generated_at": "2026-08-22T10:01:10.621546Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,25 +20,25 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 2,
-    "name": "Modify",
-    "label": "Modify outdoor activities",
-    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+    "level": 3,
+    "name": "Inclement",
+    "label": "Inclement weather procedures",
+    "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 2 \u2014 Orange / Moderate.",
-      "1 active NWS alert(s); highest alert level is 2."
+      "NWS HeatRisk is 3 \u2014 Red / Major."
     ],
     "recommended_actions": [
-      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+      "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
       "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications."
+      "Notify principals, PE staff, coaches and supervisors of required modifications.",
+      "Use established staff and family communication procedures for affected activities or operations."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 3,
+      "display": "3 \u2014 Red / Major",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -60,17 +60,17 @@
   },
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.fa785ba9f0ca42de4fcfdb1f1437ee75b5a71093.002.1",
+      "id": "urn:oid:2.49.0.1.840.0.2c45e65d6ebd518e3787b29593b869f89e93e17a.002.1",
       "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 21 at 9:35PM PDT until August 24 at 8:00PM PDT by NWS San Diego CA",
-      "description": "* WHAT...Temperatures 90 to 97 for Inland Orange County, 90 to 102\nfor the San Diego County Valleys, 98 to 106 for the Inland Empire\nand 89 to 100 in the mountains.\n\n* WHERE...Orange County Inland Areas, Riverside County Mountains,\nSan Bernardino and Riverside County Valleys-The Inland Empire, San\nDiego County Mountains, San Diego County Valleys, and Santa Ana\nMountains and Foothills.\n\n* WHEN...From 10 AM Saturday to 8 PM PDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Low temperatures 5 to 10 degrees above normal\nwill limit relief from the heat. Hot weather is likely to continue\nmuch of next week.",
+      "headline": "Heat Advisory issued August 22 at 2:56AM PDT until August 24 at 8:00PM PDT by NWS San Diego CA",
+      "description": "* WHAT...Temperatures 90 to 97 for Inland Orange County, 90 to 102\nfor the San Diego County Valleys, 98 to 106 for the Inland Empire\nand 89 to 100 in the mountains.\n\n* WHERE...Orange County Inland Areas, Riverside County Mountains,\nSan Bernardino and Riverside County Valleys-The Inland Empire, San\nDiego County Mountains, San Diego County Valleys, and Santa Ana\nMountains and Foothills.\n\n* WHEN...From 10 AM this morning to 8 PM PDT Monday.\n\n* IMPACTS...Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Low temperatures 5 to 10 degrees above normal\nwill limit relief from the heat. Hot weather is likely to continue\nmuch of next week.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
       "severity": "Moderate",
       "certainty": "Likely",
       "urgency": "Expected",
-      "effective": "2026-08-21T21:35:00-07:00",
+      "effective": "2026-08-22T02:56:00-07:00",
       "onset": "2026-08-22T10:00:00-07:00",
-      "expires": "2026-08-22T06:30:00-07:00",
+      "expires": "2026-08-22T14:15:00-07:00",
       "ends": "2026-08-24T20:00:00-07:00",
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire; San Diego County Inland Valleys; Riverside County Mountains; Santa Ana Mountains and Foothills; San Diego County Mountains; Orange County Inland",
       "sender_name": "NWS San Diego CA",
@@ -205,14 +205,14 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-22T09:15:00+00:00",
-      "age_minutes": 19.38547995,
+      "observed_at": "2026-08-22T09:35:00+00:00",
+      "age_minutes": 26.113384516666667,
       "stale": false,
-      "condition": "",
-      "temperature_f": 72.86,
-      "dewpoint_f": 59.9,
-      "relative_humidity_pct": 63.832656479074,
-      "heat_index_f": 72.846134854516,
+      "condition": "Clear",
+      "temperature_f": 71.96,
+      "dewpoint_f": 59.72,
+      "relative_humidity_pct": 65.381577453227,
+      "heat_index_f": 71.928934140302,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -220,7 +220,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 30.0113217229,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KF70 220935Z AUTO 00000KT 10SM CLR 22/15 A3001 RMK AO2 T02220154 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -229,14 +229,14 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-22T09:15:00+00:00",
-      "age_minutes": 19.38704345,
+      "observed_at": "2026-08-22T09:35:00+00:00",
+      "age_minutes": 26.118816983333332,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 72.86,
+      "temperature_f": 73.58,
       "dewpoint_f": 57.379999999999995,
-      "relative_humidity_pct": 58.326613325796,
-      "heat_index_f": 72.587350826312,
+      "relative_humidity_pct": 56.930513915364,
+      "heat_index_f": 73.313734154022,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -254,7 +254,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-22T08:55:00+00:00",
-      "age_minutes": 39.38970966666667,
+      "age_minutes": 66.1206651,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 75.74000000000001,
@@ -268,7 +268,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.969979746699998,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 220855Z AUTO 00000KT 10SM CLR 24/14 A2997 RMK AO2 SLP130 T02430135 58005",
+      "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -283,17 +283,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-22T02:00:00-07:00",
-        "end_time": "2026-08-22T03:00:00-07:00",
-        "temperature_f": 73,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 60.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-22T03:00:00-07:00",
         "end_time": "2026-08-22T04:00:00-07:00",
@@ -542,6 +531,17 @@
         "temperature_f": 74,
         "precip_probability_pct": 0.0,
         "relative_humidity_pct": 58.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-23T02:00:00-07:00",
+        "end_time": "2026-08-23T03:00:00-07:00",
+        "temperature_f": 73,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 60.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
