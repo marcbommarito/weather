@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-23T13:47:24.082197Z",
+  "generated_at": "2026-08-23T14:30:44.679885Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,7 +26,6 @@
     "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 3 \u2014 Red / Major.",
       "2 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
@@ -38,8 +37,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 3,
-      "display": "3 \u2014 Red / Major",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -48,8 +47,8 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 71.78,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 69.711461497068,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
     "max_wind_gust_mph": 3.3554034,
     "max_wind_gust_station": "French Valley Airport",
@@ -224,22 +223,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-23T13:15:00+00:00",
-      "age_minutes": 32.35944251666667,
+      "observed_at": "2026-08-23T13:55:00+00:00",
+      "age_minutes": 35.50626810000001,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 68.36,
-      "dewpoint_f": 54.32,
-      "relative_humidity_pct": 60.841959958933,
-      "heat_index_f": null,
+      "temperature_f": 70.34,
+      "dewpoint_f": 53.96,
+      "relative_humidity_pct": 56.116202065276,
+      "heat_index_f": 69.711461497068,
       "wind_chill_f": null,
       "wind_direction_deg": 30.0,
       "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9611207518,
+      "pressure_inhg": 29.969979746699998,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 231315Z AUTO 03003KT 10SM CLR 20/12 A2996 RMK AO2 T02020124 TSNO",
+      "raw_message": "KF70 231355Z AUTO 03003KT 10SM CLR 21/12 A2997 RMK AO2 T02130122 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -248,8 +247,8 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-23T13:15:00+00:00",
-      "age_minutes": 32.36205033333333,
+      "observed_at": "2026-08-23T13:55:00+00:00",
+      "age_minutes": 35.506765699999995,
       "stale": false,
       "condition": "",
       "temperature_f": null,
@@ -260,7 +259,7 @@
       "wind_direction_deg": null,
       "wind_speed_mph": null,
       "wind_gust_mph": null,
-      "visibility_miles": 9.000002485484769,
+      "visibility_miles": 7.9999987572576154,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
       "raw_message": "",
@@ -272,11 +271,11 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-23T12:55:00+00:00",
-      "age_minutes": 52.362578133333336,
+      "observed_at": "2026-08-23T13:55:00+00:00",
+      "age_minutes": 35.50735998333334,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 71.78,
+      "temperature_f": 71.6,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
       "heat_index_f": null,
@@ -285,9 +284,9 @@
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9109197807,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 231255Z AUTO 00000KT 10SM CLR 22/07 A2991 RMK AO2 SLP111 T02210071",
+      "raw_message": "KRIV 231355Z AUTO 00000KT 10SM CLR 22/07 A2992 RMK AO2 SLP115 T02200074 $",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
