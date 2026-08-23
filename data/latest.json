@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-23T09:45:47.655300Z",
+  "generated_at": "2026-08-23T10:32:19.606903Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,7 +26,6 @@
     "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 3 \u2014 Red / Major.",
       "2 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
@@ -38,8 +37,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 3,
-      "display": "3 \u2014 Red / Major",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -48,11 +47,11 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 75.604765218876,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 72.43155564261801,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 5.748924492,
-    "max_wind_gust_station": "March Air Reserve Base",
+    "max_wind_gust_mph": 0.0,
+    "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
     "precip_level": 0,
@@ -224,14 +223,14 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-23T09:15:00+00:00",
-      "age_minutes": 30.751214100000002,
+      "observed_at": "2026-08-23T09:55:00+00:00",
+      "age_minutes": 36.32060095,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 73.75999999999999,
-      "dewpoint_f": 56.66,
-      "relative_humidity_pct": 55.137613759225,
-      "heat_index_f": 73.427467846684,
+      "temperature_f": 72.86,
+      "dewpoint_f": 55.76,
+      "relative_humidity_pct": 55.011822183355,
+      "heat_index_f": 72.43155564261801,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -239,7 +238,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.9611207518,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 230915Z AUTO 00000KT 10SM CLR 23/14 A2996 RMK AO2 T02320137 TSNO",
+      "raw_message": "KF70 230955Z AUTO 00000KT 10SM CLR 23/13 A2996 RMK AO2 T02270132 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -248,14 +247,14 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-23T09:15:00+00:00",
-      "age_minutes": 30.753287183333335,
+      "observed_at": "2026-08-23T09:35:00+00:00",
+      "age_minutes": 56.32317836666667,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 74.3,
-      "dewpoint_f": 51.98,
-      "relative_humidity_pct": 45.65125125853,
-      "heat_index_f": 73.575608809151,
+      "temperature_f": 70.16,
+      "dewpoint_f": 52.34,
+      "relative_humidity_pct": 53.205986974337,
+      "heat_index_f": 69.37668138779401,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -272,22 +271,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-23T08:55:00+00:00",
-      "age_minutes": 50.75603115,
+      "observed_at": "2026-08-23T09:55:00+00:00",
+      "age_minutes": 36.325909716666665,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 76.64,
-      "dewpoint_f": 46.22,
-      "relative_humidity_pct": 34.05883444418,
-      "heat_index_f": 75.604765218876,
+      "temperature_f": 74.3,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 290.0,
-      "wind_speed_mph": 5.748924492,
+      "wind_direction_deg": 0.0,
+      "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.9200002504725,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 230955Z AUTO 00000KT 10SM CLR 24/08 A2992 RMK AO2 SLP113 T02350076",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -302,17 +301,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-23T02:00:00-07:00",
-        "end_time": "2026-08-23T03:00:00-07:00",
-        "temperature_f": 73,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 60.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-23T03:00:00-07:00",
         "end_time": "2026-08-23T04:00:00-07:00",
@@ -565,6 +553,17 @@
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-24T02:00:00-07:00",
+        "end_time": "2026-08-24T03:00:00-07:00",
+        "temperature_f": 74,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 55.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -605,5 +604,7 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": []
+  "errors": [
+    "EPA AirNow ZIP fallback: HTTP 502 \u2014 <html> <head><title>502 Bad Gateway</title></head> <body> <center><h1>502 Bad Gateway</h1></center> </body> </html>"
+  ]
 }
