@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-24T11:36:35.619127Z",
+  "generated_at": "2026-08-24T12:04:18.281907Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,7 +26,6 @@
     "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 3 \u2014 Red / Major.",
       "2 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
@@ -38,8 +37,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 3,
-      "display": "3 \u2014 Red / Major",
+      "level": 2,
+      "display": "2 \u2014 Orange / Moderate",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -51,7 +50,7 @@
     "max_heat_index_f": 71.056322469484,
     "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 3.3554034,
+    "max_wind_gust_mph": 0.0,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
@@ -224,22 +223,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-24T10:55:00+00:00",
-      "age_minutes": 41.547028983333334,
+      "observed_at": "2026-08-24T11:35:00+00:00",
+      "age_minutes": 29.254244533333335,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 71.06,
-      "dewpoint_f": 52.52,
-      "relative_humidity_pct": 51.944374265293,
-      "heat_index_f": 70.307385590469,
+      "dewpoint_f": 51.620000000000005,
+      "relative_humidity_pct": 50.250735680201,
+      "heat_index_f": 70.227784576969,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": 3.3554034,
+      "wind_direction_deg": 0.0,
+      "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.969979746699998,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 241055Z AUTO VRB03KT 10SM CLR 22/11 A2997 RMK AO2 T02170114 TSNO",
+      "raw_message": "KF70 241135Z AUTO 00000KT 10SM CLR 22/11 A2997 RMK AO2 T02170109 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -248,14 +247,14 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-24T11:15:00+00:00",
-      "age_minutes": 21.549182733333335,
+      "observed_at": "2026-08-24T11:35:00+00:00",
+      "age_minutes": 29.256170233333332,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 70.88,
-      "dewpoint_f": 48.2,
-      "relative_humidity_pct": 44.521692018029,
-      "heat_index_f": 69.760519524847,
+      "temperature_f": 71.96,
+      "dewpoint_f": 48.92,
+      "relative_humidity_pct": 44.092571572412,
+      "heat_index_f": 70.92835086390299,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
@@ -273,7 +272,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-24T10:55:00+00:00",
-      "age_minutes": 41.5520381,
+      "age_minutes": 69.25690938333334,
       "stale": false,
       "condition": "Mostly Clear",
       "temperature_f": 71.78,
@@ -302,17 +301,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-24T04:00:00-07:00",
-        "end_time": "2026-08-24T05:00:00-07:00",
-        "temperature_f": 72,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 56.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-24T05:00:00-07:00",
         "end_time": "2026-08-24T06:00:00-07:00",
@@ -561,6 +549,17 @@
         "temperature_f": 74,
         "precip_probability_pct": 1.0,
         "relative_humidity_pct": 58.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-25T04:00:00-07:00",
+        "end_time": "2026-08-25T05:00:00-07:00",
+        "temperature_f": 73,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 60.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
