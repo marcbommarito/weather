@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-25T08:20:05.891618Z",
+  "generated_at": "2026-08-25T09:10:11.757269Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -48,8 +48,8 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 80.078448397616,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 76.398370395665,
+    "max_heat_index_station": "Hemet-Ryan Airport",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
     "max_wind_gust_station": "French Valley Airport",
@@ -243,7 +243,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-25T07:35:00+00:00",
-      "age_minutes": 44.99364396666667,
+      "age_minutes": 95.15381056666666,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 75.02,
@@ -267,7 +267,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-25T07:35:00+00:00",
-      "age_minutes": 44.9956747,
+      "age_minutes": 95.15567601666666,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 76.46,
@@ -291,8 +291,8 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-25T06:55:00+00:00",
-      "age_minutes": 84.99782796666666,
-      "stale": false,
+      "age_minutes": 135.15780243333333,
+      "stale": true,
       "condition": "Clear",
       "temperature_f": 80.6,
       "dewpoint_f": 51.8,
@@ -320,17 +320,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-25T01:00:00-07:00",
-        "end_time": "2026-08-25T02:00:00-07:00",
-        "temperature_f": 76,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 60.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-25T02:00:00-07:00",
         "end_time": "2026-08-25T03:00:00-07:00",
@@ -579,6 +568,17 @@
         "temperature_f": 80,
         "precip_probability_pct": 0.0,
         "relative_humidity_pct": 53.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-26T01:00:00-07:00",
+        "end_time": "2026-08-26T02:00:00-07:00",
+        "temperature_f": 78,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 54.0,
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Clear",
