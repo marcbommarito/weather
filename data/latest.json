@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-25T03:09:29.084454Z",
+  "generated_at": "2026-08-25T04:02:51.127364Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,6 +26,7 @@
     "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
+      "NWS HeatRisk is 3 \u2014 Red / Major.",
       "3 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
@@ -37,8 +38,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 3,
+      "display": "3 \u2014 Red / Major",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -47,10 +48,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 91.07236956706001,
-    "max_heat_index_station": "March Air Reserve Base",
-    "heat_index_level": 1,
-    "max_wind_gust_mph": 11.497848984,
+    "max_heat_index_f": 83.467141662992,
+    "max_heat_index_station": "Hemet-Ryan Airport",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 6.912131004000001,
     "max_wind_gust_station": "Hemet-Ryan Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 1.0,
@@ -241,22 +242,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-25T02:35:00+00:00",
-      "age_minutes": 32.36617738333334,
+      "observed_at": "2026-08-25T03:35:00+00:00",
+      "age_minutes": 27.808737716666666,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 82.58,
-      "dewpoint_f": 61.34,
-      "relative_humidity_pct": 48.732241412996,
-      "heat_index_f": 83.204396707078,
+      "temperature_f": 80.6,
+      "dewpoint_f": 61.88,
+      "relative_humidity_pct": 52.97287404312,
+      "heat_index_f": 81.68532125291199,
       "wind_chill_f": null,
-      "wind_direction_deg": 180.0,
-      "wind_speed_mph": 9.17143596,
+      "wind_direction_deg": 140.0,
+      "wind_speed_mph": 4.69756476,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9788387416,
+      "pressure_inhg": 29.999509729699998,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 250235Z AUTO 18008KT 10SM CLR 28/16 A2998 RMK AO2 T02810163 TSNO",
+      "raw_message": "KF70 250335Z AUTO 14004KT 10SM CLR 27/17 A3000 RMK AO2 T02700166 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -265,20 +266,20 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-25T01:35:00+00:00",
-      "age_minutes": 92.36846086666667,
+      "observed_at": "2026-08-25T03:35:00+00:00",
+      "age_minutes": 27.811215899999997,
       "stale": false,
-      "condition": "",
-      "temperature_f": 93.38000000000001,
-      "dewpoint_f": 51.26,
-      "relative_humidity_pct": 24.041398581925,
-      "heat_index_f": 90.525296821665,
+      "condition": "Clear",
+      "temperature_f": 83.48,
+      "dewpoint_f": 59.540000000000006,
+      "relative_humidity_pct": 44.40380383427,
+      "heat_index_f": 83.467141662992,
       "wind_chill_f": null,
-      "wind_direction_deg": 210.0,
-      "wind_speed_mph": 11.497848984,
+      "wind_direction_deg": 240.0,
+      "wind_speed_mph": 6.912131004000001,
       "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.9499997602022,
+      "pressure_inhg": 29.9999999274178,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
@@ -289,22 +290,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-25T01:55:00+00:00",
-      "age_minutes": 72.37092446666666,
+      "observed_at": "2026-08-25T02:55:00+00:00",
+      "age_minutes": 67.81370243333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 94.64,
-      "dewpoint_f": 47.3,
-      "relative_humidity_pct": 19.949137321045,
-      "heat_index_f": 91.07236956706001,
+      "temperature_f": 90.5,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 300.0,
-      "wind_speed_mph": 10.28990376,
+      "wind_direction_deg": 330.0,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.8991077875,
+      "pressure_inhg": 29.9315907688,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 250155Z AUTO 30009KT 10SM CLR 35/09 A2990 RMK AO2 SLP108 T03480085",
+      "raw_message": "KRIV 250255Z AUTO 33005KT 10SM CLR 33/09 A2993 RMK AO2 SLP117 T03250087 52014",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -319,17 +320,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-24T20:00:00-07:00",
-        "end_time": "2026-08-24T21:00:00-07:00",
-        "temperature_f": 85,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 43.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SE",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-24T21:00:00-07:00",
         "end_time": "2026-08-24T22:00:00-07:00",
@@ -582,6 +572,17 @@
         "wind_direction": "S",
         "short_forecast": "Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-25T20:00:00-07:00",
+        "end_time": "2026-08-25T21:00:00-07:00",
+        "temperature_f": 87,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 41.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -622,8 +623,5 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": [
-    "EPA AirNow: temporarily unavailable; request timed out after 2 attempts.",
-    "EPA AirNow ZIP fallback: temporarily unavailable; request timed out after 2 attempts."
-  ]
+  "errors": []
 }
