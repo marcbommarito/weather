@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-25T10:40:28.362042Z",
+  "generated_at": "2026-08-25T11:11:06.612302Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -27,7 +27,7 @@
     "data_status": "Operational",
     "reasons": [
       "NWS HeatRisk is 3 \u2014 Red / Major.",
-      "3 active NWS alert(s); highest alert level is 3."
+      "2 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
       "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
@@ -48,8 +48,8 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 74.529785533287,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 73.700305569968,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
     "max_wind_gust_station": "French Valley Airport",
@@ -61,39 +61,21 @@
   },
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.18c28b9a01000054843c2b487369a76b858c723b.001.1",
+      "id": "urn:oid:2.49.0.1.840.0.a96b10786301fde04f91e4eab750393c77501edf.001.2",
       "event": "Extreme Heat Warning",
-      "headline": "Extreme Heat Warning issued August 24 at 10:04PM PDT until August 28 at 8:00PM PDT by NWS San Diego CA",
-      "description": "* WHAT...For the Heat Advisory, temperatures up to 106. For the\nExtreme Heat Warning, dangerously hot conditions with temperatures\nup to 110 expected.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire County.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Warning, from 10 AM Tuesday to 8 PM PDT Friday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events. Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Low temperatures 5 to 10 degrees above normal\nwill limit relief from the heat. Increasing temperatures into the\nmiddle of next week will increase the threat of heat-related\nillness across populations.",
+      "headline": "Extreme Heat Warning issued August 25 at 3:47AM PDT until August 28 at 8:00PM PDT by NWS San Diego CA",
+      "description": "* WHAT...Dangerously hot conditions with high temperatures up to 112\nexpected. Overnight low temperatures will be mostly in the 70s.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire County.\n\n* WHEN...Until 8 PM PDT Friday.",
       "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
       "severity": "Severe",
       "certainty": "Likely",
       "urgency": "Expected",
-      "effective": "2026-08-24T22:04:00-07:00",
-      "onset": "2026-08-25T10:00:00-07:00",
-      "expires": "2026-08-25T06:15:00-07:00",
+      "effective": "2026-08-25T03:47:00-07:00",
+      "onset": "2026-08-25T03:47:00-07:00",
+      "expires": "2026-08-25T15:45:00-07:00",
       "ends": "2026-08-28T20:00:00-07:00",
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
       "sender_name": "NWS San Diego CA",
       "level": 3,
-      "web": "http://www.weather.gov"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.18c28b9a01000054843c2b487369a76b858c723b.001.2",
-      "event": "Heat Advisory",
-      "headline": "Heat Advisory issued August 24 at 10:04PM PDT until August 25 at 10:00AM PDT by NWS San Diego CA",
-      "description": "* WHAT...For the Heat Advisory, temperatures up to 106. For the\nExtreme Heat Warning, dangerously hot conditions with temperatures\nup to 110 expected.\n\n* WHERE...San Bernardino and Riverside County Valleys-The Inland\nEmpire County.\n\n* WHEN...For the Heat Advisory, until 10 AM PDT Tuesday. For the\nExtreme Heat Warning, from 10 AM Tuesday to 8 PM PDT Friday.\n\n* IMPACTS...Heat related illnesses increase significantly during\nextreme heat events. Hot temperatures may cause heat illnesses.\n\n* ADDITIONAL DETAILS...Low temperatures 5 to 10 degrees above normal\nwill limit relief from the heat. Increasing temperatures into the\nmiddle of next week will increase the threat of heat-related\nillness across populations.",
-      "instruction": "Drink plenty of fluids, stay in an air-conditioned room, stay out of\nthe sun, and check up on relatives and neighbors.",
-      "severity": "Moderate",
-      "certainty": "Likely",
-      "urgency": "Expected",
-      "effective": "2026-08-24T22:04:00-07:00",
-      "onset": "2026-08-24T22:04:00-07:00",
-      "expires": "2026-08-25T06:15:00-07:00",
-      "ends": "2026-08-25T10:00:00-07:00",
-      "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
-      "sender_name": "NWS San Diego CA",
-      "level": 2,
       "web": "http://www.weather.gov"
     },
     {
@@ -243,7 +225,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-08-25T09:35:00+00:00",
-      "age_minutes": 65.43381860000001,
+      "age_minutes": 96.07476681666667,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 73.58,
@@ -267,7 +249,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-08-25T09:15:00+00:00",
-      "age_minutes": 85.43613218333333,
+      "age_minutes": 116.07605288333333,
       "stale": false,
       "condition": "Clear",
       "temperature_f": 70.52,
@@ -291,8 +273,8 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-08-25T08:55:00+00:00",
-      "age_minutes": 105.43838536666667,
-      "stale": false,
+      "age_minutes": 136.0780172,
+      "stale": true,
       "condition": "Clear",
       "temperature_f": 75.2,
       "dewpoint_f": 52.34,
@@ -320,17 +302,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-25T02:00:00-07:00",
-        "end_time": "2026-08-25T03:00:00-07:00",
-        "temperature_f": 75,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 62.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-25T03:00:00-07:00",
         "end_time": "2026-08-25T04:00:00-07:00",
@@ -583,6 +554,17 @@
         "wind_direction": "",
         "short_forecast": "Clear",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-26T02:00:00-07:00",
+        "end_time": "2026-08-26T03:00:00-07:00",
+        "temperature_f": 76,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 58.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -595,7 +577,7 @@
     {
       "name": "NWS point alerts and hourly forecast",
       "status": "available",
-      "detail": "3 active alert(s); 24 forecast hour(s) loaded."
+      "detail": "2 active alert(s); 24 forecast hour(s) loaded."
     },
     {
       "name": "NWS HeatRisk",
