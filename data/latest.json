@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-08-28T22:24:30.338561Z",
+  "generated_at": "2026-08-29T03:49:49.099650Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,8 +26,7 @@
     "action": "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
     "data_status": "Operational",
     "reasons": [
-      "Highest current heat index/temperature is 105\u00b0F at Hemet-Ryan Airport.",
-      "2 active NWS alert(s); highest alert level is 3."
+      "1 active NWS alert(s); highest alert level is 3."
     ],
     "recommended_actions": [
       "Stop or cancel affected outdoor physical activities during the hazardous period and activate district communications.",
@@ -38,8 +37,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 2,
-      "display": "2 \u2014 Orange / Moderate",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -48,10 +47,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 105.37063142359,
+    "max_heat_index_f": 85.334057258514,
     "max_heat_index_station": "Hemet-Ryan Airport",
-    "heat_index_level": 3,
-    "max_wind_gust_mph": 24.15890448,
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "Hemet-Ryan Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 2.0,
@@ -76,24 +75,6 @@
       "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire",
       "sender_name": "NWS San Diego CA",
       "level": 3,
-      "web": "http://www.weather.gov"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.1ff47e58a0cc6ee5f3f05f4cb29e5c9ee671d483.001.1",
-      "event": "Air Quality Alert",
-      "headline": "Air Quality Alert issued August 24 at 1:34PM PDT by NWS San Diego CA",
-      "description": "* WHAT...The South Coast AQMD has issued an air quality alert due to\nharmful levels of ozone pollution.\nVisit https://www.aqmd.gov/alertinfo to check current and forecasted\nair quality levels.\n\n* WHERE...in the the South Coast Air Basin and Coachella Valley.\nLevels of ozone pollution can vary by time and location depending on\nemissions and air pollution transport.\n\n* WHEN...from 1 PM Monday to 8 PM Friday. The highest ozone levels\ntypically occur in the afternoon and early-evening hours.\n\n* IMPACTS... Ozone air pollution can cause serious health problems,\nincluding trouble breathing, asthma attacks, and lung damage.\nEveryone can be affected, but sensitive groups such as people with\nlung disease, older adults, people who are pregnant, children, and\nthose who spend a lot of time outdoors are at greater risk.",
-      "instruction": "To protect your health, check air quality levels and act as needed:\n\n* When Air Quality Index (AQI) levels are \"Unhealthy for\nSensitive Groups\" (orange), sensitive groups as specified\nabove should limit extended or intense outdoor activity.\n* When AQI is \"Unhealthy\" (red), everyone may experience health\nimpacts. Sensitive groups should avoid extended time outdoors.\n* When AQI is \"Very Unhealthy\" (purple), sensitive groups should\navoid all outdoor physical activity. Everyone else should\navoid extended or intense outdoor activity.\n* When AQI is \"Hazardous\" (maroon), everyone should avoid all\noutdoor physical activity.\n\n* ADDITIONAL DETAILS...\n\nTo help keep indoor air clean when air quality is poor:\n\n* Keep windows and doors closed\n* Run your air conditioner and/or an air purifier\n* Do not use whole house fans or swamp coolers that bring in\noutside air if you have other methods to stay cool\n* Avoid other sources of pollution such as fireplaces, candles,\nincense, and grilling\n\nTo help minimize outdoor ozone air pollution levels:\n\n* Limit the use of gasoline powered lawn and garden equipment\nuntil evening hours\n* Try to delay trips to the gas station and the use of household\nchemicals until the evening\n\nFor the latest air quality forecasts and information, visit the\nwebsite at aqmd.gov.",
-      "severity": "Unknown",
-      "certainty": "Unknown",
-      "urgency": "Unknown",
-      "effective": "2026-08-24T13:34:00-07:00",
-      "onset": "2026-08-24T13:34:00-07:00",
-      "expires": "2026-08-28T20:00:00-07:00",
-      "ends": null,
-      "area_desc": "San Bernardino and Riverside County Valleys-The Inland Empire; San Bernardino County Mountains; Coachella Valley; San Gorgonio Pass Near Banning; Orange County Inland",
-      "sender_name": "NWS San Diego CA",
-      "level": 0,
       "web": "http://www.weather.gov"
     }
   ],
@@ -224,22 +205,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-08-28T21:55:00+00:00",
-      "age_minutes": 29.397150766666666,
+      "observed_at": "2026-08-29T03:15:00+00:00",
+      "age_minutes": 34.77465195,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 100.58000000000001,
-      "dewpoint_f": 60.62,
-      "relative_humidity_pct": 27.082419413285,
-      "heat_index_f": 101.60639436925001,
+      "temperature_f": 82.58,
+      "dewpoint_f": 65.3,
+      "relative_humidity_pct": 55.9959372178,
+      "heat_index_f": 84.481376757003,
       "wind_chill_f": null,
-      "wind_direction_deg": 210.0,
-      "wind_speed_mph": 8.05296816,
+      "wind_direction_deg": 170.0,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9109197807,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 282155Z AUTO 21007KT 10SM CLR 38/16 A2991 RMK AO2 T03810159 TSNO",
+      "raw_message": "KF70 290315Z AUTO 17005KT 10SM CLR 28/19 A2992 RMK AO2 T02810185 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -248,20 +229,20 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-08-28T21:35:00+00:00",
-      "age_minutes": 49.39975891666666,
+      "observed_at": "2026-08-29T03:15:00+00:00",
+      "age_minutes": 34.77508408333333,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 105.08000000000001,
-      "dewpoint_f": 57.92,
-      "relative_humidity_pct": 21.503220962277,
-      "heat_index_f": 105.37063142359,
+      "temperature_f": 84.02,
+      "dewpoint_f": 63.86,
+      "relative_humidity_pct": 50.83327937909,
+      "heat_index_f": 85.334057258514,
       "wind_chill_f": null,
-      "wind_direction_deg": 200.0,
-      "wind_speed_mph": 17.269142832,
-      "wind_gust_mph": 24.15890448,
+      "wind_direction_deg": 240.0,
+      "wind_speed_mph": 8.05296816,
+      "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.8999995929866,
+      "pressure_inhg": 29.9200002504725,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
@@ -272,22 +253,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-08-28T21:33:00+00:00",
-      "age_minutes": 51.403976166666666,
+      "observed_at": "2026-08-29T02:55:00+00:00",
+      "age_minutes": 54.77547945,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 104.0,
-      "dewpoint_f": 59.0,
-      "relative_humidity_pct": 23.078619451585,
-      "heat_index_f": 104.69720898259,
+      "temperature_f": null,
+      "dewpoint_f": null,
+      "relative_humidity_pct": null,
+      "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 310.0,
-      "wind_speed_mph": 14.965099164,
+      "wind_direction_deg": null,
+      "wind_speed_mph": null,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": 29.870000083256897,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 290255Z AUTO 32006KT 10SM CLR 32/14 A2986 RMK AO2 SLP093 T03210142 51006",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -302,61 +283,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-08-28T15:00:00-07:00",
-        "end_time": "2026-08-28T16:00:00-07:00",
-        "temperature_f": 103,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 27.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-28T16:00:00-07:00",
-        "end_time": "2026-08-28T17:00:00-07:00",
-        "temperature_f": 101,
-        "precip_probability_pct": 1.0,
-        "relative_humidity_pct": 29.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-28T17:00:00-07:00",
-        "end_time": "2026-08-28T18:00:00-07:00",
-        "temperature_f": 100,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 31.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-28T18:00:00-07:00",
-        "end_time": "2026-08-28T19:00:00-07:00",
-        "temperature_f": 97,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 33.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-08-28T19:00:00-07:00",
-        "end_time": "2026-08-28T20:00:00-07:00",
-        "temperature_f": 91,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 41.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-08-28T20:00:00-07:00",
         "end_time": "2026-08-28T21:00:00-07:00",
@@ -565,6 +491,61 @@
         "wind_direction": "SW",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-29T15:00:00-07:00",
+        "end_time": "2026-08-29T16:00:00-07:00",
+        "temperature_f": 99,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 29.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-29T16:00:00-07:00",
+        "end_time": "2026-08-29T17:00:00-07:00",
+        "temperature_f": 98,
+        "precip_probability_pct": 1.0,
+        "relative_humidity_pct": 30.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-29T17:00:00-07:00",
+        "end_time": "2026-08-29T18:00:00-07:00",
+        "temperature_f": 96,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 32.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-29T18:00:00-07:00",
+        "end_time": "2026-08-29T19:00:00-07:00",
+        "temperature_f": 93,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 36.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-08-29T19:00:00-07:00",
+        "end_time": "2026-08-29T20:00:00-07:00",
+        "temperature_f": 88,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 43.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -577,7 +558,7 @@
     {
       "name": "NWS point alerts and hourly forecast",
       "status": "available",
-      "detail": "2 active alert(s); 24 forecast hour(s) loaded."
+      "detail": "1 active alert(s); 24 forecast hour(s) loaded."
     },
     {
       "name": "NWS HeatRisk",
