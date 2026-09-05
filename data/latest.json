@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-09-05T10:27:27.532948Z",
+  "generated_at": "2026-09-05T13:32:13.660045Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -45,13 +45,13 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 63.86,
-    "max_heat_index_station": "March Air Reserve Base",
+    "max_heat_index_f": 58.82,
+    "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
     "max_wind_gust_mph": 0.0,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
-    "max_precip_probability_pct": 2.0,
+    "max_precip_probability_pct": 8.0,
     "precip_level": 0,
     "thunderstorm_possible": false,
     "alert_level": 0
@@ -160,13 +160,13 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-09-05T09:55:00+00:00",
-      "age_minutes": 32.3302261,
+      "observed_at": "2026-09-05T12:55:00+00:00",
+      "age_minutes": 36.13136975,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 60.08,
-      "dewpoint_f": 43.519999999999996,
-      "relative_humidity_pct": 54.289048320265,
+      "temperature_f": 58.82,
+      "dewpoint_f": 45.5,
+      "relative_humidity_pct": 61.231751465425,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
@@ -175,7 +175,7 @@
       "visibility_miles": 9.997862483098704,
       "pressure_inhg": 29.9788387416,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 050955Z AUTO 00000KT 10SM CLR 16/06 A2998 RMK AO2 T01560064 TSNO",
+      "raw_message": "KF70 051255Z AUTO 00000KT 10SM CLR 15/07 A2998 RMK AO2 T01490075 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -184,20 +184,20 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-09-05T09:55:00+00:00",
-      "age_minutes": 32.332912400000005,
+      "observed_at": "2026-09-05T13:15:00+00:00",
+      "age_minutes": 16.1338077,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": null,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
+      "temperature_f": 55.04,
+      "dewpoint_f": 39.38,
+      "relative_humidity_pct": 55.465658255871,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 0.0,
+      "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
-      "pressure_inhg": null,
+      "visibility_miles": 9.000002485484769,
+      "pressure_inhg": 29.9799992699319,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
@@ -208,22 +208,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-09-05T08:55:00+00:00",
-      "age_minutes": 92.33499528333333,
+      "observed_at": "2026-09-05T12:55:00+00:00",
+      "age_minutes": 36.137688116666666,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 63.86,
+      "temperature_f": 56.48,
       "dewpoint_f": 39.02,
-      "relative_humidity_pct": 39.927958376552,
+      "relative_humidity_pct": 51.911177581096,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.9315907688,
+      "pressure_inhg": 29.9197787756,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 050855Z AUTO 00000KT 10SM CLR 18/04 A2993 RMK AO2 SLP122 T01770039 50001",
+      "raw_message": "KRIV 051255Z AUTO 00000KT 10SM CLR 14/04 A2992 RMK AO2 SLP121 T01360039",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -238,39 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-09-05T03:00:00-07:00",
-        "end_time": "2026-09-05T04:00:00-07:00",
-        "temperature_f": 60,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 73.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-09-05T04:00:00-07:00",
-        "end_time": "2026-09-05T05:00:00-07:00",
-        "temperature_f": 59,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 73.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-09-05T05:00:00-07:00",
-        "end_time": "2026-09-05T06:00:00-07:00",
-        "temperature_f": 58,
-        "precip_probability_pct": 2.0,
-        "relative_humidity_pct": 72.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Clear",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-09-05T06:00:00-07:00",
         "end_time": "2026-09-05T07:00:00-07:00",
@@ -501,6 +468,39 @@
         "wind_direction": "",
         "short_forecast": "Slight Chance Rain Showers",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-09-06T03:00:00-07:00",
+        "end_time": "2026-09-06T04:00:00-07:00",
+        "temperature_f": 70,
+        "precip_probability_pct": 23.0,
+        "relative_humidity_pct": 57.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Slight Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-09-06T04:00:00-07:00",
+        "end_time": "2026-09-06T05:00:00-07:00",
+        "temperature_f": 70,
+        "precip_probability_pct": 23.0,
+        "relative_humidity_pct": 61.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Slight Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-09-06T05:00:00-07:00",
+        "end_time": "2026-09-06T06:00:00-07:00",
+        "temperature_f": 68,
+        "precip_probability_pct": 48.0,
+        "relative_humidity_pct": 67.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Rain Showers Likely",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -541,5 +541,7 @@
       "detail": "Mapped as reference locations only; not used in the official decision calculation."
     }
   ],
-  "errors": []
+  "errors": [
+    "EPA AirNow ZIP fallback: temporarily unavailable; request timed out after 2 attempts."
+  ]
 }
