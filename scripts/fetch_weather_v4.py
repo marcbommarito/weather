@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Weather fetch wrapper with optional unofficial personal-station observations."""
+"""Weather fetch wrapper with verified NWS HeatRisk and optional unofficial PWS observations."""
 from __future__ import annotations
 
 import json
@@ -7,11 +7,136 @@ import os
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from typing import Any
 
 import fetch_weather_v3 as patched
 
 base = patched.base
+
+
+def parse_heat_risk_pixel(payload: Any) -> int | None:
+    """Return only the ArcGIS Identify top-level pixel value when it is 0-4.
+
+    ArcGIS ImageServer Identify documents the top-level value property as
+    the identified pixel value. Do not recurse through metadata, catalog item
+    attributes, object IDs, or other numeric fields.
+    """
+    if not isinstance(payload, dict):
+        return None
+
+    raw = payload.get("value")
+    if isinstance(raw, str):
+        cleaned = raw.strip()
+        if not cleaned or cleaned.lower() in {"nodata", "no data", "null", "nan"}:
+            return None
+        if "," in cleaned or " " in cleaned:
+            return None
+        raw = cleaned
+
+    try:
+        numeric = float(raw)
+    except (TypeError, ValueError):
+        return None
+
+    rounded = round(numeric)
+    if abs(numeric - rounded) > 1e-6 or not 0 <= rounded <= 4:
+        return None
+    return int(rounded)
+
+
+def heat_risk_catalog_valid_time(payload: Any) -> str | None:
+    """Best-effort extraction of the selected raster valid time for diagnostics."""
+    if not isinstance(payload, dict):
+        return None
+    catalog = payload.get("catalogItems")
+    if not isinstance(catalog, dict):
+        return None
+    features = catalog.get("features")
+    if not isinstance(features, list) or not features:
+        return None
+    first = features[0]
+    if not isinstance(first, dict):
+        return None
+    attrs = first.get("attributes")
+    if not isinstance(attrs, dict):
+        return None
+
+    raw = attrs.get("idp_validtime")
+    if raw in (None, ""):
+        return None
+    if isinstance(raw, (int, float)):
+        try:
+            return datetime.fromtimestamp(float(raw) / 1000.0, tz=timezone.utc).isoformat()
+        except (OverflowError, OSError, ValueError):
+            return str(raw)
+    return str(raw)
+
+
+def fetch_heat_risk_verified() -> dict[str, Any] | None:
+    """Fetch today's HeatRisk using the actual identified raster pixel only."""
+    center = base.CONFIG["district"]["center"]
+    local_date = datetime.now(base.TZ).date()
+
+    # HeatRisk is time enabled. Select the raster closest to today's 12 UTC
+    # instead of relying on the service's default Northwest mosaic ordering.
+    target_valid_time = f"{local_date:%Y/%m/%d} 12:00:00"
+    mosaic_rule = {
+        "mosaicMethod": "esriMosaicAttribute",
+        "sortField": "idp_validtime",
+        "sortValue": target_valid_time,
+        "ascending": True,
+        "mosaicOperation": "MT_FIRST",
+    }
+    params = {
+        "f": "json",
+        "geometry": json.dumps({
+            "x": center["lon"],
+            "y": center["lat"],
+            "spatialReference": {"wkid": 4326},
+        }),
+        "geometryType": "esriGeometryPoint",
+        "mosaicRule": json.dumps(mosaic_rule),
+        "returnGeometry": "false",
+        "returnCatalogItems": "true",
+        "returnAllPixelValues": "false",
+    }
+
+    payload = base.safe_get(
+        "NWS HeatRisk",
+        "https://mapservices.weather.noaa.gov/experimental/rest/services/NWS_HeatRisk/ImageServer/identify",
+        params,
+    )
+    if not payload:
+        return None
+
+    level = parse_heat_risk_pixel(payload)
+    if level is None:
+        print(
+            "NWS HeatRisk: identify response did not contain a verified "
+            f"single 0-4 top-level pixel value (value={payload.get('value')!r})."
+        )
+        return None
+
+    names = [
+        "Green / Little to none",
+        "Yellow / Minor",
+        "Orange / Moderate",
+        "Red / Major",
+        "Magenta / Extreme",
+    ]
+    valid_time = heat_risk_catalog_valid_time(payload)
+    print(
+        f"NWS HeatRisk verified pixel: {level}; "
+        f"target={target_valid_time}; selected_valid_time={valid_time or 'not returned'}"
+    )
+    return {
+        "level": level,
+        "display": f"{level} — {names[level]}",
+        "note": "NWS experimental current-day HeatRisk · verified raster pixel",
+        "valid_time": valid_time,
+        "source_value": payload.get("value"),
+    }
 
 
 def fetch_pws_station(station: dict[str, Any], api_key: str) -> tuple[dict[str, Any] | None, str | None]:
@@ -156,6 +281,9 @@ def add_unofficial_observations() -> None:
 
     path.write_text(json.dumps(data, indent=2), encoding="utf-8")
     print(f"Unofficial PWS observations: {len(rows)} of {len(station_defs)} configured stations")
+
+
+base.fetch_heat_risk = fetch_heat_risk_verified
 
 
 if __name__ == "__main__":
