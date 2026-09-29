@@ -126,9 +126,26 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
         "Magenta / Extreme",
     ]
     valid_time = heat_risk_catalog_valid_time(payload)
+    selected_dt = base.parse_dt(valid_time) if valid_time else None
+    if selected_dt is None:
+        print(
+            "NWS HeatRisk: verified pixel was returned, but the selected "
+            "raster valid time could not be verified. Ignoring HeatRisk."
+        )
+        return None
+
+    selected_local_date = selected_dt.astimezone(base.TZ).date()
+    if selected_local_date != local_date:
+        print(
+            "NWS HeatRisk: selected raster is not for today; "
+            f"target_date={local_date.isoformat()} selected_date={selected_local_date.isoformat()}. "
+            "Ignoring stale/future HeatRisk."
+        )
+        return None
+
     print(
         f"NWS HeatRisk verified pixel: {level}; "
-        f"target={target_valid_time}; selected_valid_time={valid_time or 'not returned'}"
+        f"target={target_valid_time}; selected_valid_time={valid_time}"
     )
     return {
         "level": level,
