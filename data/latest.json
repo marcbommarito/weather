@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-10-12T00:25:02.070641Z",
+  "generated_at": "2026-10-12T06:24:43.441105Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -26,7 +26,8 @@
     "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
     "data_status": "Operational",
     "reasons": [
-      "Highest precipitation probability in the next six hours is 40%."
+      "NWS HeatRisk is 1 \u2014 Yellow / Minor.",
+      "Highest precipitation probability in the next six hours is 67%."
     ],
     "recommended_actions": [
       "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
@@ -35,8 +36,8 @@
   },
   "summary": {
     "heat_risk": {
-      "level": 0,
-      "display": "0 \u2014 Green / Little to none",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -45,13 +46,13 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": null,
-    "max_heat_index_station": null,
-    "heat_index_level": null,
-    "max_wind_gust_mph": null,
-    "max_wind_gust_station": null,
-    "wind_level": null,
-    "max_precip_probability_pct": 40.0,
+    "max_heat_index_f": 59.0,
+    "max_heat_index_station": "French Valley Airport",
+    "heat_index_level": 0,
+    "max_wind_gust_mph": 4.69756476,
+    "max_wind_gust_station": "French Valley Airport",
+    "wind_level": 0,
+    "max_precip_probability_pct": 67.0,
     "precip_level": 1,
     "thunderstorm_possible": false,
     "alert_level": 0
@@ -155,15 +156,39 @@
       "source_url": "https://et.water.ca.gov/StationWeb/GetDataByStationNumber"
     },
     {
+      "id": "KF70",
+      "name": "French Valley Airport",
+      "network": "NWS / aviation",
+      "lat": 33.5742,
+      "lon": -117.1285,
+      "observed_at": "2026-10-12T05:55:00+00:00",
+      "age_minutes": 29.67810678333333,
+      "stale": false,
+      "condition": "Cloudy",
+      "temperature_f": 59.0,
+      "dewpoint_f": 57.379999999999995,
+      "relative_humidity_pct": 94.355349343179,
+      "heat_index_f": null,
+      "wind_chill_f": null,
+      "wind_direction_deg": 200.0,
+      "wind_speed_mph": 4.69756476,
+      "wind_gust_mph": null,
+      "visibility_miles": 8.997454863596596,
+      "pressure_inhg": 29.8813897977,
+      "precip_last_hour_in": null,
+      "raw_message": "KF70 120555Z AUTO 20004KT 9SM FEW007 BKN011 OVC018 15/14 A2988 RMK AO2 OVC V BKN 60000 T01500141 10187 20150 51010 TSNO",
+      "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
+    },
+    {
       "id": "KRIV",
       "name": "March Air Reserve Base",
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-10-11T23:55:00+00:00",
-      "age_minutes": 29.994912683333332,
+      "observed_at": "2026-10-12T05:54:00+00:00",
+      "age_minutes": 30.6818263,
       "stale": false,
-      "condition": "Mostly Cloudy",
+      "condition": "Light Rain",
       "temperature_f": null,
       "dewpoint_f": null,
       "relative_humidity_pct": null,
@@ -172,35 +197,35 @@
       "wind_direction_deg": null,
       "wind_speed_mph": null,
       "wind_gust_mph": null,
-      "visibility_miles": 10.0,
+      "visibility_miles": 9.997862483098704,
       "pressure_inhg": null,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 120554Z 14005KT 10SM -RA SCT008 BKN021 OVC055 16/14 A2982 RMK AO2A RAB54 SLP090",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
-      "id": "KF70",
-      "name": "French Valley Airport",
+      "id": "KHMT",
+      "name": "Hemet-Ryan Airport",
       "network": "NWS / aviation",
-      "lat": 33.5742,
-      "lon": -117.1285,
+      "lat": 33.734,
+      "lon": -117.0223,
       "observed_at": "2026-10-11T21:55:00+00:00",
-      "age_minutes": 149.98927515,
+      "age_minutes": 509.6802376,
       "stale": true,
-      "condition": "",
-      "temperature_f": 64.94,
-      "dewpoint_f": 56.120000000000005,
-      "relative_humidity_pct": 73.11091848959,
+      "condition": "Haze",
+      "temperature_f": 63.14,
+      "dewpoint_f": 57.92,
+      "relative_humidity_pct": 83.081509261888,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 210.0,
+      "wind_speed_mph": 8.05296816,
       "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 29.8016588436,
-      "precip_last_hour_in": null,
-      "raw_message": "KF70 112155Z AUTO 19016KT 10SM BKN021 BKN026 OVC041 18/13 A2980 RMK AO2 CIG 016V023 T01830134 TSNO",
-      "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
+      "visibility_miles": 4.000002485484769,
+      "pressure_inhg": 29.790000406311602,
+      "precip_last_hour_in": 3.9370078700000004,
+      "raw_message": "",
+      "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
     }
   ],
   "forecast": {
@@ -214,72 +239,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-10-11T17:00:00-07:00",
-        "end_time": "2026-10-11T18:00:00-07:00",
-        "temperature_f": 64,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 86.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-11T18:00:00-07:00",
-        "end_time": "2026-10-11T19:00:00-07:00",
-        "temperature_f": 64,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 85.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-11T19:00:00-07:00",
-        "end_time": "2026-10-11T20:00:00-07:00",
-        "temperature_f": 63,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 86.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-11T20:00:00-07:00",
-        "end_time": "2026-10-11T21:00:00-07:00",
-        "temperature_f": 62,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 87.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-11T21:00:00-07:00",
-        "end_time": "2026-10-11T22:00:00-07:00",
-        "temperature_f": 61,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 90.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-11T22:00:00-07:00",
-        "end_time": "2026-10-11T23:00:00-07:00",
-        "temperature_f": 61,
-        "precip_probability_pct": 40.0,
-        "relative_humidity_pct": 92.0,
-        "wind_speed": "15 mph",
-        "wind_direction": "S",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-10-11T23:00:00-07:00",
         "end_time": "2026-10-12T00:00:00-07:00",
@@ -477,6 +436,72 @@
         "wind_direction": "S",
         "short_forecast": "Rain Showers Likely",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T17:00:00-07:00",
+        "end_time": "2026-10-12T18:00:00-07:00",
+        "temperature_f": 61,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 77.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T18:00:00-07:00",
+        "end_time": "2026-10-12T19:00:00-07:00",
+        "temperature_f": 60,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 79.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T19:00:00-07:00",
+        "end_time": "2026-10-12T20:00:00-07:00",
+        "temperature_f": 59,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 81.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "SW",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T20:00:00-07:00",
+        "end_time": "2026-10-12T21:00:00-07:00",
+        "temperature_f": 58,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 85.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T21:00:00-07:00",
+        "end_time": "2026-10-12T22:00:00-07:00",
+        "temperature_f": 56,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 90.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-12T22:00:00-07:00",
+        "end_time": "2026-10-12T23:00:00-07:00",
+        "temperature_f": 56,
+        "precip_probability_pct": 37.0,
+        "relative_humidity_pct": 90.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "S",
+        "short_forecast": "Chance Rain Showers",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -484,7 +509,7 @@
     {
       "name": "National Weather Service stations",
       "status": "available",
-      "detail": "2 of 3 configured station feeds returned data."
+      "detail": "3 of 3 configured station feeds returned data."
     },
     {
       "name": "NWS point alerts and hourly forecast",
@@ -518,7 +543,6 @@
     }
   ],
   "errors": [
-    "NWS station KHMT: HTTP 500 \u2014 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"robots\" content=\"noindex,nofollow,noarchive\" /> <title>An Error Occurred: Internal Server Error</title>...",
     "EPA AirNow: HTTP 410 \u2014 {\"WebServiceError\":[{\"Message\":\"This web service has been retired as of October 1, 2026. For more information, see https://docs.airnowapi.org/webservices/retired\"}]}",
     "EPA AirNow ZIP fallback: HTTP 410 \u2014 {\"WebServiceError\":[{\"Message\":\"This web service has been retired as of October 1, 2026. For more information, see https://docs.airnowapi.org/webservices/retired\"}]}"
   ]
