@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-10-19T21:34:19.347463Z",
+  "generated_at": "2026-10-20T00:42:42.576233Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,23 +20,23 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 1,
-    "name": "Caution",
-    "label": "Monitor and add precautions",
-    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+    "level": 0,
+    "name": "Normal",
+    "label": "Normal outdoor operations",
+    "action": "Continue normal operations while monitoring routine conditions.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 1 \u2014 Yellow / Minor."
+      "NWS HeatRisk is 0 \u2014 Green / Little to none.",
+      "Highest precipitation probability in the next six hours is 1%."
     ],
     "recommended_actions": [
-      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
-      "Confirm conditions at affected school sites and document the decision source and time."
+      "Continue normal operations while monitoring routine conditions."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 0,
+      "display": "0 \u2014 Green / Little to none",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -161,7 +161,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-10-19T18:35:00+00:00",
-      "age_minutes": 179.28245768333332,
+      "age_minutes": 367.6681952333333,
       "stale": true,
       "condition": "Haze",
       "temperature_f": 80.78,
@@ -185,7 +185,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-10-19T18:35:00+00:00",
-      "age_minutes": 179.28469028333333,
+      "age_minutes": 367.6699997833333,
       "stale": true,
       "condition": "Clear",
       "temperature_f": 81.32,
@@ -209,7 +209,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-10-19T17:55:00+00:00",
-      "age_minutes": 219.28958033333336,
+      "age_minutes": 407.67215443333333,
       "stale": true,
       "condition": "Clear",
       "temperature_f": 79.88,
@@ -238,39 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-10-19T14:00:00-07:00",
-        "end_time": "2026-10-19T15:00:00-07:00",
-        "temperature_f": 86,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 25.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-19T15:00:00-07:00",
-        "end_time": "2026-10-19T16:00:00-07:00",
-        "temperature_f": 85,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 26.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "S",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-19T16:00:00-07:00",
-        "end_time": "2026-10-19T17:00:00-07:00",
-        "temperature_f": 85,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 26.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-10-19T17:00:00-07:00",
         "end_time": "2026-10-19T18:00:00-07:00",
@@ -498,6 +465,39 @@
         "precip_probability_pct": 2.0,
         "relative_humidity_pct": 33.0,
         "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-20T14:00:00-07:00",
+        "end_time": "2026-10-20T15:00:00-07:00",
+        "temperature_f": 81,
+        "precip_probability_pct": 2.0,
+        "relative_humidity_pct": 34.0,
+        "wind_speed": "10 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-20T15:00:00-07:00",
+        "end_time": "2026-10-20T16:00:00-07:00",
+        "temperature_f": 81,
+        "precip_probability_pct": 2.0,
+        "relative_humidity_pct": 35.0,
+        "wind_speed": "15 mph",
+        "wind_direction": "S",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-20T16:00:00-07:00",
+        "end_time": "2026-10-20T17:00:00-07:00",
+        "temperature_f": 80,
+        "precip_probability_pct": 2.0,
+        "relative_humidity_pct": 37.0,
+        "wind_speed": "15 mph",
         "wind_direction": "S",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
