@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-10-22T21:40:37.854510Z",
+  "generated_at": "2026-10-23T00:11:59.485955Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,25 +20,23 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 2,
-    "name": "Modify",
-    "label": "Modify outdoor activities",
-    "action": "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
+    "level": 0,
+    "name": "Normal",
+    "label": "Normal outdoor operations",
+    "action": "Continue normal operations while monitoring routine conditions.",
     "data_status": "Operational",
     "reasons": [
-      "Highest precipitation probability in the next six hours is 26%."
+      "NWS HeatRisk is 0 \u2014 Green / Little to none.",
+      "Highest precipitation probability in the next six hours is 20%."
     ],
     "recommended_actions": [
-      "Reduce duration or intensity, relocate sensitive or strenuous activities, and communicate with affected staff.",
-      "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications.",
-      "A thunderstorm forecast is not a lightning-clearance system; use a dedicated lightning protocol or licensed feed."
+      "Continue normal operations while monitoring routine conditions."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 1,
-      "display": "1 \u2014 Yellow / Minor",
+      "level": 0,
+      "display": "0 \u2014 Green / Little to none",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -53,9 +51,9 @@
     "max_wind_gust_mph": null,
     "max_wind_gust_station": null,
     "wind_level": null,
-    "max_precip_probability_pct": 26.0,
-    "precip_level": 2,
-    "thunderstorm_possible": true,
+    "max_precip_probability_pct": 20.0,
+    "precip_level": 0,
+    "thunderstorm_possible": false,
     "alert_level": 0
   },
   "alerts": [],
@@ -163,7 +161,7 @@
       "lat": 33.5742,
       "lon": -117.1285,
       "observed_at": "2026-10-22T13:15:00+00:00",
-      "age_minutes": 505.57447315,
+      "age_minutes": 656.9426937666667,
       "stale": true,
       "condition": "Mostly Cloudy",
       "temperature_f": 59.9,
@@ -187,7 +185,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-10-22T13:15:00+00:00",
-      "age_minutes": 505.5792735833333,
+      "age_minutes": 656.9464994666666,
       "stale": true,
       "condition": "Mostly Clear",
       "temperature_f": 59.9,
@@ -211,7 +209,7 @@
       "lat": 33.8819,
       "lon": -117.259,
       "observed_at": "2026-10-22T12:55:00+00:00",
-      "age_minutes": 525.5853165166667,
+      "age_minutes": 676.94875425,
       "stale": true,
       "condition": "",
       "temperature_f": 59.540000000000006,
@@ -240,39 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-10-22T14:00:00-07:00",
-        "end_time": "2026-10-22T15:00:00-07:00",
-        "temperature_f": 65,
-        "precip_probability_pct": 26.0,
-        "relative_humidity_pct": 69.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Chance Showers And Thunderstorms",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-22T15:00:00-07:00",
-        "end_time": "2026-10-22T16:00:00-07:00",
-        "temperature_f": 64,
-        "precip_probability_pct": 26.0,
-        "relative_humidity_pct": 69.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Chance Showers And Thunderstorms",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-22T16:00:00-07:00",
-        "end_time": "2026-10-22T17:00:00-07:00",
-        "temperature_f": 64,
-        "precip_probability_pct": 26.0,
-        "relative_humidity_pct": 69.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Chance Showers And Thunderstorms",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-10-22T17:00:00-07:00",
         "end_time": "2026-10-22T18:00:00-07:00",
@@ -497,6 +462,39 @@
         "start_time": "2026-10-23T13:00:00-07:00",
         "end_time": "2026-10-23T14:00:00-07:00",
         "temperature_f": 66,
+        "precip_probability_pct": 14.0,
+        "relative_humidity_pct": 67.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-23T14:00:00-07:00",
+        "end_time": "2026-10-23T15:00:00-07:00",
+        "temperature_f": 66,
+        "precip_probability_pct": 14.0,
+        "relative_humidity_pct": 66.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-23T15:00:00-07:00",
+        "end_time": "2026-10-23T16:00:00-07:00",
+        "temperature_f": 68,
+        "precip_probability_pct": 14.0,
+        "relative_humidity_pct": 63.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-23T16:00:00-07:00",
+        "end_time": "2026-10-23T17:00:00-07:00",
+        "temperature_f": 67,
         "precip_probability_pct": 14.0,
         "relative_humidity_pct": 67.0,
         "wind_speed": "0 mph",
