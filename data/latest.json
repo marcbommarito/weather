@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-10-25T09:54:24.986554Z",
+  "generated_at": "2026-10-25T14:14:45.793686Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,25 +20,23 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 0,
-    "name": "Normal",
-    "label": "Normal outdoor operations",
-    "action": "Continue normal operations while monitoring routine conditions.",
+    "level": 1,
+    "name": "Caution",
+    "label": "Monitor and add precautions",
+    "action": "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
     "data_status": "Operational",
     "reasons": [
-      "NWS HeatRisk is 0 \u2014 Green / Little to none.",
-      "Highest current heat index/temperature is 57\u00b0F at French Valley Airport.",
-      "Highest current wind gust/speed is 0 mph at French Valley Airport.",
-      "Highest precipitation probability in the next six hours is 0%."
+      "NWS HeatRisk is 1 \u2014 Yellow / Minor."
     ],
     "recommended_actions": [
-      "Continue normal operations while monitoring routine conditions."
+      "Increase monitoring, hydration and shade; prepare to modify activities for sensitive pupils.",
+      "Confirm conditions at affected school sites and document the decision source and time."
     ]
   },
   "summary": {
     "heat_risk": {
-      "level": 0,
-      "display": "0 \u2014 Green / Little to none",
+      "level": 1,
+      "display": "1 \u2014 Yellow / Minor",
       "note": "NWS experimental current-day HeatRisk"
     },
     "aqi": {
@@ -47,10 +45,10 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 56.66,
+    "max_heat_index_f": 52.879999999999995,
     "max_heat_index_station": "French Valley Airport",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 0.0,
+    "max_wind_gust_mph": 5.81603256,
     "max_wind_gust_station": "French Valley Airport",
     "wind_level": 0,
     "max_precip_probability_pct": 0.0,
@@ -162,22 +160,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-10-25T09:15:00+00:00",
-      "age_minutes": 39.36849675,
+      "observed_at": "2026-10-25T13:35:00+00:00",
+      "age_minutes": 39.7156085,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 56.66,
-      "dewpoint_f": 55.22,
-      "relative_humidity_pct": 94.918524106677,
+      "temperature_f": 52.879999999999995,
+      "dewpoint_f": 51.8,
+      "relative_humidity_pct": 96.104793446878,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 0.0,
-      "wind_speed_mph": 0.0,
+      "wind_direction_deg": 30.0,
+      "wind_speed_mph": 5.81603256,
       "wind_gust_mph": null,
-      "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.061522694,
+      "visibility_miles": 7.002853336514754,
+      "pressure_inhg": 30.0703816889,
       "precip_last_hour_in": null,
-      "raw_message": "KF70 250915Z AUTO 00000KT 10SM CLR 14/13 A3006 RMK AO2 T01370129 TSNO",
+      "raw_message": "KF70 251335Z AUTO 03005KT 7SM CLR 12/11 A3007 RMK AO2 T01160110 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -186,22 +184,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-10-25T08:55:00+00:00",
-      "age_minutes": 59.375052966666665,
+      "observed_at": "2026-10-25T12:55:00+00:00",
+      "age_minutes": 79.71883565,
       "stale": false,
       "condition": "Clear",
-      "temperature_f": 54.68,
-      "dewpoint_f": 51.26,
-      "relative_humidity_pct": 88.20815025668,
+      "temperature_f": 50.72,
+      "dewpoint_f": 47.66,
+      "relative_humidity_pct": 89.21352647796,
       "heat_index_f": null,
       "wind_chill_f": null,
       "wind_direction_deg": 0.0,
       "wind_speed_mph": 0.0,
       "wind_gust_mph": null,
       "visibility_miles": 9.997862483098704,
-      "pressure_inhg": 30.0113217229,
+      "pressure_inhg": 30.0201807178,
       "precip_last_hour_in": null,
-      "raw_message": "KRIV 250855Z AUTO 00000KT 10SM CLR 13/11 A3001 RMK AO2 SLP154 T01260107 58001",
+      "raw_message": "KRIV 251255Z AUTO 00000KT 10SM CLR 10/09 A3002 RMK AO2 SLP159 T01040087",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     },
     {
@@ -211,7 +209,7 @@
       "lat": 33.734,
       "lon": -117.0223,
       "observed_at": "2026-10-22T13:15:00+00:00",
-      "age_minutes": 4119.372140366667,
+      "age_minutes": 4379.717235666667,
       "stale": true,
       "condition": "Mostly Clear",
       "temperature_f": 59.9,
@@ -240,61 +238,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-10-25T02:00:00-07:00",
-        "end_time": "2026-10-25T03:00:00-07:00",
-        "temperature_f": 56,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 91.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-25T03:00:00-07:00",
-        "end_time": "2026-10-25T04:00:00-07:00",
-        "temperature_f": 55,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 91.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-25T04:00:00-07:00",
-        "end_time": "2026-10-25T05:00:00-07:00",
-        "temperature_f": 54,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 93.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-25T05:00:00-07:00",
-        "end_time": "2026-10-25T06:00:00-07:00",
-        "temperature_f": 53,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 93.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Mostly Clear",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-10-25T06:00:00-07:00",
-        "end_time": "2026-10-25T07:00:00-07:00",
-        "temperature_f": 53,
-        "precip_probability_pct": 0.0,
-        "relative_humidity_pct": 94.0,
-        "wind_speed": "0 mph",
-        "wind_direction": "",
-        "short_forecast": "Sunny",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-10-25T07:00:00-07:00",
         "end_time": "2026-10-25T08:00:00-07:00",
@@ -502,6 +445,61 @@
         "wind_speed": "0 mph",
         "wind_direction": "",
         "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-26T02:00:00-07:00",
+        "end_time": "2026-10-26T03:00:00-07:00",
+        "temperature_f": 58,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 80.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-26T03:00:00-07:00",
+        "end_time": "2026-10-26T04:00:00-07:00",
+        "temperature_f": 57,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 82.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-26T04:00:00-07:00",
+        "end_time": "2026-10-26T05:00:00-07:00",
+        "temperature_f": 56,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 83.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-26T05:00:00-07:00",
+        "end_time": "2026-10-26T06:00:00-07:00",
+        "temperature_f": 55,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 84.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-10-26T06:00:00-07:00",
+        "end_time": "2026-10-26T07:00:00-07:00",
+        "temperature_f": 54,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 84.0,
+        "wind_speed": "0 mph",
+        "wind_direction": "",
+        "short_forecast": "Sunny",
         "detailed_forecast": ""
       }
     ]
