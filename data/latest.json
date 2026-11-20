@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "sample": false,
-  "generated_at": "2026-11-19T22:05:12.472348Z",
+  "generated_at": "2026-11-20T03:23:51.129247Z",
   "district": {
     "name": "Menifee Union School District",
     "shortName": "MUSD",
@@ -20,19 +20,19 @@
     "decisionDisclaimer": "Decision-support only. Authorized district staff remain responsible for operational decisions under adopted district protocols."
   },
   "evaluation": {
-    "level": 4,
-    "name": "Severe",
-    "label": "Severe inclement weather",
-    "action": "Suspend outdoor activities. Evaluate broader site or district operations under emergency authority and local agency guidance.",
+    "level": 0,
+    "name": "Normal",
+    "label": "Normal outdoor operations",
+    "action": "Continue normal operations while monitoring routine conditions.",
     "data_status": "Operational",
     "reasons": [
-      "Highest precipitation probability in the next six hours is 100%."
+      "NWS HeatRisk is 0 \u2014 Green / Little to none.",
+      "Highest current heat index/temperature is 56\u00b0F at March Air Reserve Base.",
+      "Highest current wind gust/speed is 8 mph at Hemet-Ryan Airport.",
+      "Highest precipitation probability in the next six hours is 27%."
     ],
     "recommended_actions": [
-      "Suspend outdoor activities. Evaluate broader site or district operations under emergency authority and local agency guidance.",
-      "Confirm conditions at affected school sites and document the decision source and time.",
-      "Notify principals, PE staff, coaches and supervisors of required modifications.",
-      "Use established staff and family communication procedures for affected activities or operations."
+      "Continue normal operations while monitoring routine conditions."
     ]
   },
   "summary": {
@@ -47,37 +47,18 @@
       "note": "AirNow key is configured, but no current AQI observation was returned for the Menifee reporting area within the documented 25-mile search radius.",
       "configured": true
     },
-    "max_heat_index_f": 58.459999999999994,
-    "max_heat_index_station": "Hemet-Ryan Airport",
+    "max_heat_index_f": 56.48,
+    "max_heat_index_station": "March Air Reserve Base",
     "heat_index_level": 0,
-    "max_wind_gust_mph": 24.15890448,
+    "max_wind_gust_mph": 8.05296816,
     "max_wind_gust_station": "Hemet-Ryan Airport",
     "wind_level": 0,
-    "max_precip_probability_pct": 100.0,
-    "precip_level": 4,
+    "max_precip_probability_pct": 27.0,
+    "precip_level": 0,
     "thunderstorm_possible": false,
-    "alert_level": 1
+    "alert_level": 0
   },
-  "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.c5ccaa0cd46827048dd718342a9fedef8db99764.001.1",
-      "event": "Flood Advisory",
-      "headline": "Flood Advisory issued November 19 at 2:02PM PST until November 19 at 2:45PM PST by NWS San Diego CA",
-      "description": "* WHAT...Flooding caused by excessive rainfall continues.\n\n* WHERE...Riverside County in southern California...\nSan Bernardino County in southern California...\n\n* WHEN...Until 245 PM PST.\n\n* IMPACTS...Rises in small streams and normally dry arroyos. Ponding\nof water in urban or other areas is occurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 201 PM PST, Doppler radar and automated rain gauges indicated\nheavy rain. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 1.25 inches of rain\nhave fallen.\n- Additional rainfall amounts up to 0.5 inches are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nRiverside, San Bernardino, Fontana, Moreno Valley, Corona,\nRialto, Redlands, Lake Elsinore and Yucaipa.\n- https://www.weather.gov/safety/flood",
-      "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nIn hilly terrain there are hundreds of low water crossings which are\npotentially dangerous in heavy rain. Do not attempt to cross flooded\nroads. Find an alternate route. Minor rockfalls are possible.",
-      "severity": "Minor",
-      "certainty": "Likely",
-      "urgency": "Expected",
-      "effective": "2026-11-19T14:02:00-08:00",
-      "onset": "2026-11-19T14:02:00-08:00",
-      "expires": "2026-11-19T14:45:00-08:00",
-      "ends": "2026-11-19T14:45:00-08:00",
-      "area_desc": "Riverside, CA; San Bernardino, CA",
-      "sender_name": "NWS San Diego CA",
-      "level": 1,
-      "web": "http://www.weather.gov"
-    }
-  ],
+  "alerts": [],
   "stations": [
     {
       "id": "239",
@@ -181,22 +162,22 @@
       "network": "NWS / aviation",
       "lat": 33.5742,
       "lon": -117.1285,
-      "observed_at": "2026-11-19T20:55:00+00:00",
-      "age_minutes": 70.13887438333333,
+      "observed_at": "2026-11-20T02:35:00+00:00",
+      "age_minutes": 48.81038456666667,
       "stale": false,
-      "condition": "Light Rain and Fog/Mist",
-      "temperature_f": 55.58,
-      "dewpoint_f": 54.68,
-      "relative_humidity_pct": 96.781990603572,
+      "condition": "Clear",
+      "temperature_f": 55.22,
+      "dewpoint_f": 52.52,
+      "relative_humidity_pct": 90.604382195941,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 190.0,
-      "wind_speed_mph": 14.98746852,
+      "wind_direction_deg": 200.0,
+      "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
-      "visibility_miles": 4.001630478008431,
-      "pressure_inhg": 29.9906507348,
-      "precip_last_hour_in": 78.7401574,
-      "raw_message": "KF70 192055Z AUTO 19013KT 4SM -RA BR OVC004 13/13 A2999 RMK AO2 RAB2027 CIG 003V006 P0008 60009 T01310126 58022 TSNO",
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 30.0290397127,
+      "precip_last_hour_in": null,
+      "raw_message": "KF70 200235Z AUTO 20003KT 10SM CLR 13/11 A3003 RMK AO2 T01290114 TSNO",
       "source_url": "https://api.weather.gov/stations/KF70/observations/latest"
     },
     {
@@ -205,20 +186,20 @@
       "network": "NWS / aviation",
       "lat": 33.734,
       "lon": -117.0223,
-      "observed_at": "2026-11-19T20:15:00+00:00",
-      "age_minutes": 110.14162736666667,
+      "observed_at": "2026-11-20T01:35:00+00:00",
+      "age_minutes": 108.81253831666666,
       "stale": false,
       "condition": "",
-      "temperature_f": 58.459999999999994,
-      "dewpoint_f": 52.52,
-      "relative_humidity_pct": 80.609573035677,
+      "temperature_f": 55.76,
+      "dewpoint_f": 52.879999999999995,
+      "relative_humidity_pct": 90.028881506468,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": 180.0,
-      "wind_speed_mph": 18.409979988,
-      "wind_gust_mph": 24.15890448,
+      "wind_direction_deg": 220.0,
+      "wind_speed_mph": 8.05296816,
+      "wind_gust_mph": null,
       "visibility_miles": 10.0,
-      "pressure_inhg": 29.990001075174,
+      "pressure_inhg": 30.0099987796616,
       "precip_last_hour_in": null,
       "raw_message": "",
       "source_url": "https://api.weather.gov/stations/KHMT/observations/latest"
@@ -229,22 +210,22 @@
       "network": "NWS / aviation",
       "lat": 33.8819,
       "lon": -117.259,
-      "observed_at": "2026-11-19T21:06:00+00:00",
-      "age_minutes": 59.1437745,
+      "observed_at": "2026-11-20T01:55:00+00:00",
+      "age_minutes": 88.81488803333333,
       "stale": false,
-      "condition": "Light Rain and Fog/Mist",
-      "temperature_f": null,
-      "dewpoint_f": null,
-      "relative_humidity_pct": null,
+      "condition": "Partly Cloudy",
+      "temperature_f": 56.48,
+      "dewpoint_f": 50.0,
+      "relative_humidity_pct": 78.862610959727,
       "heat_index_f": null,
       "wind_chill_f": null,
-      "wind_direction_deg": null,
-      "wind_speed_mph": null,
+      "wind_direction_deg": 220.0,
+      "wind_speed_mph": 3.3554034,
       "wind_gust_mph": null,
-      "visibility_miles": 5.0,
-      "pressure_inhg": null,
+      "visibility_miles": 9.997862483098704,
+      "pressure_inhg": 29.9611207518,
       "precip_last_hour_in": null,
-      "raw_message": "",
+      "raw_message": "KRIV 200155Z 22003KT 10SM FEW024 FEW037 SCT050 14/10 A2996 RMK AO2A SLP142 T01360100",
       "source_url": "https://api.weather.gov/stations/KRIV/observations/latest"
     }
   ],
@@ -259,61 +240,6 @@
       "hourly_url": "https://api.weather.gov/gridpoints/SGX/63,56/forecast/hourly"
     },
     "hourly": [
-      {
-        "start_time": "2026-11-19T14:00:00-08:00",
-        "end_time": "2026-11-19T15:00:00-08:00",
-        "temperature_f": 58,
-        "precip_probability_pct": 100.0,
-        "relative_humidity_pct": 92.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-11-19T15:00:00-08:00",
-        "end_time": "2026-11-19T16:00:00-08:00",
-        "temperature_f": 59,
-        "precip_probability_pct": 100.0,
-        "relative_humidity_pct": 90.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-11-19T16:00:00-08:00",
-        "end_time": "2026-11-19T17:00:00-08:00",
-        "temperature_f": 59,
-        "precip_probability_pct": 27.0,
-        "relative_humidity_pct": 88.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "W",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-11-19T17:00:00-08:00",
-        "end_time": "2026-11-19T18:00:00-08:00",
-        "temperature_f": 58,
-        "precip_probability_pct": 27.0,
-        "relative_humidity_pct": 87.0,
-        "wind_speed": "10 mph",
-        "wind_direction": "W",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
-      {
-        "start_time": "2026-11-19T18:00:00-08:00",
-        "end_time": "2026-11-19T19:00:00-08:00",
-        "temperature_f": 57,
-        "precip_probability_pct": 27.0,
-        "relative_humidity_pct": 89.0,
-        "wind_speed": "5 mph",
-        "wind_direction": "SW",
-        "short_forecast": "Chance Rain Showers",
-        "detailed_forecast": ""
-      },
       {
         "start_time": "2026-11-19T19:00:00-08:00",
         "end_time": "2026-11-19T20:00:00-08:00",
@@ -522,6 +448,61 @@
         "wind_direction": "W",
         "short_forecast": "Sunny",
         "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-11-20T14:00:00-08:00",
+        "end_time": "2026-11-20T15:00:00-08:00",
+        "temperature_f": 61,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 49.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-11-20T15:00:00-08:00",
+        "end_time": "2026-11-20T16:00:00-08:00",
+        "temperature_f": 60,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 48.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-11-20T16:00:00-08:00",
+        "end_time": "2026-11-20T17:00:00-08:00",
+        "temperature_f": 59,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 51.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-11-20T17:00:00-08:00",
+        "end_time": "2026-11-20T18:00:00-08:00",
+        "temperature_f": 56,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 57.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "NW",
+        "short_forecast": "Sunny",
+        "detailed_forecast": ""
+      },
+      {
+        "start_time": "2026-11-20T18:00:00-08:00",
+        "end_time": "2026-11-20T19:00:00-08:00",
+        "temperature_f": 53,
+        "precip_probability_pct": 0.0,
+        "relative_humidity_pct": 67.0,
+        "wind_speed": "5 mph",
+        "wind_direction": "W",
+        "short_forecast": "Mostly Clear",
+        "detailed_forecast": ""
       }
     ]
   },
@@ -534,7 +515,7 @@
     {
       "name": "NWS point alerts and hourly forecast",
       "status": "available",
-      "detail": "1 active alert(s); 24 forecast hour(s) loaded."
+      "detail": "0 active alert(s); 24 forecast hour(s) loaded."
     },
     {
       "name": "NWS HeatRisk",
