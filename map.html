@@ -33,6 +33,7 @@
   <div id="stationMap" aria-label="Full interactive map of Menifee-area weather stations and MUSD schools"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="assets/freshness.js"></script>
   <script>
     'use strict';
 
@@ -125,8 +126,8 @@
 
         locations.forEach((station) => {
           const observation = observations.get(String(station.id));
-          const detail = observation
-            ? `${observation.temperature_f != null ? Math.round(observation.temperature_f) + '°F' : 'Temperature unavailable'}<br>${observation.stale ? 'Stale observation' : 'Current observation'}<br>${escapeHtml(formatDateTime(observation.observed_at, config.district.timezone))}`
+          const detail = () => observation && WeatherFreshness.station(observation, config.thresholds).age != null
+            ? `${observation.temperature_f != null ? Math.round(observation.temperature_f) + '°F' : 'Temperature unavailable'}<br>${WeatherFreshness.station(observation, config.thresholds).label} observation<br>${escapeHtml(formatDateTime(observation.observed_at, config.district.timezone))}`
             : (station.official ? 'Configured source — no current observation' : 'Reference location only; not used in the official calculation');
 
           L.circleMarker([station.lat, station.lon], {
@@ -137,7 +138,7 @@
             fillOpacity: station.official ? 1 : .7
           }).addTo(map)
             .bindTooltip(`${station.id} — ${station.name}`)
-            .bindPopup(`<strong>${escapeHtml(station.name)} (${escapeHtml(station.id)})</strong><br>${escapeHtml(station.group)}<br>${detail}`);
+            .bindPopup(() => `<strong>${escapeHtml(station.name)} (${escapeHtml(station.id)})</strong><br>${escapeHtml(station.group)}<br>${detail()}`);
           bounds.extend([station.lat, station.lon]);
         });
 

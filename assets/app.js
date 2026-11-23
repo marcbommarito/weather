@@ -4,6 +4,11 @@ const LEVEL_COLORS = ['#2f7d32', '#d9a400', '#e8791a', '#c73535', '#7b1f7a'];
 let CONFIG = null;
 let DATA = null;
 let stationMap = null;
+let QUALITY = null;
+let renderTime = 0;
+let refreshFailed = false;
+let refreshInFlight = false;
+const verificationAction = 'Verify current conditions with the National Weather Service, official air quality sources and district procedures before relying on this dashboard.';
 
 const $ = (id) => document.getElementById(id);
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -33,50 +38,58 @@ function metricCard(label, value, note, level = null) {
 
 function setHero() {
   const evaluation = DATA.evaluation || {};
-  const level = Number.isInteger(evaluation.level) ? evaluation.level : null;
+  const snapshotLevel = Number.isInteger(evaluation.level) ? evaluation.level : null;
+  // A known hazard on a current snapshot remains visible even with another feed missing.
+  const level = QUALITY.historical || (QUALITY.issues.length && snapshotLevel === 0) ? null : snapshotLevel;
   const hero = $('decisionHero');
   hero.className = `decision-hero ${level === null ? 'level-unknown' : `level-${level}`}`;
   $('levelNumber').textContent = level === null ? '?' : level;
-  $('levelLabel').textContent = evaluation.label || 'Data unavailable — verify manually';
-  $('levelAction').textContent = evaluation.action || 'Do not rely on this dashboard until official data sources are restored.';
+  $('levelLabel').textContent = level === null
+    ? `${QUALITY.status === 'Operational' ? 'Data unavailable' : QUALITY.status} · Verify official sources`
+    : (evaluation.label || 'Verify official sources');
+  $('levelAction').textContent = level === null ? verificationAction
+    : [evaluation.action, QUALITY.issues.length ? verificationAction : ''].filter(Boolean).join(' ');
   $('generatedAt').textContent = formatDateTime(DATA.generated_at);
-  $('dataStatus').textContent = evaluation.data_status || 'Unknown';
-  if (DATA.generated_at && CONFIG.refreshMinutes) {
-    const next = new Date(new Date(DATA.generated_at).getTime() + CONFIG.refreshMinutes * 60000);
-    $('nextUpdate').textContent = formatDateTime(next.toISOString());
-  } else {
-    $('nextUpdate').textContent = 'Unavailable';
-  }
+  $('dataStatus').textContent = QUALITY.status;
+  $('nextUpdate').textContent = QUALITY.next == null ? 'Unavailable'
+    : `${formatDateTime(QUALITY.next)}${renderTime > QUALITY.next ? ' (overdue)' : ''}`;
 }
 
 function setBanners() {
-  if (DATA.sample) {
-    $('sampleBanner').classList.remove('hidden');
-    $('sampleBanner').textContent = 'DEMO DATA: This preview uses sample values. Run the GitHub Action to replace it with live official feeds.';
-  }
-  if (DATA.errors?.length) {
-    $('errorBanner').classList.remove('hidden');
-    $('errorBanner').textContent = `Some feeds were unavailable: ${DATA.errors.join(' | ')}`;
-  }
+  $('sampleBanner').classList.toggle('hidden', !DATA.sample);
+  $('sampleBanner').textContent = 'DEMO DATA: This preview uses sample values.';
+  const alerts = QUALITY.historical && !DATA.sample && DATA.alerts?.length
+    ? ['The last snapshot included a National Weather Service alert. Verify its current status directly.'] : [];
+  const messages = [...QUALITY.issues, ...alerts, ...(DATA.errors || [])];
+  $('errorBanner').classList.toggle('hidden', !messages.length);
+  const message = messages.join(' ');
+  if ($('errorBanner').textContent !== message) $('errorBanner').textContent = message;
 }
 
 function renderMetrics() {
   const s = DATA.summary || {};
   const metrics = [
     metricCard('NWS HeatRisk', s.heat_risk?.display ?? 'Unavailable', s.heat_risk?.note ?? 'Current-day HeatRisk feed', s.heat_risk?.level),
-    metricCard('Air Quality Index', s.aqi?.value ?? (s.aqi?.configured ? 'Unavailable' : 'Not configured'), s.aqi?.note ?? 'EPA AirNow current observation unavailable', s.aqi?.level),
+    metricCard('Air Quality Index', s.aqi?.value ?? (s.aqi?.configured ? 'Unavailable' : 'Not configured'), s.aqi?.observed_at ? `Observed ${s.aqi.observed_at} · ${s.aqi.category || 'AirNow'}` : (s.aqi?.note ?? 'EPA AirNow observation unavailable'), s.aqi?.level),
     metricCard('Highest heat index', s.max_heat_index_f != null ? `${Math.round(s.max_heat_index_f)}°F` : 'Unavailable', s.max_heat_index_station || 'Across reporting official stations', s.heat_index_level),
     metricCard('Highest wind gust', s.max_wind_gust_mph != null ? `${Math.round(s.max_wind_gust_mph)} mph` : 'Unavailable', s.max_wind_gust_station || 'Across reporting official stations', s.wind_level),
-    metricCard('Next 6-hour rain chance', s.max_precip_probability_pct != null ? `${Math.round(s.max_precip_probability_pct)}%` : 'Unavailable', s.thunderstorm_possible ? 'Thunderstorms possible' : 'NWS hourly forecast', s.precip_level),
-    metricCard('Active NWS alerts', DATA.alerts?.length ?? 0, DATA.alerts?.length ? 'Review official alert details below' : 'No active point alerts', s.alert_level)
+    metricCard(QUALITY.historical ? '6-hour rain chance at last update' : 'Next 6-hour rain chance', s.max_precip_probability_pct != null ? `${Math.round(s.max_precip_probability_pct)}%` : 'Unavailable', s.thunderstorm_possible ? 'Thunderstorms possible' : 'NWS hourly forecast', s.precip_level),
+    metricCard(QUALITY.historical ? 'NWS alerts in last snapshot' : 'Active NWS alerts',
+      DATA.alerts?.length || (QUALITY.historical || DATA.errors?.some(e => /^NWS alerts:/i.test(e)) ? 'Unverified' : 0),
+      QUALITY.historical ? 'Verify current alerts with NWS' : (DATA.alerts?.length ? 'Review official alert details below' : 'Verify current alerts with NWS'), s.alert_level)
   ];
-  $('metricsGrid').innerHTML = metrics.join('');
+  $('metricsGrid').innerHTML = (QUALITY.historical
+    ? '<p class="fine-print">Values below are from the last snapshot, not live conditions.</p>' : '') + metrics.join('');
 }
 
 function renderActionsAndReasons() {
   const ev = DATA.evaluation || {};
-  const actions = ev.recommended_actions?.length ? ev.recommended_actions : ['Verify conditions manually and follow district protocols.'];
-  const reasons = ev.reasons?.length ? ev.reasons : ['No reliable decision calculation is currently available.'];
+  const rules = ev.recommended_actions || [];
+  const actions = QUALITY.issues.length ? [verificationAction, ...(!QUALITY.historical && ev.level > 0 ? rules : [])]
+    : (rules.length ? rules : [verificationAction]);
+  const reasons = ev.reasons?.length
+    ? ev.reasons.map(reason => QUALITY.historical ? `At last update: ${reason.replace(/\bcurrent\s+/gi, '')}` : reason)
+    : ['No reliable decision calculation is currently available.'];
   $('recommendedActions').innerHTML = actions.map(x => `<li>${escapeHtml(x)}</li>`).join('');
   $('decisionReasons').innerHTML = reasons.map(x => `<li>${escapeHtml(x)}</li>`).join('');
 }
@@ -84,10 +97,14 @@ function renderActionsAndReasons() {
 function renderAlerts() {
   const alerts = DATA.alerts || [];
   if (!alerts.length) {
-    $('alertsList').innerHTML = '<div class="no-data">No active NWS alerts were returned for the district reference point.</div>';
+    const unverified = QUALITY.historical || DATA.errors?.some(e => /^NWS alerts:/i.test(e));
+    $('alertsList').innerHTML = unverified
+      ? '<div class="no-data">Current alerts are unverified. Check the National Weather Service directly.</div>'
+      : '<div class="no-data">No active NWS alerts were returned for the district reference point.</div>';
     return;
   }
-  $('alertsList').innerHTML = alerts.map(alert => `
+  $('alertsList').innerHTML = (QUALITY.historical
+    ? '<p>Alerts from the last snapshot. Verify whether these are still active with the National Weather Service.</p>' : '') + alerts.map(alert => `
     <article class="alert-card level-${alert.level ?? 2}">
       <h3>${escapeHtml(alert.event || alert.headline || 'Weather alert')}</h3>
       <div class="alert-meta">
@@ -103,10 +120,26 @@ function renderAlerts() {
 }
 
 function renderCoverage() {
-  const coverage = DATA.coverage || [];
-  $('coverageList').innerHTML = coverage.map(item => {
-    const cls = item.status === 'available' ? 'status-ok' : item.status === 'partial' ? 'status-warning' : 'status-error';
-    return `<div class="coverage-item"><span class="status-dot ${cls}" aria-hidden="true"></span><div><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.detail)}</span></div></div>`;
+  const displayCoverage = item => {
+    const rows = DATA.stations || [];
+    let network = null;
+    if (/National Weather Service stations/i.test(item.name)) network = /NWS/i;
+    if (/CIMIS/i.test(item.name)) network = /CIMIS/i;
+    if (network) {
+      const matches = rows.filter(s => network.test(s.network || ''));
+      const current = matches.filter(s => WeatherFreshness.station(s, CONFIG.thresholds, renderTime).current).length;
+      const stale = matches.filter(s => WeatherFreshness.station(s, CONFIG.thresholds, renderTime).label === 'Stale').length;
+      const total = (network.source === 'CIMIS' ? CONFIG.stations?.cimis : CONFIG.stations?.nws)?.length ?? matches.length;
+      return {status: current === total ? 'available' : 'partial',
+        detail: `${current} current, ${stale} stale, ${Math.max(0, total - current - stale)} unavailable of ${total} configured.`};
+    }
+    return QUALITY.historical && /^NWS point|^EPA AirNow/i.test(item.name) && item.status === 'available'
+      ? {status: 'partial', detail: 'Last snapshot only; verify current conditions with the official source.'} : item;
+  };
+  $('coverageList').innerHTML = (DATA.coverage || []).map(item => {
+    const {status, detail} = displayCoverage(item);
+    const cls = status === 'available' ? 'status-ok' : status === 'partial' ? 'status-warning' : 'status-error';
+    return `<div class="coverage-item"><span class="status-dot ${cls}" aria-hidden="true"></span><div><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(detail)}</span></div></div>`;
   }).join('');
 }
 
@@ -117,29 +150,31 @@ function renderStations() {
     return;
   }
   $('stationRows').innerHTML = rows.map(s => {
-    const freshness = s.stale ? '<span class="stale">Stale</span>' : '<span class="fresh">Current</span>';
-    const wind = s.wind_speed_mph != null ? `${Math.round(s.wind_speed_mph)} mph` : '—';
+    const {label, age, current} = WeatherFreshness.station(s, CONFIG.thresholds, renderTime);
+    const freshness = `<span class="${current ? 'fresh' : 'stale'}">${label}</span>`;
+    const wind = age != null && s.wind_speed_mph != null ? `${Math.round(s.wind_speed_mph)} mph` : '—';
     return `<tr>
       <th scope="row">${escapeHtml(s.name)}<br><span class="fine-print">${escapeHtml(s.id)} · ${escapeHtml(s.network)}</span></th>
       <td>${escapeHtml(formatDateTime(s.observed_at))}</td>
-      <td>${s.temperature_f != null ? `${Math.round(s.temperature_f)}°F` : '—'}</td>
-      <td>${s.heat_index_f != null ? `${Math.round(s.heat_index_f)}°F` : '—'}</td>
-      <td>${s.relative_humidity_pct != null ? `${Math.round(s.relative_humidity_pct)}%` : '—'}</td>
-      <td>${escapeHtml(wind)}${s.wind_direction_deg != null ? ` / ${Math.round(s.wind_direction_deg)}°` : ''}</td>
-      <td>${s.wind_gust_mph != null ? `${Math.round(s.wind_gust_mph)} mph` : '—'}</td>
-      <td>${escapeHtml(s.condition || '—')}</td>
-      <td>${freshness}<br><span class="fine-print">${s.age_minutes != null ? `${Math.round(s.age_minutes)} min old` : 'Unknown age'}</span></td>
+      <td>${age != null && s.temperature_f != null ? `${Math.round(s.temperature_f)}°F` : '—'}</td>
+      <td>${age != null && s.heat_index_f != null ? `${Math.round(s.heat_index_f)}°F` : '—'}</td>
+      <td>${age != null && s.relative_humidity_pct != null ? `${Math.round(s.relative_humidity_pct)}%` : '—'}</td>
+      <td>${escapeHtml(wind)}${age != null && s.wind_direction_deg != null ? ` / ${Math.round(s.wind_direction_deg)}°` : ''}</td>
+      <td>${age != null && s.wind_gust_mph != null ? `${Math.round(s.wind_gust_mph)} mph` : '—'}</td>
+      <td>${escapeHtml(age != null ? (s.condition || '—') : '—')}</td>
+      <td>${freshness}<br><span class="fine-print">${age != null ? `${Math.round(age)} min old` : 'Unknown age'}</span></td>
     </tr>`;
   }).join('');
 }
 
 function renderForecast() {
-  const periods = (DATA.forecast?.hourly || []).slice(0, 12);
+  const periods = (DATA.forecast?.hourly || []).filter(p => WeatherFreshness.timestamp(p.end_time) > renderTime).slice(0, 12);
   if (!periods.length) {
     $('forecastStrip').innerHTML = '<div class="no-data">Hourly forecast unavailable.</div>';
     return;
   }
-  $('forecastStrip').innerHTML = periods.map(p => `
+  $('forecastStrip').innerHTML = (QUALITY.historical
+    ? '<p class="fine-print">From the last snapshot. Check NWS for the latest forecast.</p>' : '') + periods.map(p => `
     <article class="forecast-card">
       <span>${escapeHtml(formatHour(p.start_time))}</span>
       <strong>${p.temperature_f != null ? `${Math.round(p.temperature_f)}°` : '—'}</strong>
@@ -300,6 +335,15 @@ function renderStaticStationMap(message = 'Interactive street-map tiles could no
     </div>`;
 }
 
+function stationPopup(s) {
+  const obs = (DATA.stations || []).find(o => String(o.id) === String(s.id));
+  const freshness = WeatherFreshness.station(obs, CONFIG.thresholds).label;
+  const status = obs && freshness !== 'Unavailable'
+    ? `${obs.temperature_f != null ? `${Math.round(obs.temperature_f)}°F` : 'Temperature unavailable'} · ${obs.wind_gust_mph != null ? `Gust ${Math.round(obs.wind_gust_mph)} mph` : 'Gust unavailable'}<br>${escapeHtml(formatDateTime(obs.observed_at))}<br>${freshness} observation`
+    : (s.official ? 'Configured official source · No current observation' : 'Reference location only; not used in calculation');
+  return `<strong>${escapeHtml(s.name)} (${escapeHtml(s.id)})</strong><br>${escapeHtml(s.group)}<br>${status}`;
+}
+
 async function initMap() {
   const container = $('stationMap');
   if (!container) return;
@@ -360,7 +404,6 @@ async function initMap() {
     primaryTiles.addTo(stationMap);
 
     const bounds = L.latLngBounds();
-    const byId = new Map((DATA.stations || []).map(s => [String(s.id), s]));
 
     const districtMarker = L.circleMarker([center.lat, center.lon], {
       radius: 10,
@@ -383,11 +426,6 @@ async function initMap() {
     }).addTo(stationMap).bindTooltip(`${miles}-mile radius`));
 
     stations.forEach(s => {
-      const obs = byId.get(String(s.id));
-      const status = obs
-        ? `${obs.temperature_f != null ? `${Math.round(obs.temperature_f)}°F` : 'Temperature unavailable'} · ${obs.wind_gust_mph != null ? `Gust ${Math.round(obs.wind_gust_mph)} mph` : 'Gust unavailable'}<br>${escapeHtml(formatDateTime(obs.observed_at))}`
-        : (s.official ? 'Configured official source — no current observation' : 'Reference location only; not used in calculation');
-      const text = `<strong>${escapeHtml(s.name)} (${escapeHtml(s.id)})</strong><br>${escapeHtml(s.group)}<br>${status}`;
 
       L.circleMarker([s.lat, s.lon], {
         radius: s.official ? 8 : 5,
@@ -396,7 +434,7 @@ async function initMap() {
         fillOpacity: s.official ? 0.9 : 0.65,
         weight: 2
       }).addTo(stationMap)
-        .bindPopup(text)
+        .bindPopup(() => stationPopup(s))
         .bindTooltip(`${s.id} — ${s.name}`);
       bounds.extend([s.lat, s.lon]);
     });
@@ -428,32 +466,79 @@ async function initMap() {
   }
 }
 
+function renderLiveData() {
+  renderTime = Date.now();
+  const previous = QUALITY;
+  QUALITY = WeatherFreshness.assess(DATA, CONFIG, renderTime, refreshFailed);
+  setBanners();
+  setHero();
+  renderMetrics();
+  renderActionsAndReasons();
+  if (!previous || previous.historical !== QUALITY.historical) renderAlerts();
+  renderCoverage();
+  renderStations();
+  renderForecast();
+}
+
+async function fetchJson(path) {
+  const response = await fetch(`${path}?v=${Date.now()}`, {
+    cache: 'no-store', signal: AbortSignal.timeout(10000)
+  });
+  if (!response.ok) throw new Error(`Could not load ${path}`);
+  return response.json();
+}
+
+async function refreshData() {
+  if (!CONFIG) {
+    window.location.reload();
+    return;
+  }
+  if (refreshInFlight) return;
+  refreshInFlight = true;
+  try {
+    const next = await fetchJson('data/latest.json');
+    const nextTime = WeatherFreshness.timestamp(next?.generated_at);
+    const currentTime = WeatherFreshness.timestamp(DATA.generated_at);
+    if (!Number.isFinite(nextTime) || nextTime > Date.now() || (Number.isFinite(currentTime) && currentTime <= Date.now() && nextTime < currentTime)) {
+      throw new Error('Latest snapshot has an invalid or older timestamp');
+    }
+    if (next.generated_at !== DATA.generated_at) {
+      DATA = next;
+      QUALITY = null;
+      document.dispatchEvent(new Event('dashboard-data-updated'));
+    }
+    refreshFailed = false;
+  } catch {
+    refreshFailed = true;
+  } finally {
+    refreshInFlight = false;
+    renderLiveData();
+  }
+}
+
 async function loadDashboard() {
   try {
-    const cacheBust = `?v=${Date.now()}`;
-    [CONFIG, DATA] = await Promise.all([
-      fetch(`config.json${cacheBust}`).then(r => { if (!r.ok) throw new Error('Could not load config.json'); return r.json(); }),
-      fetch(`data/latest.json${cacheBust}`).then(r => { if (!r.ok) throw new Error('Could not load data/latest.json'); return r.json(); })
-    ]);
+    const [config, data] = await Promise.all([fetchJson('config.json'), fetchJson('data/latest.json')]);
+    CONFIG = config;
+    DATA = data;
     document.title = `${CONFIG.district.shortName} ${CONFIG.district.dashboardTitle}`;
     $('footerDisclaimer').textContent = CONFIG.district.decisionDisclaimer;
-    setBanners();
-    setHero();
-    renderMetrics();
-    renderActionsAndReasons();
-    renderAlerts();
-    renderCoverage();
-    renderStations();
-    renderForecast();
+    renderLiveData();
     renderThresholds();
+    // Update the wall-clock even while the network refresh is still pending.
+    window.setInterval(() => { renderLiveData(); void refreshData(); }, 60000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) { renderLiveData(); void refreshData(); }
+    });
     await initMap();
   } catch (error) {
     $('errorBanner').classList.remove('hidden');
     $('errorBanner').textContent = `Dashboard could not load: ${error.message}`;
-    $('levelLabel').textContent = 'Data unavailable — verify manually';
-    $('levelAction').textContent = 'Use official NWS, AirNow and district emergency procedures until the dashboard is restored.';
+    $('dataStatus').textContent = 'Data unavailable';
+    $('levelLabel').textContent = 'Data unavailable · Verify official sources';
+    $('levelAction').textContent = verificationAction;
   }
 }
 
-$('refreshButton').addEventListener('click', () => window.location.reload());
+$('refreshButton').addEventListener('click', refreshData);
 loadDashboard();

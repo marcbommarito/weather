@@ -52,9 +52,8 @@
           </thead>
           <tbody>
             ${rows.map((station) => {
-              const freshness = station.stale
-                ? '<span class="stale">Stale</span>'
-                : '<span class="fresh">Current</span>';
+              const {label, age, current} = WeatherFreshness.station(station, CONFIG.thresholds);
+              const freshness = `<span class="${current ? 'fresh' : 'stale'}">${label}</span>`;
               const observed = typeof formatDateTime === 'function'
                 ? formatDateTime(station.observed_at)
                 : (station.observed_at || 'Unavailable');
@@ -68,7 +67,7 @@
                 <td>${fmt(station.wind_speed_mph, ' mph')} ${Number.isFinite(Number(station.wind_direction_deg)) ? `/ ${Math.round(Number(station.wind_direction_deg))}°` : ''}</td>
                 <td>${fmt(station.wind_gust_mph, ' mph')}</td>
                 <td>${fmt(station.precip_rate_in_per_hr, ' in/hr', 2)}</td>
-                <td>${freshness}<br><span class="fine-print">${Number.isFinite(Number(station.age_minutes)) ? `${Math.round(Number(station.age_minutes))} min old` : 'Unknown age'}</span></td>
+                <td>${freshness}<br><span class="fine-print">${age != null ? `${Math.round(age)} min old` : 'Unknown age'}</span></td>
               </tr>`;
             }).join('')}
           </tbody>
@@ -77,5 +76,9 @@
       <p class="fine-print" style="margin:.65rem 0 0">Unofficial personal weather station readings are supplemental only. They are not quality-controlled official observations and are not used in the dashboard decision calculation.</p>`;
   }
 
+  document.addEventListener('dashboard-data-updated', renderUnofficial);
+  window.setInterval(() => {
+    if (typeof DATA !== 'undefined' && DATA?.unofficial_stations?.length) renderUnofficial();
+  }, 60000);
   window.addEventListener('load', () => window.setTimeout(renderUnofficial, 350));
 })();
