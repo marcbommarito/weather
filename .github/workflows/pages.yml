@@ -6,7 +6,9 @@ on:
     branches:
       - main
   schedule:
+    # Primary and fallback slots, avoiding the top of the hour.
     - cron: "7,22,37,52 * * * *"
+    - cron: "14,29,44,59 * * * *"
 
 permissions:
   contents: read
@@ -15,11 +17,14 @@ permissions:
 
 concurrency:
   group: weather-dashboard-pages
-  cancel-in-progress: true
+  # Do not interrupt a deploy already transferring the current artifact.
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.plan.outputs.publish }}
 
     env:
       AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
@@ -30,12 +35,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Decide whether to publish
+        id: plan
+        shell: bash
+        env:
+          CRON_TRIGGER: ${{ github.event.schedule }}
+        run: |
+          publish=true
+          if [[ "$CRON_TRIGGER" == "14,29,44,59 * * * *" ]]; then
+            if python3 scripts/check_published_freshness.py --max-age-minutes 18; then
+              publish=false
+            fi
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+
       - name: Set up Python
+        if: steps.plan.outputs.publish == 'true'
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Verify API secrets
+        if: steps.plan.outputs.publish == 'true'
         shell: bash
         run: |
           if [ -n "$AIRNOW_API_KEY" ]; then
@@ -57,9 +78,11 @@ jobs:
           fi
 
       - name: Fetch current weather data
+        if: steps.plan.outputs.publish == 'true'
         run: python scripts/fetch_weather_v4.py
 
       - name: Verify dashboard data
+        if: steps.plan.outputs.publish == 'true'
         run: |
           python - <<'PY'
           import json
@@ -89,9 +112,11 @@ jobs:
           PY
 
       - name: Configure GitHub Pages
+        if: steps.plan.outputs.publish == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload GitHub Pages artifact
+        if: steps.plan.outputs.publish == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: "."
@@ -99,6 +124,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    if: needs.build.outputs.publish == 'true'
 
     environment:
       name: github-pages

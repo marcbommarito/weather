@@ -55,7 +55,11 @@ The included wind, heat-index and precipitation thresholds are **draft local ope
 
 ## Update frequency
 
-The scheduled GitHub Action runs every 15 minutes. GitHub schedules can be delayed during periods of high demand, and Pages deployment can add several minutes. Always display and consider the dashboard's generated time and each station's observation time.
+**Update and deploy weather dashboard** (`.github/workflows/pages.yml`) is the only weather publishing workflow. Its primary schedule targets every 15 minutes. A second slot seven minutes later republishes only if the public snapshot is more than 18 minutes old or cannot be checked. Both schedules are best effort: [GitHub may delay or drop scheduled runs](https://docs.github.com/en/actions/how-tos/troubleshoot-workflows#scheduled-workflows-running-at-unexpected-times). Successful runs may intentionally skip publishing if a fallback finds recent data.
+
+For an on-demand refresh, open **Actions → Update and deploy weather dashboard → Run workflow**, select **main**, and wait for the `deploy` job. The dashboard's **Refresh display** button fetches the latest published snapshot; it does not start a build.
+
+Verify cadence by recording the public snapshot age and timestamps independently of Actions. From another machine, run `python3 scripts/check_published_freshness.py --max-age-minutes 30` periodically. Compare changes in `generated_at` against successful **deploy** job times, not just workflow start times. An updated snapshot does not guarantee that each upstream observation is recent; also check the station timestamps.
 
 ## Local preview
 
