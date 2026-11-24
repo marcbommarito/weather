@@ -68,8 +68,19 @@ function setBanners() {
 
 function renderMetrics() {
   const s = DATA.summary || {};
+  const currentHeatRisk = s.heat_risk || {};
+  const nextHeatRisk = s.heat_risk_next || null;
+  const hasCurrentHeatRisk = Number.isInteger(currentHeatRisk.level);
+  const heatRiskLabel = !hasCurrentHeatRisk && nextHeatRisk
+    ? 'NWS HeatRisk · next available forecast' : 'NWS HeatRisk';
+  const heatRiskValue = !hasCurrentHeatRisk && nextHeatRisk
+    ? nextHeatRisk.display : (currentHeatRisk.display ?? 'Unavailable');
+  const heatRiskNote = !hasCurrentHeatRisk && nextHeatRisk
+    ? `Valid ${nextHeatRisk.valid_date} · Future forecast only; not part of today's decision`
+    : (currentHeatRisk.note ?? 'Current-day HeatRisk feed');
   const metrics = [
-    metricCard('NWS HeatRisk', s.heat_risk?.display ?? 'Unavailable', s.heat_risk?.note ?? 'Current-day HeatRisk feed', s.heat_risk?.level),
+    metricCard(heatRiskLabel, heatRiskValue, heatRiskNote,
+      hasCurrentHeatRisk ? currentHeatRisk.level : null),
     metricCard('Air Quality Index', s.aqi?.value ?? (s.aqi?.configured ? 'Unavailable' : 'Not configured'), s.aqi?.observed_at ? `Observed ${s.aqi.observed_at} · ${s.aqi.category || 'AirNow'}` : (s.aqi?.note ?? 'EPA AirNow observation unavailable'), s.aqi?.level),
     metricCard('Highest heat index', s.max_heat_index_f != null ? `${Math.round(s.max_heat_index_f)}°F` : 'Unavailable', s.max_heat_index_station || 'Across reporting official stations', s.heat_index_level),
     metricCard('Highest wind gust', s.max_wind_gust_mph != null ? `${Math.round(s.max_wind_gust_mph)} mph` : 'Unavailable', s.max_wind_gust_station || 'Across reporting official stations', s.wind_level),
