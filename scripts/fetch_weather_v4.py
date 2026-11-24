@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import json
+import math
 import os
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -13,6 +15,84 @@ from typing import Any
 import fetch_weather_v3 as patched
 
 base = patched.base
+
+# NWS can omit structured temperature, dewpoint, humidity, or wind values
+# while preserving those same official measurements in the raw METAR.
+# Recover only explicitly reported METAR fields; never infer a missing
+# observation or convert a truly missing field to a reassuring zero.
+_original_nws_fetch = base.fetch_nws_station
+
+
+def _metar_celsius(token: str) -> int:
+    return -int(token[1:]) if token.startswith("M") else int(token)
+
+
+def fetch_nws_station_with_metar_fallback(station: dict[str, Any]) -> dict[str, Any] | None:
+    reading = _original_nws_fetch(station)
+    if not reading:
+        return reading
+
+    raw = reading.get("raw_message")
+    if not isinstance(raw, str) or not raw.strip():
+        return reading
+
+    # METAR body only. Do not mistake T-groups or other RMK metadata for
+    # the standard temperature/dewpoint or surface wind group.
+    main = re.split(r"\s+RMK\b", raw.upper(), maxsplit=1)[0]
+    recovered: list[str] = []
+
+    # The two-digit Celsius temp/dewpoint group directly precedes the
+    # altimeter group in routine METAR observations: 07/03 A3001.
+    td = re.search(r"\b(M?\d{2})/(M?\d{2}|//)\s+(?:A\d{4}|Q\d{4})\b", main)
+    if td:
+        if reading.get("temperature_f") is None:
+            reading["temperature_f"] = base.c_to_f(_metar_celsius(td.group(1)))
+            recovered.append("temperature")
+        if td.group(2) != "//" and reading.get("dewpoint_f") is None:
+            reading["dewpoint_f"] = base.c_to_f(_metar_celsius(td.group(2)))
+            recovered.append("dewpoint")
+
+    if reading.get("relative_humidity_pct") is None:
+        temp_f = reading.get("temperature_f")
+        dew_f = reading.get("dewpoint_f")
+        if temp_f is not None and dew_f is not None:
+            temp_c = (temp_f - 32.0) * 5.0 / 9.0
+            dew_c = (dew_f - 32.0) * 5.0 / 9.0
+            # Standard Magnus approximation from explicit METAR temperatures.
+            if -90 <= dew_c <= temp_c <= 65:
+                rh = 100.0 * math.exp(
+                    17.625 * dew_c / (243.04 + dew_c)
+                    - 17.625 * temp_c / (243.04 + temp_c)
+                )
+                reading["relative_humidity_pct"] = max(0.0, min(100.0, rh))
+                recovered.append("humidity from METAR temperature/dewpoint")
+
+    wind = re.search(r"\b(?:\d{3}|VRB)(\d{2,3})(?:G(\d{2,3}))?KT\b", main)
+    if wind:
+        if reading.get("wind_speed_mph") is None:
+            reading["wind_speed_mph"] = int(wind.group(1)) * 1.15077945
+            recovered.append("wind speed")
+        if reading.get("wind_gust_mph") is None and wind.group(2):
+            reading["wind_gust_mph"] = int(wind.group(2)) * 1.15077945
+            recovered.append("wind gust")
+
+    if (
+        reading.get("heat_index_f") is None
+        and reading.get("temperature_f") is not None
+        and reading.get("relative_humidity_pct") is not None
+    ):
+        reading["heat_index_f"] = base.heat_index_fahrenheit(
+            reading["temperature_f"], reading["relative_humidity_pct"]
+        )
+
+    if recovered:
+        reading["metar_fields_recovered"] = recovered
+        print(f"NWS {station['id']}: recovered {', '.join(recovered)} from official raw METAR")
+    return reading
+
+
+base.fetch_nws_station = fetch_nws_station_with_metar_fallback
+
 
 # Future HeatRisk is displayed for planning, never today's decision.
 HEATRISK_NEXT: dict[str, Any] | None = None
