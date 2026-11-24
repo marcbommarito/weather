@@ -6,9 +6,12 @@ on:
     branches:
       - main
   schedule:
-    # Primary and fallback slots, avoiding the top of the hour.
+    # GitHub's scheduler is best-effort and may skip slots. Use multiple
+    # staggered 5-minute opportunities; publish only when the snapshot is old.
+    # Keep the independent Cloudflare watchdog for reliable backup dispatch.
+    - cron: "2,17,32,47 * * * *"
     - cron: "7,22,37,52 * * * *"
-    - cron: "14,29,44,59 * * * *"
+    - cron: "12,27,42,57 * * * *"
 
 permissions:
   contents: read
@@ -42,8 +45,10 @@ jobs:
           CRON_TRIGGER: ${{ github.event.schedule }}
         run: |
           publish=true
-          if [[ "$CRON_TRIGGER" == "14,29,44,59 * * * *" ]]; then
-            if python3 scripts/check_published_freshness.py --max-age-minutes 18; then
+          if [[ -n "$CRON_TRIGGER" ]]; then
+            # A queued/delayed cron does not need to publish when another run
+            # already produced a recent successful Pages snapshot.
+            if python3 scripts/check_published_freshness.py --max-age-minutes 14; then
               publish=false
             fi
           fi
