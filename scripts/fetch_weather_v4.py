@@ -81,6 +81,11 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
     # HeatRisk is time enabled. Select the raster closest to today's 12 UTC
     # instead of relying on the service's default Northwest mosaic ordering.
     target_valid_time = f"{local_date:%Y/%m/%d} 12:00:00"
+    # The service timestamps each daily raster at 12:00 UTC. The Identify
+    # endpoint supports an explicit Unix-millisecond instant; relying solely
+    # on by-attribute mosaic sorting can select tomorrow's overlapping raster.
+    target_valid_dt = datetime.fromisoformat(f"{local_date.isoformat()}T12:00:00+00:00")
+    target_valid_epoch_ms = int(target_valid_dt.timestamp() * 1000)
     mosaic_rule = {
         "mosaicMethod": "esriMosaicAttribute",
         "sortField": "idp_validtime",
@@ -96,6 +101,7 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
             "spatialReference": {"wkid": 4326},
         }),
         "geometryType": "esriGeometryPoint",
+        "time": str(target_valid_epoch_ms),
         "mosaicRule": json.dumps(mosaic_rule),
         "returnGeometry": "false",
         "returnCatalogItems": "true",
@@ -134,11 +140,11 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
         )
         return None
 
-    selected_local_date = selected_dt.astimezone(base.TZ).date()
-    if selected_local_date != local_date:
+    selected_utc_date = selected_dt.astimezone(timezone.utc).date()
+    if selected_utc_date != local_date:
         print(
             "NWS HeatRisk: selected raster is not for today; "
-            f"target_date={local_date.isoformat()} selected_date={selected_local_date.isoformat()}. "
+            f"target_utc_date={local_date.isoformat()} selected_utc_date={selected_utc_date.isoformat()}. "
             "Ignoring stale/future HeatRisk."
         )
         return None
