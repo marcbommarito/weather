@@ -14,6 +14,10 @@ import fetch_weather_v3 as patched
 
 base = patched.base
 
+# Future HeatRisk is displayed for planning, never today's decision.
+HEATRISK_NEXT: dict[str, Any] | None = None
+HEATRISK_NAMES = ["Green / Little to none", "Yellow / Minor", "Orange / Moderate", "Red / Major", "Magenta / Extreme"]
+
 
 def parse_heat_risk_pixel(payload: Any) -> int | None:
     """Return only the ArcGIS Identify top-level pixel value when it is 0-4.
@@ -75,6 +79,8 @@ def heat_risk_catalog_valid_time(payload: Any) -> str | None:
 
 def fetch_heat_risk_verified() -> dict[str, Any] | None:
     """Fetch today's HeatRisk using the actual identified raster pixel only."""
+    global HEATRISK_NEXT
+    HEATRISK_NEXT = None
     center = base.CONFIG["district"]["center"]
     local_date = datetime.now(base.TZ).date()
 
@@ -125,6 +131,7 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
         catalog = (catalog_payload or {}).get("catalogItems")
         features = catalog.get("features", []) if isinstance(catalog, dict) else []
         matches = []
+        future_matches = []
         date_samples = []
         for feature in features if isinstance(features, list) else []:
             if not isinstance(feature, dict):
@@ -143,12 +150,12 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
             )
             if valid_dt is not None:
                 date_samples.append(valid_dt.astimezone(timezone.utc).date().isoformat())
-            if (
-                valid_dt is not None
-                and valid_dt.astimezone(timezone.utc).date() == local_date
-                and object_id is not None
-            ):
-                matches.append(object_id)
+            if valid_dt is not None and object_id is not None:
+                valid_date = valid_dt.astimezone(timezone.utc).date()
+                if valid_date == local_date:
+                    matches.append(object_id)
+                elif valid_date > local_date:
+                    future_matches.append((valid_date, object_id))
 
         print(
             f"NWS HeatRisk direct instant={payload.get('value') if isinstance(payload, dict) else None!r}; "
@@ -175,16 +182,42 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
                 break
 
     if level is None:
+        # Tomorrow's grid is planning context only, never a decision driver.
+        for forecast_date, raster_id in sorted(future_matches):
+            forecast_params = dict(catalog_params)
+            forecast_params.pop("maxItemCount", None)
+            forecast_params["mosaicRule"] = json.dumps({
+                "mosaicMethod": "esriMosaicLockRaster",
+                "lockRasterIds": [raster_id],
+                "mosaicOperation": "MT_FIRST",
+            })
+            forecast_payload = base.safe_get(
+                "NWS HeatRisk next forecast", endpoint, forecast_params
+            )
+            forecast_level = parse_heat_risk_pixel(forecast_payload)
+            forecast_valid = heat_risk_catalog_valid_time(forecast_payload)
+            forecast_dt = base.parse_dt(forecast_valid) if forecast_valid else None
+            if (
+                forecast_level is not None
+                and forecast_dt is not None
+                and forecast_dt.astimezone(timezone.utc).date() == forecast_date
+            ):
+                HEATRISK_NEXT = {
+                    "level": forecast_level,
+                    "display": f"{forecast_level} — {HEATRISK_NAMES[forecast_level]}",
+                    "valid_date": forecast_date.isoformat(),
+                    "valid_time": forecast_valid,
+                    "decision_use": False,
+                }
+                print(
+                    f"NWS HeatRisk next available forecast: "
+                    f"{forecast_date.isoformat()} level={forecast_level}; "
+                    "not used in today's decision."
+                )
+                break
         print("NWS HeatRisk: no verifiable current-day raster pixel was available.")
         return None
 
-    names = [
-        "Green / Little to none",
-        "Yellow / Minor",
-        "Orange / Moderate",
-        "Red / Major",
-        "Magenta / Extreme",
-    ]
     valid_time = heat_risk_catalog_valid_time(payload)
     selected_dt = base.parse_dt(valid_time) if valid_time else None
     if selected_dt is None:
@@ -209,7 +242,7 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
     )
     return {
         "level": level,
-        "display": f"{level} — {names[level]}",
+        "display": f"{level} — {HEATRISK_NAMES[level]}",
         "note": "NWS experimental current-day HeatRisk · verified raster pixel",
         "valid_time": valid_time,
         "source_value": payload.get("value"),
@@ -308,6 +341,19 @@ def add_unofficial_observations() -> None:
         return
 
     data = json.loads(path.read_text(encoding="utf-8"))
+    if HEATRISK_NEXT is not None:
+        summary = data.setdefault("summary", {})
+        summary["heat_risk_next"] = HEATRISK_NEXT
+        current_risk = summary.get("heat_risk") or {}
+        if current_risk.get("level") is None:
+            summary["heat_risk"] = {
+                "level": None,
+                "display": "Unavailable for today",
+                "note": (
+                    "NOAA no longer offers today's HeatRisk grid. "
+                    f"The next available forecast is for {HEATRISK_NEXT['valid_date']}."
+                ),
+            }
     station_defs = base.CONFIG.get("stations", {}).get("referencePersonal", [])
     api_key = os.environ.get("WEATHERCOM_API_KEY", "").strip()
 
