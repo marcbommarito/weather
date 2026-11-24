@@ -108,20 +108,74 @@ def fetch_heat_risk_verified() -> dict[str, Any] | None:
         "returnAllPixelValues": "false",
     }
 
-    payload = base.safe_get(
-        "NWS HeatRisk",
-        "https://mapservices.weather.noaa.gov/experimental/rest/services/NWS_HeatRisk/ImageServer/identify",
-        params,
-    )
-    if not payload:
-        return None
-
+    endpoint = "https://mapservices.weather.noaa.gov/experimental/rest/services/NWS_HeatRisk/ImageServer/identify"
+    payload = base.safe_get("NWS HeatRisk", endpoint, params)
     level = parse_heat_risk_pixel(payload)
     if level is None:
+        # Some ArcGIS ImageServer versions return NoData for an exact instant,
+        # even when a daily raster exists. Inspect the overlapping catalog,
+        # then lock identify to the exact matching raster ID. Never substitute
+        # the unfiltered value: it may belong to tomorrow's grid.
+        catalog_params = {
+            key: value for key, value in params.items()
+            if key not in {"time", "mosaicRule"}
+        }
+        catalog_params["maxItemCount"] = "100"
+        catalog_payload = base.safe_get("NWS HeatRisk catalog", endpoint, catalog_params)
+        catalog = (catalog_payload or {}).get("catalogItems")
+        features = catalog.get("features", []) if isinstance(catalog, dict) else []
+        matches = []
+        date_samples = []
+        for feature in features if isinstance(features, list) else []:
+            if not isinstance(feature, dict):
+                continue
+            attributes = feature.get("attributes")
+            if not isinstance(attributes, dict):
+                continue
+            valid_iso = heat_risk_catalog_valid_time(
+                {"catalogItems": {"features": [feature]}}
+            )
+            valid_dt = base.parse_dt(valid_iso) if valid_iso else None
+            object_id = next(
+                (value for name, value in attributes.items()
+                 if name.lower().replace("_", "") == "objectid"),
+                None,
+            )
+            if valid_dt is not None:
+                date_samples.append(valid_dt.astimezone(timezone.utc).date().isoformat())
+            if (
+                valid_dt is not None
+                and valid_dt.astimezone(timezone.utc).date() == local_date
+                and object_id is not None
+            ):
+                matches.append(object_id)
+
         print(
-            "NWS HeatRisk: identify response did not contain a verified "
-            f"single 0-4 top-level pixel value (value={payload.get('value')!r})."
+            f"NWS HeatRisk direct instant={payload.get('value') if isinstance(payload, dict) else None!r}; "
+            f"catalog_dates={sorted(set(date_samples))}; matching_raster_ids={matches}"
         )
+        for raster_id in matches:
+            locked_params = dict(catalog_params)
+            locked_params.pop("maxItemCount", None)
+            locked_params["mosaicRule"] = json.dumps({
+                "mosaicMethod": "esriMosaicLockRaster",
+                "lockRasterIds": [raster_id],
+                "mosaicOperation": "MT_FIRST",
+            })
+            candidate = base.safe_get("NWS HeatRisk locked raster", endpoint, locked_params)
+            candidate_level = parse_heat_risk_pixel(candidate)
+            candidate_valid = heat_risk_catalog_valid_time(candidate)
+            candidate_dt = base.parse_dt(candidate_valid) if candidate_valid else None
+            if (
+                candidate_level is not None
+                and candidate_dt is not None
+                and candidate_dt.astimezone(timezone.utc).date() == local_date
+            ):
+                payload, level = candidate, candidate_level
+                break
+
+    if level is None:
+        print("NWS HeatRisk: no verifiable current-day raster pixel was available.")
         return None
 
     names = [
